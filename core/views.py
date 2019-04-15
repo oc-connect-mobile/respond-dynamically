@@ -11,3 +11,4 @@ def index(request):
         # 'context variable': context variable,
     })
     return response
+    

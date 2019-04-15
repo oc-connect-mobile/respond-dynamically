@@ -12,6 +12,8 @@ psycopg2 = "*"
 simple-salesforce = "*"
 django-heroku = "*"
 gunicorn = "*"
+pyopenssl = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"

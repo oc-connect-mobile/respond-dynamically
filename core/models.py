@@ -53,7 +53,7 @@ class PleaseSearch(models.Model):
         ('One Stop', 'One Stop'),
     )
 
-    categories = models.CharField(max_length=25, choices=CATEGORY_CHOICES)
+    categories = models.CharField(max_length=25, choices=CATEGORY_CHOICES, null=False)
 
     COUNTY_CHOICES = (
         ('Durham', 'Durham'),
@@ -65,7 +65,7 @@ class PleaseSearch(models.Model):
         ('Person', 'Person'),
     )
 
-    counties = models.CharField(max_length=25, choices=COUNTY_CHOICES)
+    counties = models.CharField(max_length=25, choices=COUNTY_CHOICES, null=False)
 
 
     

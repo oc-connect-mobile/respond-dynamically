@@ -16,17 +16,17 @@ class Auth(models.Model):
 class PleaseSearch(models.Model):
 
     CITY_CHOICES = (
-        ('CHAPELHILL', 'Chapel Hill'),
-        ('DURHAMCITY', 'Durham'),
-        ('CARRBORO', 'Carrboro'),
-        ('HILLSBOROUGH', 'Hillsborough'),
-        ('RALEIGH', 'Raleigh'),
-        ('MEBANE', 'Mebane'),
-        ('MORRISVILLE', 'Morrisville'),
-        ('BINGHAM', 'Bingham'),
-        ('CEDARGROVE', 'Cedar Grove'),
-        ('ENO', 'Eno'),
-        ('LITTLERIVER', 'Little River'),
+        ('Chapel Hill', 'Chapel Hill'),
+        ('Durham', 'Durham'),
+        ('Carrboro', 'Carrboro'),
+        ('Hillsborough', 'Hillsborough'),
+        ('Raleigh', 'Raleigh'),
+        ('Mebane', 'Mebane'),
+        ('Morrisville', 'Morrisville'),
+        ('Bingham', 'Bingham'),
+        ('Cedar Grove', 'Cedar Grove'),
+        ('Eno', 'Eno'),
+        ('Little River', 'Little River'),
     )
 
     city = models.CharField(max_length=25, choices=CITY_CHOICES)

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+
+    <h2 class="">Search City</h2><br>
+                    
+    <form method="GET" class="">
+        {% csrf_token %}
+            {{ search_city_form.as_p }}
+            <button type="submit" class="">Search</button>
+    </form>
+{% endblock %}

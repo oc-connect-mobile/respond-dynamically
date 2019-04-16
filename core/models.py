@@ -16,24 +16,24 @@ class Auth(models.Model):
 class PleaseSearch(models.Model):
 
     CITY_CHOICES = (
-        (CHAPELHILL, 'Chapel Hill'),
-        (DURHAMCITY, 'Durham'),
-        (CARRBORO, 'Carrboro'),
-        (HILLSBOROUGH, 'Hillsborough'),
-        (RALEIGH, 'Raleigh'),
-        (MEBANE, 'Mebane'),
-        (MORRISVILLE, 'Morrisville'),
-        (BINGHAM, 'Bingham'),
-        (CEDARGROVE, 'Cedar Grove'),
-        (ENO, 'Eno'),
-        (LITTLERIVER, 'Little River'),
+        ('CHAPELHILL', 'Chapel Hill'),
+        ('DURHAMCITY', 'Durham'),
+        ('CARRBORO', 'Carrboro'),
+        ('HILLSBOROUGH', 'Hillsborough'),
+        ('RALEIGH', 'Raleigh'),
+        ('MEBANE', 'Mebane'),
+        ('MORRISVILLE', 'Morrisville'),
+        ('BINGHAM', 'Bingham'),
+        ('CEDARGROVE', 'Cedar Grove'),
+        ('ENO', 'Eno'),
+        ('LITTLERIVER', 'Little River'),
     )
 
     city = models.CharField(max_length=25, choices=CITY_CHOICES)
     searched_at = models.DateTimeField(auto_now_add=True)
     query_string_start = models.CharField(max_length=100)
     query_string_end = models.CharField(max_length=100)
-    sf_field = = models.CharField(max_length=100)
+    sf_field = models.CharField(max_length=100)
 
     def __str__(self):
         return self.title

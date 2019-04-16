@@ -35,4 +35,4 @@ def city_search(request):
             
     return render(request, 'city-search.html', {
         'city_form': city_form,
-    })
+

@@ -20,11 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_szic=o1f*8qq7+j*dxenf583(%ilj&r(=3s^r_yum01gr=cz0'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = not os.getenv('PRODUCTION', None)
 
 ALLOWED_HOSTS = []
 
@@ -130,5 +131,6 @@ STATIC_URL = '/static/'
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
 
+# Configure Django App for Heroku.
 django_heroku.settings(locals())
 # ^^^^ NOTHING BELOW THIS LINE ^^^^

@@ -29,13 +29,43 @@ class PleaseSearch(models.Model):
         ('Eno', 'Eno'),
         ('Little River', 'Little River'),
     )
-
+    
     city = models.CharField(max_length=25, choices=CITY_CHOICES)
     searched_at = models.DateTimeField(auto_now_add=True)
     query_string_start = models.CharField(max_length=100)
     query_string_end = models.CharField(max_length=100)
     sf_field = models.CharField(max_length=100)
     # citylist = models.ManyToManyField(Dog, related_name='events', blank=True)
+
+    CATEGORY_CHOICES = (
+        ('Emergency', 'Emergency'),
+        ('Food', 'Food'),
+        ('Housing', 'Housing'),
+        ('Goods', 'Goods'),
+        ('Transportation', 'Transportation'),
+        ('Health', 'Health'),
+        ('Finances', 'Finances'),
+        ('Care', 'Care'),
+        ('Education', 'Education'),
+        ('Employment', 'Employment'),
+        ('Legal', 'Legal'),
+        ('Communication', 'Communication'),
+        ('One Stop', 'One Stop'),
+    )
+
+    categories = models.CharField(max_length=25, choices=CATEGORY_CHOICES)
+
+    COUNTY_CHOICES = (
+        ('Durham', 'Durham'),
+        ('Orange', 'Orange'),
+        ('Wake', 'Wake'),
+        ('Caswell', 'Caswell'),
+        ('Alamance', 'Alamance'),
+        ('Chatham', 'Chatham'),
+        ('Person', 'Person'),
+    )
+
+    counties = models.CharField(max_length=25, choices=COUNTY_CHOICES)
 
 
     

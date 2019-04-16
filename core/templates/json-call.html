@@ -4,8 +4,24 @@
 
 {% block content %}
 
-{% for entry in data1.records %}
-    {{ entry }}
-{% endfor %}
+    
+
+    {% for index in records %}
+    <div>
+        {% for key,value in index.items %}
+            {% if forloop.counter != 1 %}
+            <div>
+                {% if value %}
+                {{ key }}: {{ value }} 
+                {% else %}  
+                {{ key }}: N/A
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>  
+    <br>    
+    {% endfor %}
+
 
 {% endblock %}

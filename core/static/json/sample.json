@@ -1,0 +1,105 @@
+{
+    "totalSize" : 10,
+    "done" : true,
+    "records" : [ {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHwkbAAC"
+        },
+        "Name" : "Durham Rescue Mission - Thrift Store",
+        "Website" : "https://www.durhamrescuemission.org/chapel-hill-thrift-store/",
+        "Imported_Phone__c" : null,
+        "Company_Email__c" : "thriftstorechapelhill@durhamrescuemission.com",
+        "Description_Short__c" : "Clothes, shoes, books, CDs, DVDs, VHS, electronics, kitchenware, furniture, linens, rugs - all at extremely discounted prices. Has Raleigh, Chapel Hill and Durham locations (Durham listed)."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHwkxAAC"
+        },
+        "Name" : "Hare Krishna Meal : Food for Life",
+        "Website" : "http://newgoloka.com/programs/food-for-life/",
+        "Imported_Phone__c" : null,
+        "Company_Email__c" : "jguru108@gmail.com",
+        "Description_Short__c" : "Free hot vegetarian meal served by the Hare Krishnas every Thursday 5:30pm-7:00pm at UNC Upper Quad across the street from the post office and Mondays 5:30pm-7:00pm at Duke in the multicultural lounge of the Bryan Center."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHwuxAAC"
+        },
+        "Name" : "OE Enterprises - Orange County",
+        "Website" : "http://oeenterprises.org/",
+        "Imported_Phone__c" : "Fax: (919) 732-4027",
+        "Company_Email__c" : "programinfo@oeenterprises.org",
+        "Description_Short__c" : "Creates opportunities for personal and professional growth for persons with disabilities and other barriers."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHwtCAAS"
+        },
+        "Name" : "Hillsong Church Helping Hand Ministry",
+        "Website" : "http://www.hillsong.org/",
+        "Imported_Phone__c" : null,
+        "Company_Email__c" : "info@hillsong.org",
+        "Description_Short__c" : "Provides limited emergency financial assistance for utility and/or rental costs up to $50-100, when funds are available. Required to come in and have a meeting. Appointments scheduled on a \"first come first served basis\" after first Sunday."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHwtGAAS"
+        },
+        "Name" : "Community Empowerment Fund",
+        "Website" : "http://communityempowermentfund.org/",
+        "Imported_Phone__c" : "Durham: (919) 797-9233",
+        "Company_Email__c" : "info@communityempowermentfund.org",
+        "Description_Short__c" : "Provides relationship-based support, financial education, and help finding employment and achieving stable housing to individuals experiencing or at-risk of experiencing homelessness."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHwtWAAS"
+        },
+        "Name" : "OCLC - Orange County Literacy Council",
+        "Website" : "http://orangeliteracy.org/",
+        "Imported_Phone__c" : null,
+        "Company_Email__c" : "oclc@orangeliteracy.org",
+        "Description_Short__c" : "Provides free, individualized literacy instruction to adults who would like to improve their reading, writing, basic math or English language skills. Provides classes and tutoring for students (youth and adult) to earn their GED."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHx2WAAS"
+        },
+        "Name" : "Benefit Bank: Self Service",
+        "Website" : "http://selfserve.thebenefitbank.org/ums?task=login&partner_code=3032",
+        "Imported_Phone__c" : null,
+        "Company_Email__c" : "tbbhelp@thebenefitbank.com",
+        "Description_Short__c" : "A free service to connect people to tax credits and public benefits"
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHx2YAAS"
+        },
+        "Name" : "Open Table Ministries",
+        "Website" : "http://www.opentableministry.org",
+        "Imported_Phone__c" : null,
+        "Company_Email__c" : "opentableministry@gmail.com",
+        "Description_Short__c" : "Open Table's ministry serves homeless individuals by providing spiritual and social support according to individual needs and goals. Open Table serves free lunch every Monday at Noon on the grounds of Trinity United Methodist at 215 N Church Street, Durham."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHx4pAAC"
+        },
+        "Name" : "Simplified Nutritional Assistance Program (SNAP)",
+        "Website" : "https://www2.ncdhhs.gov/dss/foodstamp/SNAP.htm",
+        "Imported_Phone__c" : null,
+        "Company_Email__c" : null,
+        "Description_Short__c" : "SNAP is a project designed to deliver food assistance to elderly individuals (age >65) receiving Supplemental Security Income (SSI). Individuals will be assessed for these benefits when they apply for regular food assistance through DSS and will be awarded this additional assistance if they meet the eligibility criteria and if it would increase their benefit amount."
+    }, {
+        "attributes" : {
+            "type" : "Account",
+            "url" : "/services/data/v45.0/sobjects/Account/0012100000gHx88AAC"
+        },
+        "Name" : "Jewish Federation of Durham/Chapel Hill",
+        "Website" : "www.shalomdch.org",
+        "Imported_Phone__c" : "Fax: (919) 489-5788",
+        "Company_Email__c" : "jschwartz@shalomdch.org",
+        "Description_Short__c" : "Serves Durham and Orange Jewish community with financial assistance, support groups, and food pantrys."
+    } ]
+}

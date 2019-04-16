@@ -35,11 +35,5 @@ class PleaseSearch(models.Model):
     query_string_end = models.CharField(max_length=100)
     sf_field = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.title
-
-    def save(self, *args, **kwargs):
-        self.set_slug()
-        super().save(*args, **kwargs)
-
+    
 

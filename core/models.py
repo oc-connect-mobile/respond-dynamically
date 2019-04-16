@@ -12,6 +12,7 @@ class Auth(models.Model):
     password = models.CharField(max_length=100)
     token = models.CharField(max_length=100)
 
+class CityList
 
 class PleaseSearch(models.Model):
 
@@ -34,6 +35,8 @@ class PleaseSearch(models.Model):
     query_string_start = models.CharField(max_length=100)
     query_string_end = models.CharField(max_length=100)
     sf_field = models.CharField(max_length=100)
+    citylist = models.ManyToManyField(Dog, related_name='events', blank=True)
+
 
     
 

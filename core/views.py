@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import json
 
 # Our App imports:
 from core.forms import PleaseSearchForm
@@ -8,7 +9,7 @@ from core.models import PleaseSearch
 
 def index(request):
     """View function for home page of site."""
-        
+     
     # Render the HTML template index.html with the data in the context variable
     response = render(request, 'index.html', {
         # 'context variable': context variable,
@@ -43,3 +44,12 @@ def city_search(request):
     return render(request, 'city-search.html', {
         'city_form': city_form,
     })
+
+def json_call(request):
+    json_data = open('core/static/json/sample.json')
+    data1 = json.load(json_data)
+    data2 = json.dumps(data1)
+
+    json_data.close()
+
+    return render(request, data1, data2)

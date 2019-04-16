@@ -1,9 +1,9 @@
 from django import forms
 from .models import PleaseSearch
 
-class PleaseSearchForm(forms.ModelForm):
+class PleaseSearchForm(forms.Form):
 
     class Meta:
         model = PleaseSearch
-        fields = ('city',
-        )
+        
+    Cities = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=PleaseSearch.CITY_CHOICES)

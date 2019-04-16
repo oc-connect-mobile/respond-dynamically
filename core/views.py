@@ -16,20 +16,23 @@ def index(request):
     return response
 
 
-def city_form(request):
+def city_search(request):
     
     if request.method == 'GET':
-        search_city_form = PleaseSearchForm(request.GET)
+        city_form = PleaseSearchForm(request.GET)
         
         
-        if search_city_form.is_valid():
-            city = search_city_form.save(commit=False)
+        if city_form.is_valid():
+            # city = city_form.save(commit=False)
+            print(PleaseSearch.CITY_CHOICES)
             
-            return redirect(deck.get_absolute_url())
+            return render(request, 'city-search.html', {
+                 'city_form': city_form,
+            })
 
     else:
-        search_city_form = PleaseSearchForm
+        city_form = PleaseSearchForm()
             
     return render(request, 'city-search.html', {
-        'search_city_form': search_city_form,
+        'city_form': city_form,
     })

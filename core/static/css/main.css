@@ -9,3 +9,53 @@ header {
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
 }
+
+.list-of-resources{
+    display: flex;
+    flex-flow: column;
+    align-items: left;
+    text-align: left;
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+.listed-name{
+    text-align: center;
+    border: 2px solid black;
+    border-top-width: 3px;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    margin: 0;
+    padding: .5rem 1rem;
+    background-color: #00adef;
+    color: white
+}
+.listed-site{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin: 0;
+    padding-left: 1rem; 
+}
+.listed-contacts{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.listed-phone{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin: 0;
+    padding-left: 1rem; 
+}
+.listed-email{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    margin: 0;
+    padding-left: 1rem; 
+}
+.listed-desc{
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black; 
+    margin: 0;
+    padding-left: 1rem; 
+}

@@ -21,19 +21,44 @@ def city_search(request):
     
     if request.method == 'GET':
         city_form = PleaseSearchForm(request.GET)
+        city_form.initial={'Cities': 'Any city'}
         
         
         if city_form.is_valid():
             # city = city_form.save(commit=False)
             cities = str(city_form.cleaned_data.get('Cities'))[1:-1]
-            start = "/services/data/v45.0/query?q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account+WHERE+City_Served__c+includes("
-            middle = ")+AND+CEF_Category__c+includes("
-            middle2 = ")+AND+County_Served__c+includes("
-            end = ")+AND+Deactivated__c=FALSE"
             categories = str(city_form.cleaned_data.get('Categories'))[1:-1]
             counties = str(city_form.cleaned_data.get('Counties'))[1:-1]
-            print(start, cities, middle, categories, middle2, counties, end)
-            print(categories, counties)
+            a = "/services/data/v45.0/query?q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
+            b = "+WHERE+"
+            c = "City_Served__c+includes("
+            d = ")+AND+"
+            e = "CEF_Category__c+includes("
+            f = ")+AND+"
+            g = "County_Served__c+includes("
+            h = ")+AND+"
+            x = "Deactivated__c=FALSE"
+
+
+            if 'Any city' in city_form.cleaned_data.get('Cities'):
+                print ("Don't limit by city!")
+                c = ""
+                cities = ""
+                d = ""
+            if 'Any category' in city_form.cleaned_data.get('Categories'):
+                print ("Don't limit by category!")
+                e = ""
+                categories = ""
+                f = ""
+            if 'Any county' in city_form.cleaned_data.get('Counties'):
+                print ("Don't limit by county!")
+                g = ""
+                counties = ""
+                h = ""
+ 
+            print(a+b+c+cities+d+e+categories+f+g+counties+h+x)
+            #print(a+b+c+cities+d+e+categories+f+g+counties+h+x)
+            print(cities, categories, counties)
             return render(request, 'city-search.html', {
                  'city_form': city_form,
             })

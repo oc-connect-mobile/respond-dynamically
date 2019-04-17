@@ -16,6 +16,7 @@ class Auth(models.Model):
 class PleaseSearch(models.Model):
 
     CITY_CHOICES = (
+        ('Any city', 'Any city'),
         ('Chapel Hill', 'Chapel Hill'),
         ('Durham', 'Durham'),
         ('Carrboro', 'Carrboro'),
@@ -36,6 +37,7 @@ class PleaseSearch(models.Model):
     sf_field = models.CharField(max_length=100)
 
     CATEGORY_CHOICES = (
+        ('Any category', 'Any category'),
         ('Emergency', 'Emergency'),
         ('Food', 'Food'),
         ('Housing', 'Housing'),
@@ -54,6 +56,7 @@ class PleaseSearch(models.Model):
     categories = models.CharField(max_length=25, choices=CATEGORY_CHOICES, null=False)
 
     COUNTY_CHOICES = (
+        ('Any county', 'Any county'),
         ('Durham', 'Durham'),
         ('Orange', 'Orange'),
         ('Wake', 'Wake'),

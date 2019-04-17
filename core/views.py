@@ -27,10 +27,12 @@ def city_search(request):
             # city = city_form.save(commit=False)
             cities = str(city_form.cleaned_data.get('Cities'))[1:-1]
             start = "/services/data/v45.0/query?q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account+WHERE+City_Served__c+includes("
+            middle = ")+AND+CEF_Category__c+includes("
+            middle2 = ")+AND+County_Served__c+includes("
             end = ")+AND+Deactivated__c=FALSE"
             categories = str(city_form.cleaned_data.get('Categories'))[1:-1]
             counties = str(city_form.cleaned_data.get('Counties'))[1:-1]
-            print(start, cities, end)
+            print(start, cities, middle, categories, middle2, counties, end)
             print(categories, counties)
             return render(request, 'city-search.html', {
                  'city_form': city_form,

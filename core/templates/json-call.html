@@ -4,32 +4,33 @@
 
 {% block content %}
 
-    
-
-    {% for index in records %}
     <div class="list-of-resources">
-        {% for key,value in index.items %}
+    {% for index in records %}
+        <div class="listed-resource">
+        {% for key, value in index.items %}
             {% if forloop.counter != 1 %} {% comment %} Company ID not needed {% endcomment %}
-            <div class="listed-resource">
-                {% if value %}
+                {% if value %}                  
                     {% if forloop.counter == 2 %} {% comment %} Company Name {% endcomment %}
-                        <h2 class="listed-name">{{ value }}</h2>
-                    {% elif forloop.counter == 3 %} {% comment %} Website {% endcomment %}
-                        <p class="listed-site"><a href="{{ value }}">Website</a></p>
-                    {% elif forloop.counter == 4 %} {% comment %} Phone {% endcomment %}
-                        {% comment %} <p class="listed-email"><a href="tel:{{ value }}">{{ value }}</a></p> {% endcomment %}
-                    {% elif forloop.counter == 5 %} {% comment %} Email {% endcomment %}
-                        <p class="listed-email"><a href="mailto:{{ value }}">Email</a></p>
-                    {% elif forloop.counter == 6 %} {% comment %} Description {% endcomment %}
-                        <p class="listed-desc">{{ value }}</p>
+                    <div class="top-of-card"><div class="listed-name">{{ value }}</div></div>
+                    {% endif %}
+                    {% if forloop.counter == 3 %} {% comment %} Website {% endcomment %}
+                        <span class="listed-site"><a class="contact-button" href="{{ value }}">Website</a></span>
+                    {% endif %}
+                    {% if forloop.counter == 4 %} {% comment %} Phone {% endcomment %} 
+                        <span class="listed-phone"><a class="contact-button" href="tel:{{ value }}">Phone</a></span>
+                    {% endif %}  
+                    {% if forloop.counter == 5 %} {% comment %} Email {% endcomment %}
+                        <span class="listed-email"><a class="contact-button" href="mailto:{{ value }}">Email</a></span>
+                    {% endif %}
+                    {% if forloop.counter == 6 %} {% comment %} Description {% endcomment %}
+                        <div class="listed-desc">{{ value }}</div>
                     {% endif %}
                 {% endif %}
-            </div>
             {% endif %}
         {% endfor %}
-    </div>  
-    <br>    
+        </div>  
     {% endfor %}
+    </div>  
 
 
 {% endblock %}

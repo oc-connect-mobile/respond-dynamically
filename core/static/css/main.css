@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    height: 1.5em;
+    height: 1.8em;
     font-size: 2rem;
     text-align: center;
     padding: 3px;
@@ -14,48 +14,64 @@ header {
     display: flex;
     flex-flow: column;
     align-items: left;
-    text-align: left;
-    margin: 1rem 2rem 1rem 2rem;
+    text-align: left; 
 }
 
+.listed-resource{
+    margin: 1rem 2rem 1rem 2rem;
+    border-top: 3px solid black;
+    /* max-width: 375px; */
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    box-shadow: -2px 3px 7px 1px lightgrey;
+}
+.listed-resource:hover {
+  transform: scale(0.97, 0.97);
+  cursor: pointer;
+  box-shadow: 5px 5px 30px 7px lightgrey, 
+    -5px -5px 30px 7px lightgrey;
+}
 .listed-name{
+    font-size: 20px;    
     text-align: center;
-    border: 2px solid black;
-    border-top-width: 3px;
-    border-top-left-radius: 15%;
-    border-top-right-radius: 15%;
-    margin: 0;
+    margin: 0 0 .5rem 0;
     padding: .5rem 1rem;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     background-color: #00adef;
-    color: white
+    color: white;
+    background-clip: padding-box;
 }
 .listed-site{
-    border-left: 2px solid black;
-    border-right: 2px solid black;
     margin: 0;
-    padding-left: 1rem; 
+    padding-left: 1rem;
+    
 }
-.listed-contacts{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.contact-button{
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 1px lightgrey;
+    background-image: linear-gradient(to top right, rgb(232, 230, 230), white);
+    color: black; 
+    text-decoration: none;
+    text-align: center;
+    font-size: 17px;
+    padding: 1px 3px;
 }
-.listed-phone{
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+.listed-phone{  
     margin: 0;
-    padding-left: 1rem; 
+    padding-left: 1rem;  
 }
 .listed-email{
-    border-left: 2px solid black;
-    border-right: 2px solid black;
     margin: 0;
-    padding-left: 1rem; 
+    padding-left: 1rem;   
 }
 .listed-desc{
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-bottom: 2px solid black; 
     margin: 0;
-    padding-left: 1rem; 
+    padding: .5rem .5rem 1rem .5rem; 
 }

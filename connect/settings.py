@@ -133,4 +133,13 @@ LOGIN_REDIRECT_URL = '/'
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+#Salesforce
+SF_USERNAME = os.getenv('SF_USERNAME')
+SF_PASSWORD = os.getenv('SF_PASSWORD')
+SF_TOKEN = os.getenv('SF_TOKEN')
+SF_CLIENT_SECRET = os.getenv('SF_CLIENT_SECRET')
+SF_CLIENT_ID = os.getenv('SF_CLIENT_ID')
+
+
 # ^^^^ NOTHING BELOW THIS LINE ^^^^

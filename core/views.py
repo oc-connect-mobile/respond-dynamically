@@ -4,6 +4,7 @@ import json
 # Our App imports:
 from core.forms import PleaseSearchForm
 from core.models import PleaseSearch
+from simple_salesforce import SalesforceAPI
 # Create your views here.
 
 

@@ -11,7 +11,7 @@ class _Config(object):
 
     def __init__(self):
         self.__sf_api_auth_token_endpoint = 'test.salesforce.com/services/oauth2/token' # excluding protocol, no https://
-        self.__sf_api_instance = 'cef--train2.cs26' # excluding protocol, no https://
+        self.__sf_api_instance = 'cef--train.cs14' # excluding protocol, no https://
         self.__sf_api_host = 'my.salesforce.com'
         self.__sf_api_username = SF_USERNAME
         self.__sf_api_password = SF_PASSWORD

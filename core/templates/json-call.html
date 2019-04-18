@@ -3,7 +3,7 @@
 {% block title %} {% endblock %}
 
 {% block content %}
-
+<div class="container">
     <div class="list-of-resources">
     {% for index in records %}
         <div class="listed-resource">
@@ -14,13 +14,13 @@
                     <div class="top-of-card"><div class="listed-name">{{ value }}</div></div>
                     {% endif %}
                     {% if forloop.counter == 3 %} {% comment %} Website {% endcomment %}
-                        <span class="listed-site"><a class="contact-button" href="{{ value }}">Website</a></span>
+                        <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
                     {% endif %}
                     {% if forloop.counter == 4 %} {% comment %} Phone {% endcomment %} 
-                        <span class="listed-phone"><a class="contact-button" href="tel:{{ value }}">Phone</a></span>
+                        <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
                     {% endif %}  
                     {% if forloop.counter == 5 %} {% comment %} Email {% endcomment %}
-                        <span class="listed-email"><a class="contact-button" href="mailto:{{ value }}">Email</a></span>
+                        <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
                     {% endif %}
                     {% if forloop.counter == 6 %} {% comment %} Description {% endcomment %}
                         <div class="listed-desc">{{ value }}</div>
@@ -32,5 +32,5 @@
     {% endfor %}
     </div>  
 
-
+</div>
 {% endblock %}

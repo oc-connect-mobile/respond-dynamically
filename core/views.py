@@ -5,6 +5,7 @@ import json
 from core.forms import PleaseSearchForm
 from core.models import PleaseSearch
 from simple_salesforce import SalesforceAPI
+from .super_salesforce import supersf
 # Create your views here.
 
 
@@ -74,12 +75,14 @@ def city_search(request):
     })
 
 def json_call(request):
-    json_data = open('core/static/json/sample.json')
-    data1 = json.load(json_data) #deserializes it
-    data2 = json.dumps(data1) #json formatting string
+    soqlkv = 'q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+DESC+NULLS+LAST'
+    #+AND+CreatedDate>2019-04-15T00:00:00Z'
+   
+    data1 = supersf(soqlkv)
     print(data1["records"][1]["Name"])
+
     printable = data1["records"][1]["Name"]
-    json_data.close()
+
 
     context = {
         'printable': printable,

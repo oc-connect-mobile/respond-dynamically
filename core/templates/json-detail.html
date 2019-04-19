@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+    <div class="container">
+    {% comment %} {% for index in details %} {% endcomment %}
+        {% for key, value in details.items %}
+            {% if value %}
+                {% if key == 'Name' %}
+                    <div>{{ value }}</div>
+                {% endif %}
+                {% if key == 'Imported_Phone__c' %}
+                    <div>{{ value }}</div>
+                {% endif %}
+                {% if key == 'Detailed_Description__c' %}
+                    <div> {% autoescape off %}{{ value }}{% endautoescape %}</div>
+                {% endif %}
+                {% if key == 'Eligibility_Criteria__c' %}
+                    <div> {% autoescape off %}{{ value }}{% endautoescape %}</div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% comment %} {% endfor %} {% endcomment %}
+    </div>  
+
+
+{% endblock %}

@@ -5,13 +5,29 @@
 {% block content %}
 <div class="container">
     <p>hello World!</p>
-    <button class="trigger">Click here to trigger the modal!</button>
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h1>Hello, I am a modal!</h1>
-        </div>
+    
+    <div class="mb block">
+        <button class="mdc-button mdc-button--raised showDialogBtn">
+            Non Scrollable Dialog
+        </button>
+        <aside class="mdc-dialog">
+            <div class="mdc-dialog__surface">
+                <header class="mdc-dialog__header">
+                    <h2 class="mdc-dialog__header__title">
+                        Hello World
+                    </h2>
+                </header>
+                <section class="mdc-dialog__body">
+                        Disappear for four days and return home with an expensive injury; bite the vet. Have secret plans lick left leg for ninety minutes, still dirty suddenly go on wild-eyed crazy rampage hide at bottom of staircase to trip human or behind the couch
+                </section>
+                <footer class="mdc-dialog__footer">
+                    <button class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Accept</button>
+                    <button class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Decline</button>
+                </footer>
+            </div>
+        </aside>
     </div>
 
+    
 </div>
 {% endblock %}

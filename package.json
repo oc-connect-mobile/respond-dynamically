@@ -4,9 +4,12 @@
   "description": "Webpack with Sass",
   "main": "index.js",
   "dependencies": {
+    "@material/dialog": "^1.1.1",
+    "@material/drawer": "^1.1.1",
     "material-components-web": "^1.1.1"
   },
   "devDependencies": {
+    "@material/dialog": "^1.1.1",
     "@material/button": "^1.1.1",
     "@material/ripple": "^1.1.0",
     "autoprefixer": "^9.5.1",
@@ -16,9 +19,11 @@
     "css-loader": "^2.1.1",
     "extract-loader": "^3.1.0",
     "file-loader": "^3.0.1",
+    "jquery": "^3.4.0",
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack": "^3.12.0",
     "webpack-dev-server": "^2.11.5"
   },

@@ -53,6 +53,7 @@ module.exports = {
           },
           { loader: 'sass-loader',
             options: {
+              includePaths: ['./node_modules'],
               importer: materialImporter
             }
           }
@@ -64,6 +65,13 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       }
     ]
   }

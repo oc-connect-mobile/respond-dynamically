@@ -14,7 +14,7 @@
                     <div class="top-of-card"><div class="listed-name">{{ value }}</div></div>
                     {% endif %}
                     {% if forloop.counter == 3 %} {% comment %} Website {% endcomment %}
-                        <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
+                        <span class="listed-site"><button class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</button></span>
                     {% endif %}
                     {% if forloop.counter == 4 %} {% comment %} Phone {% endcomment %} 
                         <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>

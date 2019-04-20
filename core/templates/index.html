@@ -114,33 +114,39 @@
     </h3>
 
     <!-- List of Filtered Resources -->
+    <div class="container">
     <div class="list-of-resources">
     {% for index in records %}
         <div class="listed-resource">
         {% for key, value in index.items %}
-            {% if forloop.counter != 1 %} {% comment %} Company ID not needed {% endcomment %}
-                {% if value %}                  
-                    {% if forloop.counter == 2 %} {% comment %} Company Name {% endcomment %}
-                    <div class="top-of-card"><div class="listed-name">{{ value }}</div></div>
-                    {% endif %}
-                    {% if forloop.counter == 3 %} {% comment %} Website {% endcomment %}
-                        <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
-                    {% endif %}
-                    {% if forloop.counter == 4 %} {% comment %} Phone {% endcomment %} 
-                        <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
-                    {% endif %}  
-                    {% if forloop.counter == 5 %} {% comment %} Email {% endcomment %}
-                        <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
-                    {% endif %}
-                    {% if forloop.counter == 6 %} {% comment %} Description {% endcomment %}
-                        <div class="listed-desc">{{ value }}</div>
-                    {% endif %}
+            {% if value %}
+                {% if key == 'Id' %}
+                    <div class="listed-detail"><a class="foo-button mdc-button" href="{% url 'json-detail' id=value %}">See more</a></div>
+                {% endif %}           
+                {% if key == 'Name' %} {% comment %} Company Name {% endcomment %}
+                <div class="top-of-card">
+                    <div class="listed-name">{{ value }}</div>
+                </div>
+                {% endif %}
+                {% if key == 'Website' %} {% comment %} Website {% endcomment %}
+                    <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
+                {% endif %}
+                {% if key == 'Imported_Phone__c' %} {% comment %} Phone {% endcomment %} 
+                    <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
+                {% endif %}  
+                {% if key == 'Company_Email__c' %} {% comment %} Email {% endcomment %}
+                    <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
+                {% endif %}
+                {% if key == 'Description_Short__c' %} {% comment %} Description {% endcomment %}
+                    <div class="listed-desc">{{ value }}</div>
                 {% endif %}
             {% endif %}
         {% endfor %}
         </div>  
     {% endfor %}
     </div>  
+
+</div>
         
 </div>
 

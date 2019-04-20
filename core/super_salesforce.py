@@ -35,6 +35,7 @@ import http.client
 from config import cfg # private configuration, clone config.py.template
 from requests.utils import requote_uri
 import json
+from pprint import pprint as pp
 
 
 def supersf(soqlkv):
@@ -99,7 +100,7 @@ def supersf(soqlkv):
 
     # soqlkv = 'q=SELECT+Name+FROM+Account'
     #'+WHERE+CreatedDate+>+2019-04-15T00:00:00Z+limit+10'
-    url = '/services/data/v45.0/query?' + soqlkv
+    url = '/services/data/v45.0/query?'+soqlkv
 
     # HTTP post data
     #print("Milestone 5")
@@ -136,6 +137,7 @@ def supersf(soqlkv):
     # string to object graph
     data0 = json.loads(data)
 
+    # pp(data0)
     return(data0)
 
     

@@ -3,21 +3,29 @@
 {% block title %} {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <br><br><br>    
+    <div class="detail-container">
     {% comment %} {% for index in details %} {% endcomment %}
         {% for key, value in details.items %}
             {% if value %}
                 {% if key == 'Name' %}
-                    <div>{{ value }}</div>
+                    <div class="listed-name">{{ value }}</div>
+                {% endif %}
+                {% if key == 'Website' %} {% comment %} Website {% endcomment %}
+                    <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
                 {% endif %}
                 {% if key == 'Imported_Phone__c' %}
-                    <div>{{ value }}</div>
+                     <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
+                {% endif %}
+                {% if key == 'Company_Email__c' %} {% comment %} Email {% endcomment %}
+                    <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
                 {% endif %}
                 {% if key == 'Detailed_Description__c' %}
-                    <div> {% autoescape off %}{{ value }}{% endautoescape %}</div>
+                    <div class="listed-desc"> {% autoescape off %}{{ value }}{% endautoescape %}</div>
                 {% endif %}
                 {% if key == 'Eligibility_Criteria__c' %}
-                    <div> {% autoescape off %}{{ value }}{% endautoescape %}</div>
+                    <div class=""> Eligibility Requirements: </div>
+                    <div class="listed-desc">{% autoescape off %}{{ value }}{% endautoescape %}</div>
                 {% endif %}
             {% endif %}
         {% endfor %}

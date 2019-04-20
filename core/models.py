@@ -171,10 +171,10 @@ class PleaseSearch(models.Model):
     secondaries = models.CharField(max_length=50, choices=SECONDARY_CHOICES, default="none")
     secondary_search_record = models.CharField(max_length=500, default="none")
 
-    class LuckySearch(models.Model):
-        lucky_string = models.CharField(max_length=100)
-        searched_at = models.DateTimeField(auto_now_add=True)
-        limit_by_name = models.BooleanField(default="True")
+class LuckySearch(models.Model):
+    lucky_string = models.CharField(max_length=100)
+    searched_at = models.DateTimeField(auto_now_add=True)
+    limit_by_name = models.BooleanField(default="True")
 
     
 

@@ -136,7 +136,6 @@ def supersf(soqlkv):
 
     # string to object graph
     data0 = json.loads(data)
-
     # pp(data0)
     return(data0)
 

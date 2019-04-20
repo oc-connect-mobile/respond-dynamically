@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 # Our App imports:
 from core.forms import PleaseSearchForm, CityFilterForm, CountyFilterForm, CategoryFilterForm, SecondaryFilterForm#, LuckySearchForm
-from core.models import PleaseSearch
+from core.models import PleaseSearch, LuckySearch
 from simple_salesforce import SalesforceAPI
 from .super_salesforce import supersf
 
@@ -19,8 +19,8 @@ from .super_detail_salesforce import superDetailsf
 def index(request):
     """View function for home page of site."""
     q = "/services/data/v45.0/query?"
-    a = "q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
-    y= "+ORDER+BY+Website+DESC+NULLS+LAST+LIMIT+3"
+    a = "q=SELECT+Name,+Website,+Eligibility_Criteria__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
+    y= "+ORDER+BY+Website+NULLS+LAST"
     soqlkv = a+y
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
@@ -105,13 +105,14 @@ def index(request):
 
         
         soqlkv = a+y
-        #soqlkv=(a+b+c+cities+d+e+categories+f+g+counties+h+x)
+        # soqlkv=a+b+c+cities+d+e+categories+f+g+counties+h+x
 
     print(soqlkv)
     data1 = supersf(soqlkv)
     pprint(data1)
     #printable = data1["records"][1]["Name"]
-
+    data1 = data1['records'] # this is now a list
+    
     context = {
         #'printable': printable,
         'records': data1,
@@ -183,7 +184,7 @@ def city_search(request):
     })
 
 def json_call(request):
-    soqlkv = 'q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+NULLS+LAST'
+    soqlkv = 'q=SELECT+Name,+Eligibility_Criteria__c,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+NULLS+LAST'
     #+AND+CreatedDate>2019-04-15T00:00:00Z'
     
     data1 = supersf(soqlkv)

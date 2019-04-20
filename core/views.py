@@ -19,8 +19,8 @@ from .super_detail_salesforce import superDetailsf
 def index(request):
     """View function for home page of site."""
     q = "/services/data/v45.0/query?"
-    a = "q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
-    y= "+ORDER+BY+Website+DESC+NULLS+LAST+LIMIT+3"
+    a = "q=SELECT+Name,+Website,+Eligibility_Criteria__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
+    y= "+ORDER+BY+Website+NULLS+LAST"
     soqlkv = a+y
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
@@ -105,13 +105,14 @@ def index(request):
 
         
         soqlkv = a+y
-        #soqlkv=(a+b+c+cities+d+e+categories+f+g+counties+h+x)
+        # soqlkv=a+b+c+cities+d+e+categories+f+g+counties+h+x
 
     print(soqlkv)
     data1 = supersf(soqlkv)
     pprint(data1)
     #printable = data1["records"][1]["Name"]
-
+    data1 = data1['records'] # this is now a list
+    
     context = {
         #'printable': printable,
         'records': data1,

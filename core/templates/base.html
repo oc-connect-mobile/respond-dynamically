@@ -7,15 +7,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% endblock %}
-        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+        <!-- custom css from main.css -->
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <!-- Bundled scss from webpack -->
+        <link rel="stylesheet" href="{% static 'build/bundle.css' %}">
+        
+
+        <!-- bootstrap css and fontawesome -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+        
+        <!-- Bundled JS from webpack -->
+        <script href="{% static 'build/bundle.js' %}" async></script>
+        <script href="{% static 'JavaScript/main.js' %}"></script>
+        
+        
+    
 
-        <!-- Add additional CSS in static file -->
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
     </head>
     <body>
         
@@ -43,7 +52,5 @@
 
             {% endblock %}
     
-        
-            <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     </body>
 </html>

@@ -36,8 +36,8 @@ def index(request):
                 cities = "" 
                 d = ""
         if 'clear' in request.GET:
-            county_form = CountyFilterForm(request.GET)
-            category_form = CategoryFilterForm(request.GET)
+            #county_form = CountyFilterForm(request.GET)
+            #category_form = CategoryFilterForm(request.GET)
             city_form = CityFilterForm()
 
     
@@ -53,8 +53,8 @@ def index(request):
                 counties = ""
                 h = ""
         if 'clear' in request.GET:
-            category_form = CategoryFilterForm(request.GET)
-            city_form = CityFilterForm(request.GET)
+            #category_form = CategoryFilterForm(request.GET)
+            #city_form = CityFilterForm(request.GET)
             county_form = CountyFilterForm()
         
        
@@ -70,8 +70,8 @@ def index(request):
                 categories = ""
                 f = ""
         if 'clear' in request.GET:
-            city_form = CityFilterForm(request.GET)
-            county_form = CountyFilterForm(request.GET)
+            #city_form = CityFilterForm(request.GET)
+            #county_form = CountyFilterForm(request.GET)
             category_form = CategoryFilterForm()
         
         soqlkv = a+y

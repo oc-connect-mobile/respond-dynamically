@@ -1,5 +1,6 @@
 from django import forms
 from .models import PleaseSearch
+#from .models import LuckySearch
 
 class PleaseSearchForm(forms.Form):
 
@@ -32,7 +33,6 @@ class CityFilterForm(forms.Form):
 
 class CategoryFilterForm(forms.Form):
 
-
     Categories = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices =  PleaseSearch.CATEGORY_CHOICES,required=False,label="Filter by category")
 
     class Meta:
@@ -40,9 +40,16 @@ class CategoryFilterForm(forms.Form):
 
 class SecondaryFilterForm(forms.Form):
 
-    Secondaries = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices =  PleaseSearch.SECONDARY_CHOICES, required=False)
+    Secondaries = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices =  PleaseSearch.SECONDARY_CHOICES, required=False,label="Filter by secondary category")
 
     class Meta:
         model = PleaseSearch
-        
+
+# class LuckySearchForm(forms.Form):
+
+#     Luckies = forms.CharField(widget=forms.TextInput, required=False)
+#     Limit = forms.CheckboxInput()
+
+#     class Meta:
+#         model = LuckySearch
     

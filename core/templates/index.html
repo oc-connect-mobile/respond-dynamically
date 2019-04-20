@@ -4,6 +4,11 @@
 
 {% block content %}
 <br>
+<br>
+<br>
+<br>
+<br>
+
 
 
 
@@ -46,6 +51,18 @@
             </form>
         </div>
     </div>
+    <div>
+        <button onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By Secondary Category
+        </button>
+            <div id="filter04" class="modal" action="">
+                <form method="GET" class="modal-content">
+                {% csrf_token %}
+                    {{ secondary_form.as_p }}
+                    <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                    <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
+                </form>
+            </div>
+        </div>
 
 <header>Results
 </header>

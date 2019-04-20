@@ -2,7 +2,7 @@ from django.shortcuts import render
 import json
 
 # Our App imports:
-from core.forms import PleaseSearchForm, CityFilterForm, CountyFilterForm, CategoryFilterForm
+from core.forms import PleaseSearchForm, CityFilterForm, CountyFilterForm, CategoryFilterForm, SecondaryFilterForm#, LuckySearchForm
 from core.models import PleaseSearch
 from simple_salesforce import SalesforceAPI
 from .super_salesforce import supersf
@@ -74,9 +74,35 @@ def index(request):
             #county_form = CountyFilterForm(request.GET)
             category_form = CategoryFilterForm()
         
+        secondary_form = SecondaryFilterForm(request.GET)
+        j = "Secondary_Tags__c+includes("
+        k = ")+AND+"
+        if secondary_form.is_valid():
+            secondaries = str(secondary_form.cleaned_data.get('Secondaries'))[1:-1]
+            if 'Any secondary' in secondary_form.cleaned_data.get('Secondaries'):
+                print ("Don't limit by secondary!")
+                j = ""
+                secondaries = ""
+                k = ""
+        if 'clear' in request.GET:
+            #city_form = CityFilterForm(request.GET)
+            #county_form = CountyFilterForm(request.GET)
+            secondary_form = SecondaryFilterForm()
+
+        # lucky_form = LuckySearchForm(request.GET)
+        # l = "parameterizedSearch/?q="
+        # n= "&sobject=Account"
+        # p= "&Account.fields=id,name"
+        # if lucky_form.is_valid():
+        #     luckies = str(lucky_form.cleaned_data.get('Luckies'))[1:-1]
+        #     limit = lucky_form.cleaned_data.get('Limit')
+        #     m = str(secondary_form.cleaned_data.get('Luckies'))[1:-1]
+
+        
         soqlkv = a+y
         #soqlkv=(a+b+c+cities+d+e+categories+f+g+counties+h+x)
 
+    print(soqlkv)
     data1 = supersf(soqlkv)
     pprint(data1)
     #printable = data1["records"][1]["Name"]
@@ -86,7 +112,9 @@ def index(request):
         'records': data1,
         'county_form': county_form,
         'city_form': city_form,
-        'category_form': category_form
+        'category_form': category_form,
+        'secondary_form': secondary_form,
+        #'lucky_form': lucky_form
         }   
 
     # Render the HTML template index.html with the data in the context variable

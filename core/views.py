@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 # Our App imports:
 from core.forms import PleaseSearchForm, CityFilterForm, CountyFilterForm, CategoryFilterForm, SecondaryFilterForm#, LuckySearchForm
-from core.models import PleaseSearch
+from core.models import PleaseSearch, LuckySearch
 from simple_salesforce import SalesforceAPI
 from .super_salesforce import supersf
 

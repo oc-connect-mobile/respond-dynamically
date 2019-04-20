@@ -40,6 +40,9 @@
                 {% if key == 'Imported_Phone__c' %} {% comment %} Phone {% endcomment %} 
                     <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
                 {% endif %}  
+                {% if key == 'Eligibility_Criteria__c' and value != 'None'%} {% comment %} Phone {% endcomment %} 
+                    <span class="listed_criteria foo-button mdc-button" >R<i class="fa"></i></span>
+                {% endif %}  
                 {% if key == 'Company_Email__c' %} {% comment %} Email {% endcomment %}
                     <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
                 {% endif %}

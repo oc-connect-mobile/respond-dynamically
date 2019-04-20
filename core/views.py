@@ -77,7 +77,7 @@ def city_search(request):
     })
 
 def json_call(request):
-    soqlkv = 'q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+NULLS+LAST'
+    soqlkv = 'q=SELECT+Name,+Eligibility_Criteria__c,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+NULLS+LAST'
     #+AND+CreatedDate>2019-04-15T00:00:00Z'
     
     data1 = supersf(soqlkv)

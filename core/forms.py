@@ -18,6 +18,8 @@ class CountyFilterForm(forms.Form):
 
     class Meta:
         model = PleaseSearch
+    
+    
        
            
 
@@ -30,14 +32,15 @@ class CityFilterForm(forms.Form):
 
 class CategoryFilterForm(forms.Form):
 
-    Categories = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices =  PleaseSearch.CATEGORY_CHOICES, initial='Any category',required=False,label="Filter by category")
+
+    Categories = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices =  PleaseSearch.CATEGORY_CHOICES,required=False,label="Filter by category")
 
     class Meta:
         model = PleaseSearch
 
 class SecondaryFilterForm(forms.Form):
 
-    Secondaries = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices =  PleaseSearch.SECONDARY_CHOICES, initial='Any category',required=False)
+    Secondaries = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices =  PleaseSearch.SECONDARY_CHOICES, required=False)
 
     class Meta:
         model = PleaseSearch

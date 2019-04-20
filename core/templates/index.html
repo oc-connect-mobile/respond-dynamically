@@ -17,8 +17,8 @@
             <form method="GET" class="modal-content" action="">
             {% csrf_token %}
                 {{ county_form.as_p }}
-                <button type="submit" class="signupbtn">FILTER</button>
-                <button type="button" class="cancelbtn">CLEAR FILTER</button>
+                <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                <button type="button" name= "clear" class="cancelbtn">CLEAR FILTER</button>
             </form>
         </div>
     </div>
@@ -29,8 +29,8 @@
             <form method="GET" class="modal-content" action="">
             {% csrf_token %}
                 {{ city_form.as_p }}
-                <button type="submit" class="">FILTER</button>
-                <button type="button" class="cancelbtn">CLEAR FILTER</button>
+                <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
             </form>
         </div>
     </div>
@@ -41,8 +41,8 @@
             <form method="GET" class="modal-content">
             {% csrf_token %}
                 {{ category_form.as_p }}
-                <button type="submit" class="">FILTER</button>
-                <button type="button" class="cancelbtn">CLEAR FILTER</button>
+                <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
             </form>
         </div>
     </div>

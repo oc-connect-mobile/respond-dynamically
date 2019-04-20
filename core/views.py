@@ -7,6 +7,7 @@ from core.models import PleaseSearch
 from simple_salesforce import SalesforceAPI
 from .super_salesforce import supersf
 from pprint import pprint
+from django.shortcuts import redirect
 # Create your views here.
 
 
@@ -32,12 +33,18 @@ def index(request):
             if 'Any city' in city_form.cleaned_data.get('Cities'):
                 print ("Don't limit by city!")
                 c = ""
-                cities = ""
+                cities = "" 
                 d = ""
+        if 'clear' in request.GET:
+            county_form = CountyFilterForm(request.GET)
+            category_form = CategoryFilterForm(request.GET)
+            city_form = CityFilterForm()
+
     
+        
         county_form = CountyFilterForm(request.GET)
         g = "County_Served__c+includes("
-        h = ")+AND+"
+        h = ")+AND+"    
         if county_form.is_valid():
             counties = str(county_form.cleaned_data.get('Counties'))[1:-1]
             if 'Any county' in county_form.cleaned_data.get('Counties'):
@@ -45,6 +52,12 @@ def index(request):
                 g = ""
                 counties = ""
                 h = ""
+        if 'clear' in request.GET:
+            category_form = CategoryFilterForm(request.GET)
+            city_form = CityFilterForm(request.GET)
+            county_form = CountyFilterForm()
+        
+       
 
         category_form = CategoryFilterForm(request.GET)
         e = "CEF_Category__c+includes("
@@ -56,6 +69,10 @@ def index(request):
                 e = ""
                 categories = ""
                 f = ""
+        if 'clear' in request.GET:
+            city_form = CityFilterForm(request.GET)
+            county_form = CountyFilterForm(request.GET)
+            category_form = CategoryFilterForm()
         
         soqlkv = a+y
         #soqlkv=(a+b+c+cities+d+e+categories+f+g+counties+h+x)

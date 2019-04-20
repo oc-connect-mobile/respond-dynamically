@@ -8,7 +8,7 @@ require('../css/app.scss')
 // require('index.html')
 
 // const ripple = new MDCRipple(document.querySelector('.foo-button'))
-// // const dialog = new MDCDialog(document.querySelector('.mdc-dialog'))
+// const dialog = new MDCDialog(document.querySelector('.mdc-dialog'))
 // const list = MDCList.attachTo(document.querySelector('.mdc-list'))
 // list.wrapFocus = true
 

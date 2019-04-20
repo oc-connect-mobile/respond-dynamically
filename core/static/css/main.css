@@ -52,7 +52,11 @@ body {
 .container {
     padding-top: 80px;
 }
-
+.pagination{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
 .list-of-resources{
     display: flex;
     flex-flow: column;

@@ -1,18 +1,24 @@
-//* ****  Trying to figure out getting the Modal working with Material IO was trying to work through this tutorial: https://www.youtube.com/watch?v=KW9YVSgGBrs&list=PLSQ4mck-bvilqfGFaYdbJ0z2KlD5U09mc&index=9&t=0s **** */
 
-// import { MDCRipple } from '@material/ripple/index'
+import { MDCRipple } from '@material/ripple/index'
 
-// import { MDCDialog } from '@material/dialog'
-// import * as $ from 'jquery/dist/jquery.min'
-// import { MDCList } from '@material/list'
+import { MDCDialog } from '@material/dialog'
+import * as $ from 'jquery/dist/jquery.min'
+import { MDCList } from '@material/list'
+import { MDCFormField } from '@material/form-field'
+import { MDCCheckbox } from '@material/checkbox'
 
-// require('../css/app.scss')
+require('../css/app.scss')
 // require('index.html')
 
-// const ripple = new MDCRipple(document.querySelector('.foo-button'))
-// const dialog = new MDCDialog(document.querySelector('.mdc-dialog'))
-// const list = MDCList.attachTo(document.querySelector('.mdc-list'))
-// list.wrapFocus = true
+const ripple = new MDCRipple(document.querySelector('.foo-button'))
+const dialog = new MDCDialog(document.querySelector('.mdc-dialog'))
+const list = MDCList.attachTo(document.querySelector('.mdc-list'))
+list.wrapFocus = true
+// const mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'))
+
+const checkbox = new MDCCheckbox(document.querySelector('.mdc-checkbox'))
+const formField = new MDCFormField(document.querySelector('.mdc-form-field'))
+formField.input = checkbox
 
 $(document).ready(function () {
   $('.block').each(function (index, blockElement) {
@@ -23,13 +29,11 @@ $(document).ready(function () {
     })
   })
 })
-const mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'))
 
-var modal = document.getElementById('filter01')
+// var modal = document.getElementById('filter01')
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
+// window.onclick = function (event) {
+//   if (event.target == modal) {
+//     modal.style.display = 'none'
+//   }
+// }

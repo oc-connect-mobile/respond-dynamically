@@ -14,6 +14,8 @@ $fontFamily: "Open Sans", sans-serif;
 @import "@material/dialog/mdc-dialog";
 @import "@material/drawer/mdc-drawer";
 @import "@material/list/mdc-list";
+@import "@material/form-field/mdc-form-field";
+@import "@material/checkbox/mdc-checkbox";
 
 body {
   font-family: $fontFamily;

@@ -3,99 +3,147 @@
 {% block title %} {% endblock %}
 
 {% block content %}
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="container">
+    <p>Welcome, let's get Connected!</p>
+    
+    <!-- Modal -->
 
+    <h3>Filter Results
+    </h3>
 
-
-
-</div>
-<header>Filter Results
-</header>
-    <div>
-        <button onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
+    <!-- County Filter Modal -->
+    <div class="mb block">
+        <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
         </button>
-        <div id="filter01" class="modal">
+        <div id="filter01" class="mdc-dialog">
+            <div class="mdc-dialog__surface">
+               
             <form method="GET" class="modal-content" action="">
-            {% csrf_token %}
+                <h3 class="mdc-dialog__header">
+                        <h2 class="mdc-dialog__header__title">
+                            County
+                        </h2>
+                    </h3>
+                    <section class="mdc-dialog__body">
+                {% csrf_token %}
                 {{ county_form.as_p }}
-                <button type="submit" name="filter" class="signupbtn">FILTER</button>
-                <button type="submit" name= "clear" class="cancelbtn">CLEAR FILTER</button>
+                </section> 
+                <footer class="mdc-dialog__footer">
+                        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">
+                        FILTER</button>
+                        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">
+                        CLEAR FILTER</button>
+                </footer>
             </form>
         </div>
+                   
     </div>
-    <div>
-        <button onclick="document.getElementById('filter02').style.display='block'" style="width:auto;">By City
+
+    <!-- City Filter Modal -->
+    <div class="mb block">
+        <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;">By City
         </button>
-        <div id="filter02" class="modal">
+        <div id="filter02" class="mdc-dialog">
             <form method="GET" class="modal-content" action="">
+
+            <h3 class="mdc-dialog__header">
+                <h2 class="mdc-dialog__header__title">
+                    City
+                </h2>
+            </h3>
+            <section class="mdc-dialog__body">
             {% csrf_token %}
                 {{ city_form.as_p }}
-                <button type="submit" name="filter" class="signupbtn">FILTER</button>
-                <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
+            </section>
+            <footer class="mdc-dialog__footer">
+                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
+                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
+            </footer>
             </form>
         </div>
     </div>
-    <div>
-        <button onclick="document.getElementById('filter03').style.display='block'" style="width:auto;">By Category
+    
+    <!-- Category Filter Modal -->
+    <div class="mb block">
+        <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;">By Category
         </button>
-        <div id="filter03" class="modal" action="">
+        <div id="filter03" class="mdc-dialog" action="">
             <form method="GET" class="modal-content">
+            <h3 class="mdc-dialog__header">
+                <h2 class="mdc-dialog__header__title">
+                    Category
+                </h2>
+            </h3>
+            <section class="mdc-dialog__body">
             {% csrf_token %}
                 {{ category_form.as_p }}
-                <button type="submit" name="filter" class="signupbtn">FILTER</button>
-                <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
+            </section>
+
+            <footer class="mdc-dialog__footer">
+                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
+                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
+            </footer>
             </form>
         </div>
     </div>
-    <div>
-        <button onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By Secondary Category
+    
+    <!-- SubCategory Filter Modal -->
+    <div class="mb block">
+        <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By City
         </button>
-            <div id="filter04" class="modal" action="">
+            <div id="filter04" class="mdc-dialog" action="">
                 <form method="GET" class="modal-content">
+                <h3 class="mdc-dialog__header">
+                    <h2 class="mdc-dialog__header__title">
+                        Sub-Category
+                    </h2>
+                </h3>
+                <section class="mdc-dialog__body">
                 {% csrf_token %}
                     {{ secondary_form.as_p }}
-                    <button type="submit" name="filter" class="signupbtn">FILTER</button>
-                    <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
+                </section>
+                <footer class="mdc-dialog__footer">
+                    <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
+                    <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
+                </footer>
                 </form>
             </div>
-        </div>
-
-<header>Results
-</header>
-    <div class="container">
-            <div class="list-of-resources">
-            {% for index in records %}
-                <div class="listed-resource">
-                {% for key, value in index.items %}
-                    {% if forloop.counter != 1 %} {% comment %} Company ID not needed {% endcomment %}
-                        {% if value %}                  
-                            {% if forloop.counter == 2 %} {% comment %} Company Name {% endcomment %}
-                            <div class="top-of-card"><div class="listed-name">{{ value }}</div></div>
-                            {% endif %}
-                            {% if forloop.counter == 3 %} {% comment %} Website {% endcomment %}
-                                <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
-                            {% endif %}
-                            {% if forloop.counter == 4 %} {% comment %} Phone {% endcomment %} 
-                                <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
-                            {% endif %}  
-                            {% if forloop.counter == 5 %} {% comment %} Email {% endcomment %}
-                                <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
-                            {% endif %}
-                            {% if forloop.counter == 6 %} {% comment %} Description {% endcomment %}
-                                <div class="listed-desc">{{ value }}</div>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-                </div>  
-            {% endfor %}
-            </div>  
-        
     </div>
 
+    <h3>Results
+    </h3>
+
+    <!-- List of Filtered Resources -->
+    <div class="list-of-resources">
+    {% for index in records %}
+        <div class="listed-resource">
+        {% for key, value in index.items %}
+            {% if forloop.counter != 1 %} {% comment %} Company ID not needed {% endcomment %}
+                {% if value %}                  
+                    {% if forloop.counter == 2 %} {% comment %} Company Name {% endcomment %}
+                    <div class="top-of-card"><div class="listed-name">{{ value }}</div></div>
+                    {% endif %}
+                    {% if forloop.counter == 3 %} {% comment %} Website {% endcomment %}
+                        <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
+                    {% endif %}
+                    {% if forloop.counter == 4 %} {% comment %} Phone {% endcomment %} 
+                        <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
+                    {% endif %}  
+                    {% if forloop.counter == 5 %} {% comment %} Email {% endcomment %}
+                        <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
+                    {% endif %}
+                    {% if forloop.counter == 6 %} {% comment %} Description {% endcomment %}
+                        <div class="listed-desc">{{ value }}</div>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        </div>  
+    {% endfor %}
+    </div>  
+        
+</div>
+
+    
 
 {% endblock %}

@@ -1,0 +1,30 @@
+// This file works in conjunction with Material IO info here: https://material.io/develop/web/docs/getting-started/
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+$fontFamily: "Open Sans", sans-serif;
+
+@import "@material/button/mdc-button";
+
+.foo-button {
+  @include mdc-button-ink-color(teal);
+  @include mdc-states(teal);
+}
+
+@import "@material/dialog/mdc-dialog";
+@import "@material/dialog/mdc-dialog";
+@import "@material/drawer/mdc-drawer";
+@import "@material/list/mdc-list";
+@import "@material/form-field/mdc-form-field";
+@import "@material/checkbox/mdc-checkbox";
+
+body {
+  font-family: $fontFamily;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb {
+  margin-bottom: 10px;
+}

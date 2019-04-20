@@ -1,3 +1,5 @@
+// This file bundles our JS and takes the SCSS and converts it into bundle.css followed the instructions here: https://material.io/develop/web/docs/getting-started/
+
 const autoprefixer = require('autoprefixer')
 const path = require('path')
 
@@ -28,6 +30,7 @@ function materialImporter (url, prev) {
 }
 
 module.exports = {
+  // Bundles the JS and Scss
   entry: ['./core/static/css/app.scss', './core/static/JavaScript/main.js'],
   output: {
     filename: './core/static/build/bundle.js'

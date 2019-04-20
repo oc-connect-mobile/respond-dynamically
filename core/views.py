@@ -1,11 +1,13 @@
 from django.shortcuts import render
 import json
+from django.core.paginator import Paginator
 
 # Our App imports:
 from core.forms import PleaseSearchForm
 from core.models import PleaseSearch
 from simple_salesforce import SalesforceAPI
 from .super_salesforce import supersf
+from .super_detail_salesforce import superDetailsf
 # Create your views here.
 
 
@@ -75,18 +77,28 @@ def city_search(request):
     })
 
 def json_call(request):
-    soqlkv = 'q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+DESC+NULLS+LAST'
+    soqlkv = 'q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+NULLS+LAST'
     #+AND+CreatedDate>2019-04-15T00:00:00Z'
-   
+    
     data1 = supersf(soqlkv)
-    print(data1["records"][1]["Name"])
 
-    printable = data1["records"][1]["Name"]
+    data1 = data1['records'] # this is now a list
+    paginator = Paginator(data1, 20)
 
-
+    page = request.GET.get('page')
+    pdata1 = paginator.get_page(page)
     context = {
-        'printable': printable,
-        'records': data1['records']
+        'records': pdata1,
     }
 
     return render(request, 'json-call.html', context=context)
+
+def json_detail(request, id):
+    soqlkv = id
+
+    detail1 = superDetailsf(soqlkv)
+
+    context = {
+        'details': detail1,
+    }
+    return render(request, 'json-detail.html', context=context)

@@ -3,6 +3,99 @@
 {% block title %} {% endblock %}
 
 {% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+</div>
+<header>Filter Results
+</header>
+    <div>
+        <button onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
+        </button>
+        <div id="filter01" class="modal">
+            <form method="GET" class="modal-content" action="">
+            {% csrf_token %}
+                {{ county_form.as_p }}
+                <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                <button type="submit" name= "clear" class="cancelbtn">CLEAR FILTER</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <button onclick="document.getElementById('filter02').style.display='block'" style="width:auto;">By City
+        </button>
+        <div id="filter02" class="modal">
+            <form method="GET" class="modal-content" action="">
+            {% csrf_token %}
+                {{ city_form.as_p }}
+                <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <button onclick="document.getElementById('filter03').style.display='block'" style="width:auto;">By Category
+        </button>
+        <div id="filter03" class="modal" action="">
+            <form method="GET" class="modal-content">
+            {% csrf_token %}
+                {{ category_form.as_p }}
+                <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
+            </form>
+        </div>
+    </div>
+    <div>
+        <button onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By Secondary Category
+        </button>
+            <div id="filter04" class="modal" action="">
+                <form method="GET" class="modal-content">
+                {% csrf_token %}
+                    {{ secondary_form.as_p }}
+                    <button type="submit" name="filter" class="signupbtn">FILTER</button>
+                    <button type="submit" name="clear" class="cancelbtn">CLEAR FILTER</button>
+                </form>
+            </div>
+        </div>
+
+<header>Results
+</header>
+    <div class="container">
+            <div class="list-of-resources">
+            {% for index in records %}
+                <div class="listed-resource">
+                {% for key, value in index.items %}
+                    {% if forloop.counter != 1 %} {% comment %} Company ID not needed {% endcomment %}
+                        {% if value %}                  
+                            {% if forloop.counter == 2 %} {% comment %} Company Name {% endcomment %}
+                            <div class="top-of-card"><div class="listed-name">{{ value }}</div></div>
+                            {% endif %}
+                            {% if forloop.counter == 3 %} {% comment %} Website {% endcomment %}
+                                <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
+                            {% endif %}
+                            {% if forloop.counter == 4 %} {% comment %} Phone {% endcomment %} 
+                                <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
+                            {% endif %}  
+                            {% if forloop.counter == 5 %} {% comment %} Email {% endcomment %}
+                                <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
+                            {% endif %}
+                            {% if forloop.counter == 6 %} {% comment %} Description {% endcomment %}
+                                <div class="listed-desc">{{ value }}</div>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                </div>  
+            {% endfor %}
+            </div>  
+        
+    </div>
 
 
 {% endblock %}

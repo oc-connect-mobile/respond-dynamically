@@ -58,9 +58,9 @@ def supersf(soqlkv):
 
     # HTTP post data
     #print("Milestone 1")
-    print('Posting to here ' + host)
+    #print('Posting to here ' + host)
     #print("Milestone 2")
-    print('Posting this ' + requote_uri(qs))
+    #print('Posting this ' + requote_uri(qs))
 
     # Request plus header application/x-www-form-urlencoded
     headers = {

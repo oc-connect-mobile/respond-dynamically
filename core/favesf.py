@@ -3,6 +3,7 @@ from pprint import pprint
 from django.shortcuts import redirect
 
 
+
 l = "parameterizedSearch/?q="
 n = "&sobject=Account"
 p = "&Account.fields=id"

@@ -30,7 +30,7 @@ class PleaseSearch(models.Model):
         ('Little River', 'Little River'),
     )
     
-    city = models.CharField(max_length=25, choices=CITY_CHOICES)
+    city = models.CharField(max_length=100, choices=CITY_CHOICES)
     searched_at = models.DateTimeField(auto_now_add=True)
     query_string_start = models.CharField(max_length=100)
     query_string_end = models.CharField(max_length=100)
@@ -55,7 +55,7 @@ class PleaseSearch(models.Model):
         ('One Stop', 'One Stop'),
     )
 
-    categories = models.CharField(max_length=25, choices=CATEGORY_CHOICES, null=False)
+    categories = models.CharField(max_length=100, choices=CATEGORY_CHOICES, null=False)
     category_search_record = models.CharField(max_length=500, default="none")
 
     COUNTY_CHOICES = (
@@ -69,7 +69,7 @@ class PleaseSearch(models.Model):
         ('Person', 'Person'),
     )
 
-    counties = models.CharField(max_length=25, choices=COUNTY_CHOICES, null=False)
+    counties = models.CharField(max_length=200, choices=COUNTY_CHOICES, null=False, default=['Any county'])
     county_search_record = models.CharField(max_length=500, default="none")
 
     SECONDARY_CHOICES = (
@@ -168,13 +168,12 @@ class PleaseSearch(models.Model):
         ('Workplace Rights', 'Workplace Rights'),
     )
 
-    secondaries = models.CharField(max_length=50, choices=SECONDARY_CHOICES, default="none")
+    secondaries = models.CharField(max_length=300, choices=SECONDARY_CHOICES, default="none")
     secondary_search_record = models.CharField(max_length=500, default="none")
 
-    class LuckySearch(models.Model):
-        lucky_string = models.CharField(max_length=100)
-        searched_at = models.DateTimeField(auto_now_add=True)
-        limit_by_name = models.BooleanField(default="True")
+class LuckySearch(models.Model):
+    lucky_string = models.CharField(max_length=100)
+    searched_at = models.DateTimeField(auto_now_add=True)
+    limit_by_name = models.BooleanField(default="True")
 
-    
 

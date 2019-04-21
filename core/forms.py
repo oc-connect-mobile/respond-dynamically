@@ -1,6 +1,6 @@
 from django import forms
-from .models import PleaseSearch
-#from .models import LuckySearch
+from .models import PleaseSearch, LuckySearch
+
 
 class PleaseSearchForm(forms.Form):
 
@@ -15,10 +15,17 @@ class PleaseSearchForm(forms.Form):
 
 class CountyFilterForm(forms.Form):
 
-    Counties = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices = PleaseSearch.COUNTY_CHOICES, initial='Any county',required=False,label="Filter by county")
+    initial_county = {'Counties': 'Any county',
+                            'Any county': True}
+
+    Counties = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices = PleaseSearch.COUNTY_CHOICES,required=False,label="Filter by county",initial=initial_county)
 
     class Meta:
         model = PleaseSearch
+
+    def __init__(self, *args, **kwargs):
+        super(CountyFilterForm, self).__init__(*args, **kwargs)
+        self.fields['Counties'].initial = ['Any county']
     
     
        
@@ -45,11 +52,11 @@ class SecondaryFilterForm(forms.Form):
     class Meta:
         model = PleaseSearch
 
-# class LuckySearchForm(forms.Form):
+class LuckySearchForm(forms.Form):
 
-#     Luckies = forms.CharField(widget=forms.TextInput, required=False)
-#     Limit = forms.CheckboxInput()
+    Luckies = forms.CharField(widget=forms.TextInput, required=False,label="Please supply a search term")
+    #Limit = forms.BooleanField(required=False,label="Search in Name only", initial=True)
 
-#     class Meta:
-#         model = LuckySearch
+    class Meta:
+        model = LuckySearch
     

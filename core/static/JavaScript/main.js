@@ -9,3 +9,10 @@ window.onclick = function(event) {
     }
 }
 
+var searchpop = document.getElementById('search01')
+
+window.onclick = function(event) {
+    if (event.target == searchpop) {
+        modal.style.display = "none";
+    }
+}

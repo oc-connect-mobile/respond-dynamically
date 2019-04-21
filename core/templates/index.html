@@ -13,10 +13,10 @@
 
 
 </div>
-<header>Filter Results
+<header>Filter or Search
 </header>
     <div>
-        <button onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
+        <button onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">Filter by County
         </button>
         <div id="filter01" class="modal">
             <form method="GET" class="modal-content" action="">
@@ -28,7 +28,7 @@
         </div>
     </div>
     <div>
-        <button onclick="document.getElementById('filter02').style.display='block'" style="width:auto;">By City
+        <button onclick="document.getElementById('filter02').style.display='block'" style="width:auto;">Filter by City
         </button>
         <div id="filter02" class="modal">
             <form method="GET" class="modal-content" action="">
@@ -40,7 +40,8 @@
         </div>
     </div>
     <div>
-        <button onclick="document.getElementById('filter03').style.display='block'" style="width:auto;">By Category
+        <button onclick="document.getElementById('filter03').style.display='block'" style="width:auto;">Filter 
+            By Category
         </button>
         <div id="filter03" class="modal" action="">
             <form method="GET" class="modal-content">
@@ -52,7 +53,7 @@
         </div>
     </div>
     <div>
-        <button onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By Secondary Category
+        <button onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">Filter by Secondary Category
         </button>
             <div id="filter04" class="modal" action="">
                 <form method="GET" class="modal-content">
@@ -63,6 +64,18 @@
                 </form>
             </div>
         </div>
+    <div>
+        <button onclick="document.getElementById('search01').style.display='block'" style="width:auto;">Search by Term
+        </button>
+            <div id="search01" class="modal" action="">
+                <form method="GET" class="modal-content">
+                {% csrf_token %}
+                    {{ lucky_form.as_p }}
+                    <button type="submit" name="filter" class="">SEARCH</button>
+                    <button type="submit" name="clear" class="">CLEAR SEARCH</button>
+                </form>
+            </div>
+    </div>
 
 <header>Results
 </header>

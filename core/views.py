@@ -19,7 +19,7 @@ from .super_detail_salesforce import superDetailsf
 def index(request):
     """View function for home page of site."""
     """ url = "/services/data/v45.0/" """
-    a = "query?q=SELECT+Name,+Website,+Eligibility_Criteria__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
+    a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+Website,+Eligibility_Criteria__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
     y= "+ORDER+BY+Website+NULLS+LAST"
@@ -117,7 +117,7 @@ def city_search(request):
             cities = str(city_form.cleaned_data.get('Cities'))[1:-1]
             categories = str(city_form.cleaned_data.get('Categories'))[1:-1]
             counties = str(city_form.cleaned_data.get('Counties'))[1:-1]
-            a = "/services/data/v45.0/query?q=SELECT+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
+            a = "/services/data/v45.0/query?q=SELECT+ID,+CEF_Category__c,+Name,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
             b = "+WHERE+"
             c = "City_Served__c+includes("
             d = ")+AND+"
@@ -161,7 +161,7 @@ def city_search(request):
     })
 
 def json_call(request):
-    soqlkv = 'q=SELECT+Name,+Eligibility_Criteria__c,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+NULLS+LAST'
+    soqlkv = 'q=SELECT+Name,+Eligibility_Criteria__c,+CEF_Category__c,+Website,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+ID,+Secondary_Tags__c+FROM+Account+WHERE+Deactivated__c+=+FALSE+ORDER+BY+Website+NULLS+LAST'
     #+AND+CreatedDate>2019-04-15T00:00:00Z'
     
     data1 = supersf(soqlkv)

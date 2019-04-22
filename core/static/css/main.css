@@ -26,9 +26,7 @@
   
     --bg-color: var(--blue10);
     --text-color: var(--blue01);
-
-
-
+}
 
 header {
     width: 100%;
@@ -43,15 +41,17 @@ header {
     border-bottom-right-radius: 50%; */
     background-image: url("../img/CEF_silhou_blue.jpg");
     background-size: contain;
-    background-position: 80%;
-    
+    background-position: 80%;   
+}
+.main-title{
+    text-decoration: none;
+    color: var(--blue10);
 }
 
 #navigation {
     width: 100%;
     position: fixed;
-    z-index: 10;
-    
+    z-index: 10;   
 }
 nav { 
     padding-left: 20px;
@@ -269,4 +269,9 @@ button {
 
 .mdc-dialog__surface {
 
+}
+
+.mb > button{
+    background-color: var(--blue05);
+    color: var(--blue10);
 }

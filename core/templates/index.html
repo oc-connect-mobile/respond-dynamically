@@ -89,7 +89,7 @@
     
     <!-- SubCategory Filter Modal -->
     <div class="mb block">
-        <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By City
+        <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By SubCategory
         </button>
             <div id="filter04" class="mdc-dialog" action="">
                 <form method="GET" class="modal-content">
@@ -112,7 +112,7 @@
 
     <!-- Lucky Search Modal -->
     <div class="mb block">
-            <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By City
+            <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By Lucky
             </button>
                 <div id="filter05" class="mdc-dialog" action="">
                     <form method="GET" class="modal-content">
@@ -145,7 +145,10 @@
             {% if value %}
                 {% if key == 'Id' %}
                     <div class="listed-detail"><a class="foo-button mdc-button" href="{% url 'json-detail' id=value %}">See more</a></div>
-                {% endif %}           
+                {% endif %} 
+                {% if key == 'CEF_Category__c' %}
+                    <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa"></i> {{ value }}</a></span>
+                {% endif %}     
                 {% if key == 'Name' %} {% comment %} Company Name {% endcomment %}
                 <div class="top-of-card">
                     <div class="listed-name">{{ value }}</div>

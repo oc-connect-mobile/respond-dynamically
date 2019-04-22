@@ -29,15 +29,15 @@
     <body>
         
         <div id="navigation">
-        <header>OC Connect Mobile   <i class="fa fa-home"></i></header>
+        <header><a class="main-title" href="{% url 'index' %}">OC Connect Mobile  <i class="fa fa-home"></i></a></header>
         <!-- Navigation goes in here:  -->
-        <nav>
+        {% comment %} <nav>
             
                 <a href="{% url 'city-search' %}">Search by City</a>
                 <a href="{% url 'json-data' %}">List Stuff</a>
               
             
-        </nav>
+        </nav> {% endcomment %}
     
        
 

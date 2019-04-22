@@ -115,7 +115,7 @@ class SecondaryFilterForm(forms.Form):
 
 class LuckySearchForm(forms.Form):
 
-    Luckies = forms.CharField(widget=forms.TextInput, required=False)
+    Luckies = forms.CharField(widget=forms.TextInput, required=False, label="Term")
 
     class Meta:
         model = PleaseSearch
@@ -126,8 +126,8 @@ class LuckySearchForm(forms.Form):
     def ingest(self):
         r = "parameterizedSearch/?q="
         s = "&sobject=Account"
-        t = "&Account.fields=id"
-        p = "+AND+"
+        t = "&Account.fields=id&Account.limit=3"
+        p = ")+AND+"
         
         if not self.is_valid():
             return m   
@@ -141,15 +141,16 @@ class LuckySearchForm(forms.Form):
             data4 = []
             for x in data3:
                 for k,v in x.items():
-                    if type(v) == "str":
+                    if type(v) == str:
                         data4 += (k,v)
             for i in data4:
                 data4.remove('Id')
             data5 = data4
             data4[:] = ["id='"+x+"'+OR+" for x in data4]    
             data5.append("id='001U0000008jpEpIAI'")
-            str = ""
-            v = str.join(data5)+p
+            string = ""
+            u = string.join(data5)
+            v = "("+u+p
         return v
 
 

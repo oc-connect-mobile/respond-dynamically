@@ -5,15 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "@material/checkbox": "^1.1.0",
-    "@material/dialog": "^1.1.1",
     "@material/drawer": "^1.1.1",
     "@material/form-field": "^1.1.0",
-    "material-components-web": "^1.1.1"
-  },
-  "devDependencies": {
     "@material/button": "^1.1.1",
     "@material/dialog": "^1.1.1",
     "@material/ripple": "^1.1.0",
+    "material-components-web": "^1.1.1"
+  },
+  "devDependencies": {
     "autoprefixer": "^9.5.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",

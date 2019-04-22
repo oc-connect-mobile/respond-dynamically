@@ -15,6 +15,31 @@ class Auth(models.Model):
     
 class PleaseSearch(models.Model):
 
+    default_county = (
+        {'Counties': 'Any county',
+        'Any county': True}
+    )
+
+    default_city = (
+        {'Cities': 'Any city',
+        'Any city': True}
+    )
+
+    default_category = (
+        {'Categories': 'Any category',
+        'Any category': True}
+    )
+
+    default_secondary = (
+        {'Secondaries': 'Any secondary',
+        'Any secondary': True}
+    )
+
+    default_list = ['0012100000gHwtGAAS',]
+       
+
+
+
     CITY_CHOICES = (
         ('Any city', 'Any city'),
         ('Chapel Hill', 'Chapel Hill'),
@@ -30,7 +55,7 @@ class PleaseSearch(models.Model):
         ('Little River', 'Little River'),
     )
     
-    city = models.CharField(max_length=25, choices=CITY_CHOICES)
+    city = models.CharField(max_length=25, choices=CITY_CHOICES, default=default_city)
     searched_at = models.DateTimeField(auto_now_add=True)
     query_string_start = models.CharField(max_length=100)
     query_string_end = models.CharField(max_length=100)
@@ -55,7 +80,7 @@ class PleaseSearch(models.Model):
         ('One Stop', 'One Stop'),
     )
 
-    categories = models.CharField(max_length=25, choices=CATEGORY_CHOICES, null=False)
+    categories = models.CharField(max_length=25, choices=CATEGORY_CHOICES, null=False, default=default_category)
     category_search_record = models.CharField(max_length=500, default="none")
 
     COUNTY_CHOICES = (
@@ -69,7 +94,7 @@ class PleaseSearch(models.Model):
         ('Person', 'Person'),
     )
 
-    counties = models.CharField(max_length=25, choices=COUNTY_CHOICES, null=False)
+    counties = models.CharField(max_length=25, choices=COUNTY_CHOICES, null=False, default=default_county)
     county_search_record = models.CharField(max_length=500, default="none")
 
     SECONDARY_CHOICES = (
@@ -168,8 +193,15 @@ class PleaseSearch(models.Model):
         ('Workplace Rights', 'Workplace Rights'),
     )
 
-    secondaries = models.CharField(max_length=50, choices=SECONDARY_CHOICES, default="none")
+    secondaries = models.CharField(max_length=50, choices=SECONDARY_CHOICES, default=default_secondary)
     secondary_search_record = models.CharField(max_length=500, default="none")
+
+    lucky_string = models.CharField(max_length=200,default="none")
+
+    lucky_list = models.CharField(max_length=200,default=default_list)
+
+    
+
 
 class LuckySearch(models.Model):
     lucky_string = models.CharField(max_length=100)

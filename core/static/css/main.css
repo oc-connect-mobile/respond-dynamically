@@ -2,6 +2,34 @@
 @import "@material/drawer/mdc-drawer";
 @import "@material/list/mdc-list"; */
 
+:root {
+    --blue01: #045A92;
+    --blue02: #057AB4;
+    --blue03: #058BC7;
+    --blue04: #059EDA;
+    --blue05: #06ACE9;
+    --blue06: #2CB9EC;
+    --blue07: #51C6EE;
+    --blue08: #82D5F3;
+    --blue09: #B3E6F8;
+    --blue10: #E1F5FC;
+    --orange01: #C92916;
+    --orange02: #E1391C;
+    --orange03: #EF411F;
+    --orange04: #FD4824;
+    --orange05: #FF4F27;
+    --orange06: #FF6C44;
+    --orange07: #FF8765;
+    --orange08: #FFA991;
+    --orange09: #FFCBBB;
+    --orange10: #FDE9E6;
+  
+    --bg-color: var(--blue10);
+    --text-color: var(--blue01);
+
+
+
+
 header {
     width: 100%;
     height: 1.5em;
@@ -159,7 +187,7 @@ body {
 }
 
 button { 
-    background-color: #4CAF50; 
+    background-color: var(--blue01);
     color: white; 
     padding: 14px 20px; 
     margin: 8px 0; 
@@ -171,7 +199,7 @@ button {
   
 .cancelbtn { 
     padding: 14px 20px; 
-    background-color: #f44336; 
+    background-color: var(--blue08); 
 } 
   
   

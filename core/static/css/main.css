@@ -2,6 +2,32 @@
 @import "@material/drawer/mdc-drawer";
 @import "@material/list/mdc-list"; */
 
+:root {
+    --blue01: #045A92;
+    --blue02: #057AB4;
+    --blue03: #058BC7;
+    --blue04: #059EDA;
+    --blue05: #06ACE9;
+    --blue06: #2CB9EC;
+    --blue07: #51C6EE;
+    --blue08: #82D5F3;
+    --blue09: #B3E6F8;
+    --blue10: #E1F5FC;
+    --orange01: #C92916;
+    --orange02: #E1391C;
+    --orange03: #EF411F;
+    --orange04: #FD4824;
+    --orange05: #FF4F27;
+    --orange06: #FF6C44;
+    --orange07: #FF8765;
+    --orange08: #FFA991;
+    --orange09: #FFCBBB;
+    --orange10: #FDE9E6;
+  
+    --bg-color: var(--blue10);
+    --text-color: var(--blue01);
+}
+
 header {
     width: 100%;
     height: 1.5em;
@@ -15,15 +41,17 @@ header {
     border-bottom-right-radius: 50%; */
     background-image: url("../img/CEF_silhou_blue.jpg");
     background-size: contain;
-    background-position: 80%;
-    
+    background-position: 80%;   
+}
+.main-title{
+    text-decoration: none;
+    color: var(--blue10);
 }
 
 #navigation {
     width: 100%;
     position: fixed;
-    z-index: 10;
-    
+    z-index: 10;   
 }
 nav { 
     padding-left: 20px;
@@ -60,6 +88,8 @@ nav {
     margin-left: 10px;
 }
 .detail-container{
+    display: flex;
+    flex-flow: column;
     margin: 1rem 1rem 1rem 1rem;
     border-top: 1px solid black;
     /* max-width: 375px; */
@@ -73,6 +103,17 @@ nav {
     box-shadow: -2px 3px 7px 1px #a0a0a0;
     background-color: white;
 }
+.detail-container :nth-child(1) {order: 1;}
+.detail-container :nth-child(2) {flex: 1 0 33%; order: 2;}
+.detail-container :nth-child(3) {flex: 1 0 33%; order: 2;}
+.detail-container :nth-child(4) {order: 3;}
+.detail-container :nth-child(5) {order: 5;}
+.detail-container :nth-child(6) {order: 5;}
+.detail-container :nth-child(7) {order: 4;}
+.detail-container :nth-child(8) {order: 2;}
+
+
+
 .pagination{
     display: flex;
     justify-content: center; 
@@ -145,13 +186,13 @@ nav {
     padding-left: 1rem;   
 }
 .listed-desc{
-    margin: 0;
+    margin: .5rem;
     padding: .25rem .5rem .5rem .5rem; 
     border-top: 1px solid #a5a3a3;
 }
 
 button { 
-    background-color: #4CAF50; 
+    background-color: var(--blue01);
     color: white; 
     padding: 14px 20px; 
     margin: 8px 0; 
@@ -163,7 +204,7 @@ button {
   
 .cancelbtn { 
     padding: 14px 20px; 
-    background-color: #f44336; 
+    background-color: var(--blue08); 
 } 
   
   
@@ -233,4 +274,9 @@ button {
 
 .mdc-dialog__surface {
 
+}
+
+.mb > button{
+    background-color: var(--blue05);
+    color: var(--blue10);
 }

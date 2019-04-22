@@ -100,7 +100,8 @@ def supersf(soqlkv):
 
     # soqlkv = 'q=SELECT+Name+FROM+Account'
     #'+WHERE+CreatedDate+>+2019-04-15T00:00:00Z+limit+10'
-    url = '/services/data/v45.0/query?'+soqlkv
+    url = '/services/data/v45.0/'+soqlkv
+    #url = '/services/data/v45.0/query?'+soqlkv
 
     # HTTP post data
     #print("Milestone 5")

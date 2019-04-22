@@ -6,8 +6,8 @@ $fontFamily: "Open Sans", sans-serif;
 @import "@material/button/mdc-button";
 
 .foo-button {
-  @include mdc-button-ink-color(teal);
-  @include mdc-states(teal);
+  @include mdc-button-ink-colorrgb(rgb(4, 86, 153));
+  @include mdc-states(rgb(4, 86, 153));
 }
 
 @import "@material/dialog/mdc-dialog";
@@ -27,4 +27,9 @@ body {
 
 .mb {
   margin-bottom: 10px;
+}
+.mdc-button {
+  @include mdc-button-container-fill-color(rgb(4, 86, 153));
+  @include mdc-button-shape-radius($radius, $rtl-reflexive)
+  
 }

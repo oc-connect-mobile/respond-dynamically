@@ -104,26 +104,24 @@
 
     <!-- Lucky Search Modal -->
     <div class="mb block">
-            <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter04').style.display='block'" style="width:auto;">By City
-            </button>
-                <div id="filter05" class="mdc-dialog" action="">
-                    <form method="GET" class="modal-content">
-                    <h3 class="mdc-dialog__header">
-                        <h2 class="mdc-dialog__header__title">
-                            Search Term
-                        </h2>
-                    </h3>
-                    <section class="mdc-dialog__body">
-                    {% csrf_token %}
-                        {{ lucky_form.as_p }}
-                    </section>
-                    <footer class="mdc-dialog__footer">
-                        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
-                        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
-                    </footer>
-                    </form>
-                </div>
+        <div id="filter05" class="mdc-dialog" action="">
+            <form method="GET" class="modal-content">
+            <h3 class="mdc-dialog__header">
+                <h2 class="mdc-dialog__header__title">
+                    Search Term
+                </h2>
+            </h3>
+            <section class="mdc-dialog__body">
+            {% csrf_token %}
+                {{ lucky_form.as_p }}
+            </section>
+            <footer class="mdc-dialog__footer">
+                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
+                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
+            </footer>
+            </form>
         </div>
+    </div>
 
     <h3>Results
     </h3>
@@ -172,11 +170,13 @@
 <div class="bottom-filter">
     <!-- <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
     </button> -->
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;"><i class="fa fa-map-marker">City</i>
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;"><i class="fa fa-map-marker mdc-button__icon" aria-hidden="true"></i>City
     </button>
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;"><i class="fa fa-th-list">Category</i>
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;"><i class="fa fa-th-list mdc-button__icon" aria-hidden="true"></i>Category
     </button>
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter04').style.display='block'" style="width:auto;"><i class="fa fa-th">SubCategory</i>
+    <button class="mdc-button mdc-button--raised showDialogBtn " onclick="document.getElementById('filter04').style.display='block'" style="width:auto;"><i class="fa fa-th mdc-button__icon" aria-hidden="true" label="SubCategory"></i>Subcategory
+    </button>
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search"></i>
     </button>
 </div>  
 

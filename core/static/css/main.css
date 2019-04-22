@@ -55,12 +55,9 @@ nav {
 
 
 
-body {
-    background-color: #eae7e7;
-}
-
 .content-container {
     padding-top: 80px;
+    margin-left: 10px;
 }
 .detail-container{
     margin: 1rem 1rem 1rem 1rem;

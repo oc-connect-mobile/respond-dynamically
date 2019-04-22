@@ -22,7 +22,8 @@ def index(request):
     a = "query?q=SELECT+Name,+Website,+Eligibility_Criteria__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
-    y= "+ORDER+BY+Website+NULLS+LAST+LIMIT+3"
+    y= "+ORDER+BY+Website+NULLS+LAST"
+    #+LIMIT+3"
 
     if request.method == 'GET':
 

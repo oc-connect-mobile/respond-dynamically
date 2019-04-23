@@ -9,7 +9,7 @@
     <!-- Modal -->
 
     <!-- County Filter Modal -->
-    <div class="mb block">
+    {% comment %} <div class="mb block">
         <div id="filter01" class="mdc-dialog">
             <div class="mdc-dialog__surface">
                
@@ -33,7 +33,7 @@
             </div>
         </div>
                    
-    </div>
+    </div> {% endcomment %}
 
     <!-- City Filter Modal -->
     <div class="mb">
@@ -188,8 +188,8 @@
 
 <div class="bottom-filter">
     <div class="button-container">
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
-    </button>
+    {% comment %} <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
+    </button> {% endcomment %}
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
     </button>
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;"><i class="fa fa-th-list fa-2x" aria-hidden="true"></i>

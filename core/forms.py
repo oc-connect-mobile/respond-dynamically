@@ -31,7 +31,7 @@ class CountyFilterForm(forms.Form):
         if not self.is_valid():
             return m
         counties = str(self.cleaned_data['Counties']).replace("[","").replace("]","").replace(" ","+")
-        if counties == "":
+        if counties == "" or 'Any+county' in counties:
             m = ""
         else:
             m = j+counties+l
@@ -57,7 +57,7 @@ class CityFilterForm(forms.Form):
         if not self.is_valid():
             return m
         cities = str(self.cleaned_data['Cities']).replace("[","").replace("]","").replace(" ","+")
-        if cities == "":
+        if cities == "" or 'Any+city' in cities:
             m = ""
         else:
             m = j+cities+l
@@ -82,7 +82,7 @@ class CategoryFilterForm(forms.Form):
         if not self.is_valid():
             return m
         categories = str(self.cleaned_data['Categories']).replace("[","").replace("]","").replace(" ","+")
-        if categories == "":
+        if categories == "" or 'Any+category' in categories:
             m = ""
         else:
             m = j+categories+l

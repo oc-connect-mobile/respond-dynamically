@@ -19,14 +19,14 @@ from .super_detail_salesforce import superDetailsf
 def index(request):
     """View function for home page of site."""
     """ url = "/services/data/v45.0/" """
-    a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+Website,+Eligibility_Criteria__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
+    a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+County_Served__c,+City_Served__c,+Website,+Eligibility_Criteria__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
     y= "+ORDER+BY+Website+NULLS+LAST"
     #+LIMIT+3"
 
     if request.method == 'GET':
-
+       
         city_form = CityFilterForm(request.GET)
         if city_form.is_valid():
             city_string = city_form.ingest()
@@ -83,16 +83,17 @@ def index(request):
         
 
     data1 = supersf(soqlkv)
-    pprint(data1)
-    data1 = data1['records'] # this is now a list
-    
+    data2 = json.dumps(data1)
+    records = data1['records'] # this is now a list
+    print(data2)
 #printable = data1["records"][1]["Name"]
 
 
 
     context = {
-        #'printable': printable,
-        'records': data1,
+        'data2': data2,
+        'data1': data1,
+        'records': records,
         'county_form': county_form,
         'city_form': city_form,
         'category_form': category_form,

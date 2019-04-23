@@ -137,7 +137,20 @@
                     <div class="listed-detail"><a class="foo-button mdc-button" href="{% url 'json-detail' id=value %}">See more</a></div>
                 {% endif %} 
                 {% if key == 'CEF_Category__c' %}
-                    <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa"></i> {{ value }}</a></span>
+
+                <div class="mdc-chip-set mdc-chip-set--filter">
+                    <div class="mdc-chip">
+                        <div class="mdc-chip__checkmark" >
+                            <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+                            <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+                                    d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                            </svg>
+                        </div>
+                        <div class="mdc-chip__text">
+                    <span class="listed-site"><a href="{{ value }}"><i class="fa"></i> {{ value }}</a></span></div>
+                </div>
+                </div>
+                
                 {% endif %}     
                 {% if key == 'Name' %} {% comment %} Company Name {% endcomment %}
                 <div class="top-of-card">
@@ -171,16 +184,18 @@
 
 
 <div class="bottom-filter">
+    <div class="button-container">
     <!-- <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
     </button> -->
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;"><i class="fa fa-map-marker mdc-button__icon" aria-hidden="true"></i>City
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
     </button>
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;"><i class="fa fa-th-list mdc-button__icon" aria-hidden="true"></i>Category
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;"><i class="fa fa-th-list fa-2x" aria-hidden="true"></i>
     </button>
-    <button class="mdc-button mdc-button--raised showDialogBtn " onclick="document.getElementById('filter04').style.display='block'" style="width:auto;"><i class="fa fa-th mdc-button__icon" aria-hidden="true" label="SubCategory"></i>Subcategory
+    <button class="mdc-button mdc-button--raised showDialogBtn " onclick="document.getElementById('filter04').style.display='block'" style="width:auto;"><i class="fa fa-th fa-2x" aria-hidden="true" label="SubCategory"></i>
     </button>
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search"></i>
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
     </button>
+    </div>
 </div>  
 
 {% endblock %}

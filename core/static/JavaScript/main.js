@@ -6,6 +6,7 @@ import * as $ from 'jquery/dist/jquery.min'
 import { MDCList } from '@material/list'
 import { MDCFormField } from '@material/form-field'
 import { MDCCheckbox } from '@material/checkbox'
+import {MDCChipSet} from '@material/chips';
 
 require('../css/app.scss')
 // require('index.html')
@@ -14,6 +15,8 @@ const ripple = new MDCRipple(document.querySelector('.foo-button'))
 const dialog = new MDCDialog(document.querySelector('.mdc-dialog'))
 const list = MDCList.attachTo(document.querySelector('.mdc-list'))
 list.wrapFocus = true
+const chipSetEl = document.querySelector('.mdc-chip-set')
+const chipSet = new MDCChipSet(chipSetEl)
 // const mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'))
 
 const checkbox = new MDCCheckbox(document.querySelector('.mdc-checkbox'))

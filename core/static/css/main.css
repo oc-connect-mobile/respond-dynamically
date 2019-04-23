@@ -58,14 +58,7 @@ nav {
     background-color:#00adef;
     margin-bottom: 80px;
 }
-.bottom-filter {
-    background-color: #333;
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-  }
+
 
 /* Removes formatting from inputs */
 /* input[type=checkbox],
@@ -194,7 +187,7 @@ nav {
 button { 
     background-color: var(--blue01);
     color: white; 
-    padding: 14px 20px; 
+    /* padding: 14px 20px;  */
     margin: 8px 0; 
     border: none; 
     cursor: pointer; 

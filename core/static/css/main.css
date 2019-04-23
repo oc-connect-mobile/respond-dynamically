@@ -274,3 +274,51 @@ button {
     background-color: var(--blue05);
     color: var(--blue10);
 }
+
+.i-emergency {
+    color: #ef5350;
+}
+  
+.i-food {
+    color:#26a69a;
+}
+
+.i-housing {
+    color:#7e57c2;
+}
+  
+.i-goods {
+    color: #d4e157;
+}
+
+.i-transportation {
+    color: #66bb6a;
+}
+  
+.i-health {
+    color: #42a5f5;
+}
+
+.i-finances {
+    color: #FF4F27;
+}
+  
+.i-care {
+    color: #9ccc65;
+}
+
+.i-education {
+    color:#ab47bc;
+}
+  
+.i-employment {
+    color: #ffa726;
+}
+
+.i-legal {
+    color: #8d6e63;
+}
+  
+.i-communication {
+    color: #ec407a;
+}

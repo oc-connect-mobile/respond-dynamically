@@ -8,6 +8,10 @@ function queryAll(selector){
     return document.querySelectorAll(selector)
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function(){
+
 function separateCategory(catList){
     if (catList === null){
         return null
@@ -31,6 +35,7 @@ function separateCity(cityList){
 }
 
 function populateList(resources){
+
     let idx
     for (idx = 0; idx < resources.records.length; idx++){
         const resourceList = query('.list-of-resources')
@@ -121,6 +126,46 @@ function populateList(resources){
         eligibiliyTag.innerHTML = `R<i class="fa"></i>`
         }
         seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
+
+
+    nameTag.innerText = resourceName
+    webTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
+    phoneTag.innerHTML = `<a class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
+    emailTag.innerHTML = `<a class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+    
+    if(resourceCategory!=null) {
+        if (resourceCategory.indexOf("Emergency")>=0) {
+            categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-error" aria-label="Emergency" aria-hidden="true">local_dining</i></i></a>`}
+        if (resourceCategory.indexOf("Food")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-food" aria-label="Food" aria-hidden="true">local_hospital</i></i></a>`}
+        if (resourceCategory.indexOf("Housing")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-housing" aria-label="Housing" aria-hidden="true">local_hotel</i></i></a>`}
+        if (resourceCategory.indexOf("Goods")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-goods" aria-label="Goods" aria-hidden="true">shopping-basket</i></i></a>`}
+        if (resourceCategory.indexOf("Transportation")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-transportation" aria-label="Transporation" aria-hidden="true">commute</i></i></a>`}
+        if (resourceCategory.indexOf("Health")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-health" aria-label="Health" aria-hidden="true">local_hospital</i></i></a>`}
+        if (resourceCategory.indexOf("Finances")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-finances" aria-label="Finances" aria-hidden="true">account_balance</i></i></a>`}
+        if (resourceCategory.indexOf("Care")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-care" aria-label="Care" aria-hidden="true">accessibility_new</i></i></a>`}
+        if (resourceCategory.indexOf("Education")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-education" aria-label="Education" aria-hidden="true">school</i></i></a>`}
+        if (resourceCategory.indexOf("Employment")>=0) {
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-employment" aria-label="Employment" aria-hidden="true">business_center</i></i></a>`}           
+        if (resourceCategory.indexOf("Legal")>=0) {
+                    categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-legal" aria-label="Legal" aria-hidden="true">local_hospital</i></i></a>`}
+        if (resourceCategory.indexOf("Communication")>=0) {
+                    categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-communication" aria-label="Communication" aria-hidden="true">feedback</i></i></a>`}     
+            
+    }
+    else {categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="fa"></i> ${resourceCategory}</a>`}
+    
+
+    descTag.innerText = resourceDesc
+    eligibiliyTag.innerHTML = `R<i class="fa"></i>`
+    seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/json-data/${resourceId}">See more</a>`
 
         resourceList.appendChild(resourceTag)
         resourceTag.appendChild(nameTag) 

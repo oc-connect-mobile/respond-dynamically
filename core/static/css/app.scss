@@ -2,13 +2,13 @@
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 $fontFamily: "Open Sans", sans-serif;
-
+@import "./variables";
 @import "@material/button/mdc-button";
 
-.foo-button {
-  @include mdc-button-ink-colorrgb(teal);
-  @include mdc-states(teal);
-}
+// .foo-button {
+//   @include mdc-button-ink-colorrgb(teal);
+//   @include mdc-states(teal);
+// }
 
 @import "@material/dialog/mdc-dialog";
 @import "@material/dialog/mdc-dialog";
@@ -28,8 +28,8 @@ body {
 .mb {
   margin-bottom: 10px;
 }
-.mdc-button {
-  @include mdc-button-container-fill-color(rgb(4, 86, 153));
-  @include mdc-button-shape-radius($radius, $rtl-reflexive)
+// .mdc-button {
+//   @include mdc-button-container-fill-color(rgb(4, 86, 153));
+//   @include mdc-button-shape-radius($radius, $rtl-reflexive)
   
-}
+// }

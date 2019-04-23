@@ -269,7 +269,8 @@ button {
 }
 
 .mdc-dialog button {
-    float:left;width:50%;
+    float:left;
+    width:50%;
 }
 
 .mdc-dialog__surface {

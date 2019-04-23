@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %} {% endblock %}
-
+{% load static %}
 {% block content %}
 <div class="content-container">
     <p>Welcome, let's get Connected!</p>
@@ -79,7 +79,7 @@
         </div>
     </div>
     
-    <!-- SubCategory Filter Modal -->
+    {% comment %} <!-- SubCategory Filter Modal -->
     <div class="mb block">
             <div id="filter04" class="mdc-dialog" action="">
                 <form method="GET" class="modal-content">
@@ -100,7 +100,7 @@
                 </footer>
                 </form>
             </div>
-    </div>
+    </div> {% endcomment %}
 
     <!-- Lucky Search Modal -->
     <div class="mb block">
@@ -125,11 +125,14 @@
 
     <h3>Results
     </h3>
-
+    
     <!-- List of Filtered Resources -->
      <!-- <div class="container"> -->
     <div class="list-of-resources">
-    {% for index in records %}
+    <script>
+        let data = {{ data2 | safe }}
+    </script>
+    {% comment %} {% for index in records %}
         <div class="listed-resource">
         {% for key, value in index.items %}
             {% if value %}
@@ -139,30 +142,30 @@
                 {% if key == 'CEF_Category__c' %}
                     <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa"></i> {{ value }}</a></span>
                 {% endif %}     
-                {% if key == 'Name' %} {% comment %} Company Name {% endcomment %}
+                {% if key == 'Name' %} 
                 <div class="top-of-card">
                     <div class="listed-name">{{ value }}</div>
                 </div>
                 {% endif %}
-                {% if key == 'Website' %} {% comment %} Website {% endcomment %}
+                {% if key == 'Website' %}
                     <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
                 {% endif %}
-                {% if key == 'Imported_Phone__c' %} {% comment %} Phone {% endcomment %} 
+                {% if key == 'Imported_Phone__c' %} 
                     <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
                 {% endif %}  
-                {% if key == 'Company_Email__c' %} {% comment %} Email {% endcomment %}
+                {% if key == 'Company_Email__c' %} 
                     <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
                 {% endif %}
-                {% if key == 'Eligibility_Criteria__c' and value != 'None'%} {% comment %} Phone {% endcomment %} 
+                {% if key == 'Eligibility_Criteria__c' and value != 'None'%} 
                     <span class="listed_criteria foo-button mdc-button" >R<i class="fa"></i></span>
                 {% endif %} 
-                {% if key == 'Description_Short__c' %} {% comment %} Description {% endcomment %}
+                {% if key == 'Description_Short__c' %} 
                     <div class="listed-desc">{{ value }}</div>
                 {% endif %}
             {% endif %}
         {% endfor %}
         </div>  
-    {% endfor %}
+    {% endfor %} {% endcomment %}
     </div>  
 
 </div>
@@ -171,16 +174,16 @@
 
 
 <div class="bottom-filter">
-    <!-- <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
-    </button> -->
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
+    </button>
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;"><i class="fa fa-map-marker mdc-button__icon" aria-hidden="true"></i>City
     </button>
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;"><i class="fa fa-th-list mdc-button__icon" aria-hidden="true"></i>Category
     </button>
-    <button class="mdc-button mdc-button--raised showDialogBtn " onclick="document.getElementById('filter04').style.display='block'" style="width:auto;"><i class="fa fa-th mdc-button__icon" aria-hidden="true" label="SubCategory"></i>Subcategory
-    </button>
+    {% comment %} <button class="mdc-button mdc-button--raised showDialogBtn " onclick="document.getElementById('filter04').style.display='block'" style="width:auto;"><i class="fa fa-th mdc-button__icon" aria-hidden="true" label="SubCategory"></i>Subcategory
+    </button> {% endcomment %}
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search"></i>
     </button>
 </div>  
-
+<script src="{% static "JavaScript/resources.js"%}"></script>
 {% endblock %}

@@ -183,7 +183,7 @@ def json_call(request):
 
     return render(request, 'json-call.html', context=context)
 
-def json_detail(request, id):
+def resource_detail(request, id):
     soqlkv = id
 
     detail1 = superDetailsf(soqlkv)
@@ -191,4 +191,4 @@ def json_detail(request, id):
     context = {
         'details': detail1,
     }
-    return render(request, 'json-detail.html', context=context)
+    return render(request, 'resource-detail.html', context=context)

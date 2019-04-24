@@ -215,7 +215,12 @@ header {
 }
 .listed-email{
     margin: 0;
-    padding-left: 1rem;   
+    padding-left: .5rem; 
+    padding-right: .5rem;  
+}
+.listed-cat{
+    padding-left: 1rem;
+    margin: 0;
 }
 .listed-desc{
     margin: .5rem;

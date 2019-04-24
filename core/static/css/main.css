@@ -319,6 +319,32 @@ button {
     color: var(--blue10);
 }
 
+#category-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#searchbar {
+    display: flex;
+    flex-flow: column wrap;
+    min-width: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+#name{
+    margin: 1rem;
+    width: 300px;
+    min-width: 400px;
+    height: 30px;
+    font-size: 30px;
+    display: center;
+}
+#search-button {
+    margin: 0.4rem;
+    display: center;
+}
 .i-emergency {
     color: #ef5350;
 }

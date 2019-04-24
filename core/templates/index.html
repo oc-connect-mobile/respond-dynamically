@@ -3,13 +3,35 @@
 {% block title %} {% endblock %}
 {% load static %}
 {% block content %}
-<div class="content-container">
-    <p>Welcome, let's get Connected!</p>
-    
-    
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!--
+<div class="info-menu">
+<h4> Find resources in these categories</h4>
+<span class="info-span">
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i></i> Emergency</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-food" aria-label="Food" aria-hidden="true">local_dining</i></i> Food</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-housing" aria-label="Housing" aria-hidden="true">local_hotel</i></i> Housing</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-goods" aria-label="Goods" aria-hidden="true">shopping_basket</i></i> Goods</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-transportation" aria-label="Transporation" aria-hidden="true">commute</i></i> Transportation</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-health" aria-label="Health" aria-hidden="true">local_hospital</i></i> Health</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-finances" aria-label="Finances" aria-hidden="true">account_balance</i></i> Finances</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-care" aria-label="Care" aria-hidden="true">accessibility_new</i></i> Care</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-education" aria-label="Education" aria-hidden="true">school</i></i> Education</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-employment" aria-label="Employment" aria-hidden="true">work</i></i> Employment</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-legal" aria-label="Legal" aria-hidden="true">business_center</i></i> Legal</a>
+        <a class="foo-button mdc-button" href=""><i class="material-icons i-communication" aria-label="Communication" aria-hidden="true">feedback</i></i> Communications</a>
+</span>
+-->
+<br>
+<h4> or use the filters below</h4>
+</div>
+<div class="content-container"> 
     <!-- Modal -->
-
     <!-- County Filter Modal -->
     {% comment %} <div class="mb block">
         <div id="filter01" class="mdc-dialog">
@@ -35,7 +57,10 @@
             </div>
         </div>
                    
+
+
     </div> {% endcomment %}
+
 
     <!-- City Filter Modal -->
     <div class="mb">
@@ -58,7 +83,6 @@
             </form>
         </div>
     </div>
-    
     <!-- Category Filter Modal -->
     <div class="mb block">
         <div id="filter03" class="mdc-dialog" action="">
@@ -80,7 +104,6 @@
             </form>
         </div>
     </div>
-    
     {% comment %} <!-- SubCategory Filter Modal -->
     <div class="mb block">
             <div id="filter04" class="mdc-dialog" action="">
@@ -103,7 +126,6 @@
                 </form>
             </div>
     </div> {% endcomment %}
-
     <!-- Lucky Search Modal -->
     <div class="mb block">
         <div id="filter05" class="mdc-dialog" action="">
@@ -124,15 +146,11 @@
             </form>
         </div>
     </div>
-
-    <h3>Results
-    </h3>
-    <!-- Emergency, Food, Housing, Goods, Transportation, Health, Finances, Care, Education, Employment, Legal, Communications, One Stop-->
     <!-- List of Filtered Resources -->
      <!-- <div class="container"> -->
     <div id="category-buttons">
         <form id="emergency-search">       
-            <button id="emergency-button" class="search-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i>Emergency</button>
+            <button id="emergency-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i></button>
         </form>
         <form id="food-search">       
             <button id="food-button" class="search-button" type="submit" value="Food">Food</button>

@@ -43,21 +43,60 @@ header {
     background-size: contain;
     background-position: 80%;   
 }
-.main-title{
+.main-title2 {
     text-decoration: none;
-    color: var(--blue10);
+    color: white;
+    font-size: 2rem;
 }
+
+.banner {
+    background-color:#057AB4;
+    margin: 0rem .5rem 1rem .5rem;
+    border-top: 1px solid black;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: -2px 3px 7px 1px #a0a0a0;
+    padding: .5rem;
+    position: fixed;
+    z-index: 10;
+}
+
+.overline-title {
+    font-size: .8rem;
+    color: white;
+    text-transform: uppercase;
+    line-height: 50%s;
+}
+
+.info-menu {
+    padding: 1rem;
+    color:#057AB4;
+    text-align: center;
+    line-height: 100%;
+   
+}
+
+.info-span {
+    line-height: 100%;
+   
+}
+
+
+.material-icons {
+    padding: .5rem;
+  }
+  
+
 
 #navigation {
     width: 100%;
     position: fixed;
     z-index: 10;   
 }
-nav { 
-    padding-left: 20px;
-    background-color:#00adef;
-    margin-bottom: 80px;
-}
+
 
 
 /* Removes formatting from inputs */
@@ -77,7 +116,7 @@ nav {
 
 
 .content-container {
-    padding-top: 80px;
+
     margin-left: 10px;
 }
 .detail-container{
@@ -305,4 +344,50 @@ button {
 #search-button {
     margin: 0.4rem;
     display: center;
+.i-emergency {
+    color: #ef5350;
+}
+  
+.i-food {
+    color:#26a69a;
+}
+
+.i-housing {
+    color:#7e57c2;
+}
+  
+.i-goods {
+    color: #d4e157;
+}
+
+.i-transportation {
+    color: #66bb6a;
+}
+  
+.i-health {
+    color: #42a5f5;
+}
+
+.i-finances {
+    color: #FF4F27;
+}
+  
+.i-care {
+    color: #9ccc65;
+}
+
+.i-education {
+    color:#ab47bc;
+}
+  
+.i-employment {
+    color: #ffa726;
+}
+
+.i-legal {
+    color: #8d6e63;
+}
+  
+.i-communication {
+    color: #ec407a;
 }

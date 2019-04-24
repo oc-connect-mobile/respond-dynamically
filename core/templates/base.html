@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <!-- Bundled scss from webpack -->
         <link rel="stylesheet" href="{% static 'build/bundle.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         
 
         <!-- bootstrap css and fontawesome -->
@@ -27,29 +28,24 @@
     
 
     </head>
-    <body style="background-color:rgb(201, 218, 223)">
+
+<body style="background-color:#efebe9">
+    <div class="banner" >
+        <h4><a class="mdc-typography--heading4 main-title2" href="{% url 'index' %}">OC Connect Mobile</a></h4>
+        <p class="mdc-typography--overline overline-title">a community listing of services and resources offered by organizations in Orange County and beyond</p>
         
-        <div id="navigation">
-        <header><a class="main-title" href="{% url 'index' %}">OC Connect Mobile  <i class="fa fa-home"></i></a></header>
-        <!-- Navigation goes in here:  -->
-        {% comment %} <nav>
-            
-              
-            
-        </nav> {% endcomment %}
-    
+    </div>
+           
+           {% comment %}
+                   
+                   
+           {% endcomment %}
        
-
-
-
-
-        </div>
-
-            {% block content %}
-        
-                <!-- Content goes in here: -->
-
-            {% endblock %}
-    
-    </body>
+                   {% block content %}
+               
+                       <!-- Content goes in here: -->
+       
+                   {% endblock %}
+           
+           </body>
 </html>

@@ -205,20 +205,22 @@ function populateList(resources, idx){
 
     descTag.innerText = resourceDesc
     if (resourceEligible !== null) {
-      eligibiliyTag.innerHTML = `R<i class="fa"></i>`
+      eligibiliyTag.innerHTML = `R<i title="Be sure to explore eligibility requirements" class="fa"></i>`
     }
-    seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
+    seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
 
     nameTag.innerText = resourceName
-    webTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
-    phoneTag.innerHTML = `<a class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
-    emailTag.innerHTML = `<a class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+    webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
+    phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
+    emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
 
     
 
     descTag.innerText = resourceDesc
-    eligibiliyTag.innerHTML = `R<i class="fa"></i>`
+    eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
+    // eligibiliyTag.innerHTML = `<i class="fa ruler-combined" title="Some eligibility requirements exist"></i>'
     seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
+
 
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)

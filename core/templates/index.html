@@ -6,6 +6,8 @@
 <div class="content-container">
     <p>Welcome, let's get Connected!</p>
     
+    
+
     <!-- Modal -->
 
     <!-- County Filter Modal -->
@@ -125,60 +127,59 @@
 
     <h3>Results
     </h3>
-    
+    <!-- Emergency, Food, Housing, Goods, Transportation, Health, Finances, Care, Education, Employment, Legal, Communications, One Stop-->
     <!-- List of Filtered Resources -->
      <!-- <div class="container"> -->
+    <div id="category-buttons">
+        <form id="emergency-search">       
+            <button id="emergency-button" class="search-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i>Emergency</button>
+        </form>
+        <form id="food-search">       
+            <button id="food-button" class="search-button" type="submit" value="Food">Food</button>
+        </form>
+        <form id="housing-search">       
+            <button id="housing-button" class="search-button" type="submit" value="Housing">Housing</button>
+        </form>
+        <form id="goods-search">       
+            <button id="goods-button" class="search-button" type="submit" value="Goods">Goods</button>
+        </form>
+        <form id="transportation-search">       
+            <button id="transportation-button" class="search-button" type="submit" value="Transportation">Transportation</button>
+        </form>
+        <form id="health-search">       
+            <button id="health-button" class="search-button" type="submit" value="Health">Health</button>
+        </form>
+        <form id="finances-search">       
+            <button id="finances-button" class="search-button" type="submit" value="Finances">Finances</button>
+        </form>
+        <form id="care-search">       
+            <button id="care-button" class="search-button" type="submit" value="Care">Care</button>
+        </form>
+        <form id="education-search">       
+            <button id="education-button" class="search-button" type="submit" value="Education">Education</button>
+        </form>
+        <form id="employment-search">       
+            <button id="employment-button" class="search-button" type="submit" value="Employment">Employment</button>
+        </form>
+        <form id="legal-search">       
+            <button id="legal-button" class="search-button" type="submit" value="Legal">Legal</button>
+        </form>
+        <form id="communication-search">       
+            <button id="communication-button" class="search-button" type="submit" value="Communication">Communication</button>
+        </form>
+    </div>
+
+    <div id="searchbar">
+        <form id="search-form">
+            <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category" autofocus>
+            <button id="search-button" class="search-button" type="submit">Search</button>
+        </form>
+    </div>
     <div class="list-of-resources">
     <script>
         let data = {{ data2 | safe }}
     </script>
-    {% comment %} {% for index in records %}
-        <div class="listed-resource">
-        {% for key, value in index.items %}
-            {% if value %}
-                {% if key == 'Id' %}
-                    <div class="listed-detail"><a class="foo-button mdc-button" href="{% url 'json-detail' id=value %}">See more</a></div>
-                {% endif %} 
-                {% if key == 'CEF_Category__c' %}
-
-                <div class="mdc-chip-set mdc-chip-set--filter">
-                    <div class="mdc-chip">
-                        <div class="mdc-chip__checkmark" >
-                            <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
-                            <path class="mdc-chip__checkmark-path" fill="none" stroke="black"
-                                    d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-                            </svg>
-                        </div>
-                        <div class="mdc-chip__text">
-                    <span class="listed-site"><a href="{{ value }}"><i class="fa"></i> {{ value }}</a></span></div>
-                </div>
-                </div>
-                
-                {% endif %}     
-                {% if key == 'Name' %} 
-                <div class="top-of-card">
-                    <div class="listed-name">{{ value }}</div>
-                </div>
-                {% endif %}
-                {% if key == 'Website' %}
-                    <span class="listed-site"><a class="foo-button mdc-button" href="{{ value }}"><i class="fa fa-globe"></i> Website</a></span>
-                {% endif %}
-                {% if key == 'Imported_Phone__c' %} 
-                    <span class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ value }}"><i class="fa fa-phone"></i>  Phone</a></span>
-                {% endif %}  
-                {% if key == 'Company_Email__c' %} 
-                    <span class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ value }}"><i class="fa fa-envelope"></i>  Email</a></span>
-                {% endif %}
-                {% if key == 'Eligibility_Criteria__c' and value != 'None'%} 
-                    <span class="listed_criteria foo-button mdc-button" >R<i class="fa"></i></span>
-                {% endif %} 
-                {% if key == 'Description_Short__c' %} 
-                    <div class="listed-desc">{{ value }}</div>
-                {% endif %}
-            {% endif %}
-        {% endfor %}
-        </div>  
-    {% endfor %} {% endcomment %}
+    
     </div>  
 
 </div>
@@ -186,7 +187,7 @@
 <!-- </div> -->
 
 
-<div class="bottom-filter">
+<!-- <div class="bottom-filter">
     <div class="button-container">
     {% comment %} <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
     </button> {% endcomment %}
@@ -199,6 +200,6 @@
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
     </button>
     </div>
-</div>  
+</div>  -->
 <script src="{% static "JavaScript/resources.js"%}"></script>
 {% endblock %}

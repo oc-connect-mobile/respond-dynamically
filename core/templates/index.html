@@ -8,31 +8,12 @@
 <br>
 <br>
 <br>
-<br>
-<!--
+
 <div class="info-menu">
-<h4> Find resources in these categories</h4>
-<span class="info-span">
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i></i> Emergency</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-food" aria-label="Food" aria-hidden="true">local_dining</i></i> Food</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-housing" aria-label="Housing" aria-hidden="true">local_hotel</i></i> Housing</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-goods" aria-label="Goods" aria-hidden="true">shopping_basket</i></i> Goods</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-transportation" aria-label="Transporation" aria-hidden="true">commute</i></i> Transportation</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-health" aria-label="Health" aria-hidden="true">local_hospital</i></i> Health</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-finances" aria-label="Finances" aria-hidden="true">account_balance</i></i> Finances</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-care" aria-label="Care" aria-hidden="true">accessibility_new</i></i> Care</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-education" aria-label="Education" aria-hidden="true">school</i></i> Education</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-employment" aria-label="Employment" aria-hidden="true">work</i></i> Employment</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-legal" aria-label="Legal" aria-hidden="true">business_center</i></i> Legal</a>
-        <a class="foo-button mdc-button" href=""><i class="material-icons i-communication" aria-label="Communication" aria-hidden="true">feedback</i></i> Communications</a>
-</span>
--->
-<br>
-<h4> or use the filters below</h4>
+    <h2> Use a filter or search below</h2>
 </div>
 <div class="content-container"> 
-    <!-- Modal -->
-    <!-- County Filter Modal -->
+        {% comment %} Modals {% endcomment %}
     {% comment %} <div class="mb block">
         <div id="filter01" class="mdc-dialog">
             <div class="mdc-dialog__surface">
@@ -56,98 +37,8 @@
             </form>
             </div>
         </div>
-                   
-
-
     </div> {% endcomment %}
 
-
-    <!-- City Filter Modal -->
-    <div class="mb">
-        <div id="filter02" class="mdc-dialog">
-            <form method="GET" class="modal-content" action="">
-
-            <h3 class="mdc-dialog__header">
-                <h2 class="mdc-dialog__header__title">
-                    City
-                </h2>
-            </h3>
-            <section class="mdc-dialog__body">
-            {% csrf_token %}
-                {{ city_form.as_p }}
-            </section>
-            <footer class="mdc-dialog__footer">
-                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
-                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
-            </footer>
-            </form>
-        </div>
-    </div>
-    <!-- Category Filter Modal -->
-    <div class="mb block">
-        <div id="filter03" class="mdc-dialog" action="">
-            <form method="GET" class="modal-content">
-            <h3 class="mdc-dialog__header">
-                <h2 class="mdc-dialog__header__title">
-                    Category
-                </h2>
-            </h3>
-            <section class="mdc-dialog__body">
-            {% csrf_token %}
-                {{ category_form.as_p }}
-            </section>
-
-            <footer class="mdc-dialog__footer">
-                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
-                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
-            </footer>
-            </form>
-        </div>
-    </div>
-    {% comment %} <!-- SubCategory Filter Modal -->
-    <div class="mb block">
-            <div id="filter04" class="mdc-dialog" action="">
-                <form method="GET" class="modal-content">
-                <h3 class="mdc-dialog__header">
-                    <h2 class="mdc-dialog__header__title">
-                        Sub-Category
-                    </h2>
-                </h3>
-                <section class="mdc-dialog__body">
-                {% csrf_token %}
-                
-                    {{ secondary_form.as_p }}
-            
-                </section>
-                <footer class="mdc-dialog__footer">
-                    <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
-                    <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
-                </footer>
-                </form>
-            </div>
-    </div> {% endcomment %}
-    <!-- Lucky Search Modal -->
-    <div class="mb block">
-        <div id="filter05" class="mdc-dialog" action="">
-            <form method="GET" class="modal-content">
-            <h3 class="mdc-dialog__header">
-                <h2 class="mdc-dialog__header__title">
-                    Search Term
-                </h2>
-            </h3>
-            <section class="mdc-dialog__body">
-            {% csrf_token %}
-                {{ lucky_form.as_p }}
-            </section>
-            <footer class="mdc-dialog__footer">
-                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">FILTER</button>
-                <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">CLEAR FILTER</button>
-            </footer>
-            </form>
-        </div>
-    </div>
-    <!-- List of Filtered Resources -->
-     <!-- <div class="container"> -->
     <div id="category-buttons">
         <form id="emergency-search">       
             <button id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i>Emergency</button>
@@ -185,6 +76,9 @@
         <form id="communication-search">       
             <button id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Emergency" aria-hidden="true">feedback</i>Communication</button>
         </form>
+        <form id="onestop-search">       
+            <button id="onestop-button" class="foo-button mdc-button" type="submit" value="One Stop"><i class="material-icons i-stars" aria-label="Emergency" aria-hidden="true">stars</i>One Stop</button>
+        </form>
     </div>
 
     <div id="searchbar">
@@ -201,23 +95,12 @@
     </div>  
 
 </div>
-        
-<!-- </div> -->
 
-
-<!-- <div class="bottom-filter">
-    <div class="button-container">
-    {% comment %} <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter01').style.display='block'" style="width:auto;">By County
-    </button> {% endcomment %}
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter02').style.display='block'" style="width:auto;"><i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
-    </button>
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter03').style.display='block'" style="width:auto;"><i class="fa fa-th-list fa-2x" aria-hidden="true"></i>
-    </button>
-    {% comment %} <button class="mdc-button mdc-button--raised showDialogBtn " onclick="document.getElementById('filter04').style.display='block'" style="width:auto;"><i class="fa fa-th fa-2x" aria-hidden="true" label="SubCategory"></i>
-    </button> {% endcomment %}
+{% comment %}
+<div class="bottom-filter">
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
     </button>
-    </div>
-</div>  -->
+</div>
+{% endcomment %}  
 <script src="{% static "JavaScript/resources.js"%}"></script>
 {% endblock %}

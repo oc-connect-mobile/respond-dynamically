@@ -14,7 +14,6 @@
         <link rel="stylesheet" href="{% static 'build/bundle.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         
-
         <!-- bootstrap css and fontawesome -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
@@ -24,28 +23,15 @@
         <script href="{% static 'build/bundle.js' %}" async></script>
         <script href="{% static 'JavaScript/main.js' %}"></script>
         
-        
-    
-
     </head>
 
 <body style="background-color:#efebe9">
     <div class="banner" >
-        <h4><a class="mdc-typography--heading4 main-title2" href="{% url 'index' %}">OC Connect Mobile</a></h4>
+        <h1><a class="mdc-typography--heading4 main-title2" href="{% url 'index' %}">OC Connect Mobile</a></h1>
         <p class="mdc-typography--overline overline-title">a community listing of services and resources offered by organizations in Orange County and beyond</p>
-        
     </div>
-           
-           {% comment %}
-                   
-                   
-           {% endcomment %}
-       
-                   {% block content %}
-               
-                       <!-- Content goes in here: -->
-       
-                   {% endblock %}
-           
-           </body>
+    <div>       
+    {% block content %}  {% endblock %}
+    </div>     
+</body>
 </html>

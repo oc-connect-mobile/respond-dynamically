@@ -327,23 +327,23 @@ button {
 
 #searchbar {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     min-width: 400px;
     justify-content: center;
     align-items: center;
 }
-
 #name{
-    margin: 1rem;
-    width: 300px;
-    min-width: 400px;
+    margin: .5rem;
+    width: 30%;
+    min-width: 300px;
     height: 30px;
-    font-size: 30px;
-    display: center;
+    font-size: 20px;
 }
 #search-button {
-    margin: 0.4rem;
-    display: center;
+    margin: 0;
+    width: 30%;
+    min-width: 200px;
+    border: 1px solid black;
 }
 .i-emergency {
     color: #ef5350;

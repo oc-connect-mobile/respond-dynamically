@@ -70,10 +70,53 @@ function separateCity (cityList) {
   return cityList
 }
 
+function addIconToCategory (catList, categoryTag) {
+    if (catList.indexOf('Emergency') >= 0) {
+        return "error"
+    }
+    if (catList.indexOf('Food') >= 0) {
+        return "local_dining"
+    }
+    if (catList.indexOf('Housing') >= 0) {
+        return "local_hotel"
+    }
+    if (catList.indexOf('Goods') >= 0) {
+        return "shopping_basket"
+    }
+    if (catList.indexOf('Transportation') >= 0) {
+        return "commute"
+    }
+    if (catList.indexOf('Health') >= 0) {
+        return "local_hospital"
+    }
+    if (catList.indexOf('Finances') >= 0) {
+        return "account_balance"
+    }
+    if (catList.indexOf('Care') >= 0) {
+        return "accessibility_new"
+    }
+    if (catList.indexOf('Education') >= 0) {
+        return "school"
+    }
+    if (catList.indexOf('Employment') >= 0) {
+        return "business_center"
+    }
+    if (catList.indexOf('Legal') >= 0) {
+        return "local_hospital"
+    }
+    if (catList.indexOf('Communication') >= 0) {
+        return "feedback"
+    }
+    if (catList.indexOf('OneStop') >= 0){
+        return "stars"
+    }
+    
+}
+
 function populateList(resources, idx){
     const resourceList = query('.list-of-resources')
     const resourceTag = document.createElement('div')
-    const nameTag = document.createElement('div')
+    const nameTag = document.createElement('h2')
     const infoTag = document.createElement('span')
     const webTag = document.createElement('span')
     const phoneTag = document.createElement('span') 
@@ -141,16 +184,22 @@ function populateList(resources, idx){
         for (let i = 0; i < listLength; i++) {
           let categoryTag = document.createElement('span')
           let cat = catList[i].replace(' ', '')
+          let lowerCat = cat.toLowerCase()
           categoryTag.innerText = catList[i]
           categoryTag.classList.add('listed-cat', (`${cat}`))
+          let iconName = addIconToCategory (cat)
+          categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
           categoryList.appendChild(categoryTag)
         }
       }
       if (typeof catList === 'string') {
         let cat = catList.replace(' ', '')
+        let lowerCat = cat.toLowerCase()
         categoryTag.innerText = catList
         categoryTag.classList.add('listed-cat', (`${cat}`))
-        categoryList.appendChild(categoryTag)
+        let iconName = addIconToCategory (cat)
+        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+        categoryList.appendChild(categoryTag, categoryTag)
       }
     }
 
@@ -165,44 +214,7 @@ function populateList(resources, idx){
     phoneTag.innerHTML = `<a class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
     emailTag.innerHTML = `<a class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
 
-    if (resourceCategory != null) {
-      if (resourceCategory.indexOf('Emergency') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Food') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-food" aria-label="Food" aria-hidden="true">local_dining</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Housing') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-housing" aria-label="Housing" aria-hidden="true">local_hotel</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Goods') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-goods" aria-label="Goods" aria-hidden="true">shopping_basket</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Transportation') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-transportation" aria-label="Transporation" aria-hidden="true">commute</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Health') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-health" aria-label="Health" aria-hidden="true">local_hospital</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Finances') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-finances" aria-label="Finances" aria-hidden="true">account_balance</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Care') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-care" aria-label="Care" aria-hidden="true">accessibility_new</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Education') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-education" aria-label="Education" aria-hidden="true">school</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Employment') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-employment" aria-label="Employment" aria-hidden="true">business_center</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Legal') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-legal" aria-label="Legal" aria-hidden="true">local_hospital</i></i></a>`
-      }
-      if (resourceCategory.indexOf('Communication') >= 0) {
-        categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-communication" aria-label="Communication" aria-hidden="true">feedback</i></i></a>`
-      }
-    } else { categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="fa"></i> ${resourceCategory}</a>` }
+    
 
     descTag.innerText = resourceDesc
     eligibiliyTag.innerHTML = `R<i class="fa"></i>`
@@ -301,6 +313,12 @@ document.addEventListener('DOMContentLoaded', function(){
     }) 
     query('#communication-search').addEventListener('submit', function(event){
         let input = query('#communication-button')
+        // don't try to submit this form. Do what I ask instead.
+        event.preventDefault()
+        searchAny(input.value)
+    })
+    query('#onestop-search').addEventListener('submit', function(event){
+        let input = query('#onestop-button')
         // don't try to submit this form. Do what I ask instead.
         event.preventDefault()
         searchAny(input.value)

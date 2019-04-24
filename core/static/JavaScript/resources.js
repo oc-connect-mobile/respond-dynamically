@@ -135,13 +135,13 @@ function populateList(resources){
     
     if(resourceCategory!=null) {
         if (resourceCategory.indexOf("Emergency")>=0) {
-            categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-error" aria-label="Emergency" aria-hidden="true">local_dining</i></i></a>`}
+            categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-emergency" aria-label="Emergency" aria-hidden="true">error</i></i></a>`}
         if (resourceCategory.indexOf("Food")>=0) {
-                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-food" aria-label="Food" aria-hidden="true">local_hospital</i></i></a>`}
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-food" aria-label="Food" aria-hidden="true">local_dining</i></i></a>`}
         if (resourceCategory.indexOf("Housing")>=0) {
                 categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-housing" aria-label="Housing" aria-hidden="true">local_hotel</i></i></a>`}
         if (resourceCategory.indexOf("Goods")>=0) {
-                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-goods" aria-label="Goods" aria-hidden="true">shopping-basket</i></i></a>`}
+                categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-goods" aria-label="Goods" aria-hidden="true">shopping_basket</i></i></a>`}
         if (resourceCategory.indexOf("Transportation")>=0) {
                 categoryTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceCategory}"><i class="material-icons i-transportation" aria-label="Transporation" aria-hidden="true">commute</i></i></a>`}
         if (resourceCategory.indexOf("Health")>=0) {

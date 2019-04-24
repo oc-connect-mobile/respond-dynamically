@@ -1,7 +1,5 @@
 let resources = data
-// resources = resources.toLowerCase()
 console.log(typeof resources)
-
 
 function query (selector) {
   return document.querySelector(selector)
@@ -18,34 +16,22 @@ function searchAny(input){
 function updateList(input){
     const resourcesList = query('.list-of-resources')
     resourcesList.innerHTML = ''
-    let counter = 0
     for (idx = 0; idx < resources.records.length; idx++){
         cityTest = resources.records[idx]['City_Served__c']
         categoryTest = resources.records[idx]['CEF_Category__c']
-        // console.log(cityTest)
-        // console.log(categoryTest)
         if (cityTest === null && categoryTest === null){
-            // console.log("skip")
             continue;
         }
         if ((cityTest !== null && categoryTest !== null) && cityTest.includes(input) || categoryTest.includes(input)){
-            // console.log("both")
             populateList(resources, idx)
-            counter+=1
         }
         else if (cityTest !== null && cityTest.includes(input)){
-            // console.log("cityonly")
             populateList(resources, idx)
-            counter+=1
         }
         else if (categoryTest !== null && categoryTest.includes(input)){
-            // console.log("categoryonly")
             populateList(resources, idx)
-            counter+=1
-        }
-        
+        }  
     }
-    console.log(counter)
 }
 
 function separateCategory(catList){
@@ -70,7 +56,7 @@ function separateCity (cityList) {
   return cityList
 }
 
-function addIconToCategory (catList, categoryTag) {
+function addIconToCategory (catList) {
     if (catList.indexOf('Emergency') >= 0) {
         return "error"
     }
@@ -109,8 +95,7 @@ function addIconToCategory (catList, categoryTag) {
     }
     if (catList.indexOf('OneStop') >= 0){
         return "stars"
-    }
-    
+    }   
 }
 
 function populateList(resources, idx){
@@ -209,17 +194,6 @@ function populateList(resources, idx){
     }
     seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
 
-    nameTag.innerText = resourceName
-    webTag.innerHTML = `<a class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
-    phoneTag.innerHTML = `<a class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
-    emailTag.innerHTML = `<a class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
-
-    
-
-    descTag.innerText = resourceDesc
-    eligibiliyTag.innerHTML = `R<i class="fa"></i>`
-    seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
-
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)
     resourceTag.appendChild(infoTag)
@@ -230,10 +204,8 @@ function populateList(resources, idx){
     infoTag.appendChild(emailTag)
     infoTag.appendChild(eligibiliyTag)
     resourceTag.appendChild(descTag)
-    resourceTag.appendChild(seeMoreTag)
-  
+    resourceTag.appendChild(seeMoreTag) 
 }
-
 
 document.addEventListener('DOMContentLoaded', function(){
     query('#search-form').addEventListener('submit', function(event){

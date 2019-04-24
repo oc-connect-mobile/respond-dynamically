@@ -218,7 +218,7 @@ function populateList(resources, idx){
 
     descTag.innerText = resourceDesc
     eligibiliyTag.innerHTML = `R<i class="fa"></i>`
-    seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/json-data/${resourceId}">See more</a>`
+    seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
 
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)

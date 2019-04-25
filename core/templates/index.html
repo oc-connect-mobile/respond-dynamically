@@ -4,13 +4,14 @@
 {% load static %}
 {% block content %}
 
-<br><br><br><br><br>
+
 
 <div class="info-menu">
-<h2>Use a filter or search below</h2>
+        <p class="mdc-typography--overline overline-title">a community listing of services and resources offered by organizations in the Triangle</p>
+<h3>Use a filter or search below</h3>
 </div>
 
-<div aria-label="Here a various ways to filter using checkboxes" class="content-container">  
+<div aria-label="Here a various ways to filter using checkboxes" class="">  
         {% comment %} Modals {% endcomment %}
 
     {% comment %} <div class="mb block">
@@ -84,7 +85,7 @@
 
     <div id="searchbar" role="search">
         <form id="search-form">
-            <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category" autofocus>
+            <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category..." autofocus>
             <button id="search-button" class="foo-button mdc-button" type="submit">Search</button>
         </form>
     </div>
@@ -107,8 +108,10 @@
 <div role="main">
 
 {% endcomment %}  
+</div>
+
 
 <script src="{% static "JavaScript/resources.js"%}"></script>
 
-</div>
+
 {% endblock %}

@@ -61,6 +61,7 @@ $fontFamily: "Open Sans", sans-serif;
   min-width: 60px;
   min-height: 60px;
 }
+
 .listed-detail {
   background-color: purple;
   border-radius: 50%;
@@ -79,14 +80,23 @@ $fontFamily: "Open Sans", sans-serif;
   text-decoration: none;
 }
 
+
 .contact-info {
-  background-color: purple;
+  float: left;
+  position: relative;
+  float: left;
+  left: 0px;
+  bottom: -15px;
+}
+.contact-info .fa {
+  color: white;
+}
+.contact-info button {
+  background-color: #059EDA;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   padding: 0;
-  float: left;
-  left: 0px;
-  bottom: 0px;
-  display: flexbox;
+  text-decoration: none;
 }
+

@@ -387,9 +387,9 @@ let subCatList = separateList(resourceSubCategory)
 
     // contactInfoDiv.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a> <a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a> <a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>
     
-    webTag.innerHTML = `<a title="Visit resource's web page" class="mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i>www</a>`
-    phoneTag.innerHTML = `<a title="Call resource" class="mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i></a>`
-    emailTag.innerHTML = `<a title= "Email resource" class="mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i></a>`
+    webTag.innerHTML = `<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
+    phoneTag.innerHTML = `<a title="Call resource" class="" href="tel:${resourcePhone}"><i class="fa fa-lg fa-phone"></i></a>`
+    emailTag.innerHTML = `<a title= "Email resource" class="" href="mailto:${resourceEmail}"><i class="fa fa-lg fa-envelope"></i></a>`
 
     descTag.innerText = resourceDesc
     if (resourceEligible !== null){
@@ -401,7 +401,7 @@ let subCatList = separateList(resourceSubCategory)
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)
     resourceTag.appendChild(infoTag)
-    resourceTag.appendChild(contactInfoDiv)
+    
     infoTag.appendChild(categoryList)
     infoTag.appendChild(cityServedList)
     infoTag.appendChild(subCategoryList)
@@ -412,6 +412,7 @@ let subCatList = separateList(resourceSubCategory)
     infoTag.appendChild(eligibiliyTag)
     infoTag.appendChild(googleTag)
     resourceTag.appendChild(descTag)
+    resourceTag.appendChild(contactInfoDiv)
     contactInfoDiv.appendChild(webTag)
     contactInfoDiv.appendChild(phoneTag)
     contactInfoDiv.appendChild(emailTag)

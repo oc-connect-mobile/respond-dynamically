@@ -185,19 +185,18 @@ function populateList(resources, idx){
       }
     }
 
-    descTag.innerText = resourceDesc
-    if (resourceEligible !== null) {
-      eligibiliyTag.innerHTML = `R<i title="Be sure to explore eligibility requirements" class="fa"></i>`
-    }
-    seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
-
+    seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
     nameTag.innerText = resourceName
     webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
     phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
     emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+    descTag.innerText = resourceDesc
+    if (resourceEligible !== null){
+      eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
+    }
     googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
     descTag.innerText = resourceDesc
-    eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>R`
+   
 
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)

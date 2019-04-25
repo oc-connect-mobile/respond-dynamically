@@ -177,7 +177,7 @@ function populateList (resources, idx) {
       categoryTag.classList.add('listed-cat', (`${cat}`))
       let iconName = addIconToCategory(cat)
       categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
-      categoryList.appendChild(categoryTag, categoryTag)
+      categoryList.appendChild(categoryTag)
     }
   }
 

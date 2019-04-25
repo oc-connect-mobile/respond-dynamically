@@ -82,17 +82,21 @@ $fontFamily: "Open Sans", sans-serif;
 
 
 .contact-info {
-  float: left;
+  padding: 10px;
   position: relative;
   float: left;
   left: 0px;
-  bottom: -15px;
+  bottom: -25px;
 }
 .contact-info .fa {
   color: white;
 }
 .contact-info button {
-  background-color: #059EDA;
+  @include mdc-button-ink-colorrgb(#059EDA);
+  @include mdc-ripple-surface;
+  @include mdc-states;
+  @include mdc-states-base-color( #059EDA);
+  // background-color: #059EDA;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -100,3 +104,6 @@ $fontFamily: "Open Sans", sans-serif;
   text-decoration: none;
 }
 
+.category-list {
+  float: right;
+}

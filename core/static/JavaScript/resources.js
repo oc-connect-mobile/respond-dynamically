@@ -96,21 +96,23 @@ function addIconToCategory (catList) {
   }
 }
 
-function populateList (resources, idx) {
-  const resourceList = query('.list-of-resources')
-  const resourceTag = document.createElement('div')
-  const nameTag = document.createElement('h2')
-  const infoTag = document.createElement('span')
-  const webTag = document.createElement('span')
-  const phoneTag = document.createElement('span')
-  const emailTag = document.createElement('span')
-  const categoryList = document.createElement('div')
-  const categoryTag = document.createElement('span')
-  const descTag = document.createElement('p')
-  const eligibiliyTag = document.createElement('span')
-  const seeMoreTag = document.createElement('button')
-  const cityServedTag = document.createElement('div')
-  const cityServedList = document.createElement('div')
+
+function populateList(resources, idx){
+    const resourceList = query('.list-of-resources')
+    const resourceTag = document.createElement('div')
+    const nameTag = document.createElement('h2')
+    const infoTag = document.createElement('span')
+    const webTag = document.createElement('span')
+    const phoneTag = document.createElement('span') 
+    const emailTag = document.createElement('span')
+    const categoryList = document.createElement('div')
+    const categoryTag = document.createElement('span')
+    const descTag = document.createElement('p')
+    const eligibiliyTag = document.createElement('span')
+    const seeMoreTag = document.createElement('button')
+    const cityServedTag = document.createElement('div')
+    const cityServedList = document.createElement('div')
+    const googleTag = document.createElement('span')
 
   const resourceId = resources.records[idx]['Id']
   const resourceName = resources.records[idx].Name
@@ -122,17 +124,20 @@ function populateList (resources, idx) {
   const resourceEligible = resources.records[idx]['Eligibility_Criteria__c']
   const resourceCity = resources.records[idx]['City_Served__c']
 
-  resourceTag.className = 'listed-resource'
-  infoTag.className = 'info'
-  nameTag.className = 'listed-name'
-  descTag.className = 'listed-desc'
-  webTag.className = 'listed-site'
-  phoneTag.className = 'listed-phone'
-  emailTag.className = 'listed-email'
-  categoryList.className = 'category-list'
-  eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
-  seeMoreTag.className = 'listed-detail'
-  cityServedTag.className = 'city-list'
+
+    resourceTag.className = 'listed-resource'
+    infoTag.className = 'info'
+    nameTag.className = 'listed-name'
+    descTag.className = 'listed-desc'
+    webTag.className = 'listed-site'
+    phoneTag.className = 'listed-phone'
+    emailTag.className = 'listed-email'
+    categoryList.className = 'category-list'
+    eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
+    seeMoreTag.className = 'listed-detail'
+    cityServedTag.className = 'city-list'
+    googleTag.className = 'google-search'
+
 
   let cityList = separateCity(resourceCity)
   if (cityList !== null) {
@@ -170,42 +175,33 @@ function populateList (resources, idx) {
         categoryList.appendChild(categoryTag)
       }
     }
-    if (typeof catList === 'string') {
-      let cat = catList.replace(' ', '')
-      let lowerCat = cat.toLowerCase()
-      categoryTag.innerText = catList
-      categoryTag.classList.add('listed-cat', (`${cat}`))
-      let iconName = addIconToCategory(cat)
-      categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
-      categoryList.appendChild(categoryTag)
+
+    seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
+    nameTag.innerText = resourceName
+    webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
+    phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
+    emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+    descTag.innerText = resourceDesc
+    if (resourceEligible !== null){
+      eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
     }
-  }
+    googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
+    descTag.innerText = resourceDesc
+   
 
-  descTag.innerText = resourceDesc
-  if (resourceEligible !== null) {
-    eligibiliyTag.innerHTML = `R<i title="Be sure to explore eligibility requirements" class="fa"></i>`
-  }
-  seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
+    resourceList.appendChild(resourceTag)
+    resourceTag.appendChild(nameTag)
+    resourceTag.appendChild(infoTag)
+    infoTag.appendChild(categoryList)
+    infoTag.appendChild(cityServedList)
+    infoTag.appendChild(webTag)
+    infoTag.appendChild(phoneTag)
+    infoTag.appendChild(emailTag)
+    infoTag.appendChild(eligibiliyTag)
+    infoTag.appendChild(googleTag)
+    resourceTag.appendChild(descTag)
+    resourceTag.appendChild(seeMoreTag) 
 
-  nameTag.innerText = resourceName
-  webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
-  phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
-  emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
-
-  descTag.innerText = resourceDesc
-  eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
-
-  resourceList.appendChild(resourceTag)
-  resourceTag.appendChild(nameTag)
-  resourceTag.appendChild(infoTag)
-  infoTag.appendChild(categoryList)
-  infoTag.appendChild(cityServedList)
-  infoTag.appendChild(webTag)
-  infoTag.appendChild(phoneTag)
-  infoTag.appendChild(emailTag)
-  infoTag.appendChild(eligibiliyTag)
-  resourceTag.appendChild(descTag)
-  resourceTag.appendChild(seeMoreTag)
 }
 
 document.addEventListener('DOMContentLoaded', function () {

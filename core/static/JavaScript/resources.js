@@ -113,6 +113,7 @@ function populateList(resources, idx){
     const seeMoreTag = document.createElement('button')
     const cityServedTag = document.createElement('div')
     const cityServedList = document.createElement('div')
+    const googleTag = document.createElement('span')
 
     const resourceId = resources.records[idx]['Id']
     const resourceName = resources.records[idx].Name    
@@ -135,6 +136,7 @@ function populateList(resources, idx){
     eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
     seeMoreTag.className = 'listed-detail'
     cityServedTag.className = 'city-list'
+    googleTag.className = 'google-search'
 
     let cityList = separateCity(resourceCity)
     if (cityList !== null) {
@@ -193,9 +195,9 @@ function populateList(resources, idx){
     webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
     phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
     emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
-
+    googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
     descTag.innerText = resourceDesc
-    eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
+    eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>R`
     seeMoreTag.innerHTML = `<a class="foo-button mdc-button" href="/resource/${resourceId}">See more</a>`
 
     resourceList.appendChild(resourceTag)
@@ -207,6 +209,7 @@ function populateList(resources, idx){
     infoTag.appendChild(phoneTag)
     infoTag.appendChild(emailTag)
     infoTag.appendChild(eligibiliyTag)
+    infoTag.appendChild(googleTag)
     resourceTag.appendChild(descTag)
     resourceTag.appendChild(seeMoreTag) 
 }

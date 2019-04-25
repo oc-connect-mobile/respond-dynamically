@@ -239,6 +239,17 @@ header {
     border-top: 1px solid #a5a3a3;
 }
 
+.city-list {
+    color: black;
+    float:right;
+    background-color: rgba(255, 255, 255, 0.678);
+    padding: 0 5px 0 5px;
+    border-radius: 30px;
+    position: relative;
+    bottom: 32px;
+    right: 0;
+}
+
   
 .cancelbtn { 
     padding: 14px 20px; 

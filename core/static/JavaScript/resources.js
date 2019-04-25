@@ -227,7 +227,7 @@ function addIconToCategory (catList) {
 function populateList(resources, idx){
     const resourceList = query('.list-of-resources')
     const resourceTag = document.createElement('div')
-    const nameTag = document.createElement('h2')
+    const nameTag = document.createElement('div')
     const infoTag = document.createElement('span')
     
     const contactInfoDiv = document.createElement('div')
@@ -272,7 +272,7 @@ function populateList(resources, idx){
     emailTag.className = 'listed-email'
 
     categoryList.className = 'category-list'
-    eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
+    eligibiliyTag.classList.add('listed_criteria')
     seeMoreTag.className = 'listed-detail'
     cityServedTag.className = 'city-list'
     googleTag.className = 'google-search'
@@ -397,15 +397,18 @@ let subCatList = separateList(resourceSubCategory)
     }
     googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
     descTag.innerText = resourceDesc
+
+    cityServedTag.innerText = cityList
    
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)
+    resourceTag.appendChild(cityServedList)
     resourceTag.appendChild(infoTag)
     
     infoTag.appendChild(categoryList)
-    infoTag.appendChild(cityServedList)
     infoTag.appendChild(subCategoryList)
     infoTag.appendChild(secondaryTagList)
+    infoTag.appendChild(cityServedList)
     infoTag.appendChild(webTag)
     infoTag.appendChild(phoneTag)
     infoTag.appendChild(emailTag)

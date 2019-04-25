@@ -1,5 +1,4 @@
 let resources = data
-console.log(typeof resources)
 
 function query (selector) {
   return document.querySelector(selector)
@@ -8,10 +7,34 @@ function query (selector) {
 function queryAll (selector) {
   return document.querySelectorAll(selector)
 }
-
-function searchAny (input) {
-  updateList(input)
+   
+function toJoinTitleCaseWords(str) {
+    let lowerInput = str.toLowerCase()
+    lowerInput = lowerInput.split(' ')
+    let upperInput = []
+    let wordJoin = ''
+    for (let idx = 0; idx < lowerInput.length; idx++){
+        wordJoin += lowerInput[idx].charAt(0).toUpperCase()+lowerInput[idx].slice(1)
+    }
+    upperInput.push(wordJoin)
+    return upperInput
 }
+
+function toTitleCase(str) {
+	str = str.toLowerCase().split(' ')
+	for (let i = 0; i < str.length; i++) {
+		str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1)
+	}
+	return str.join(' ')
+}
+
+function searchAny (input, modifiedInput, resources) {
+    let allCats = getAllCategories(resources)
+    let allCities = getAllCities(resources)
+    if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1)){
+        updateList(input)
+    }  
+}   
 
 function updateList (input) {
   const resourcesList = query('.list-of-resources')
@@ -31,6 +54,59 @@ function updateList (input) {
     }
   }
 }
+
+function getAllCategories (resources){
+    let allCategories = []
+    for (idx = 0; idx < resources.records.length; idx++){
+        const resourceCategory = resources.records[idx]['CEF_Category__c']
+        if (resourceCategory !== null){
+            let separatedCats = separateCategory(resourceCategory)
+            if (typeof separatedCats === 'object') {
+                let listLength = separatedCats.length
+                for (let i = 0; i < listLength; i++) {
+                    let category = separatedCats[i].replace(' ', '')
+                    if (!allCategories.includes(category)){
+                        allCategories.push(category)
+                    }
+                }
+            }
+            if (typeof separatedCats === 'string') {
+                let category = separatedCats.replace(' ', '')
+                if (!allCategories.includes(category)){
+                    allCategories.push(category)
+                }
+            } 
+        }
+    }
+    return allCategories
+}
+
+function getAllCities (resources){
+    let allCities = []
+    for (idx = 0; idx < resources.records.length; idx++){
+        const resourceCity = resources.records[idx]['City_Served__c']
+        if (resourceCity !== null){
+            let separatedCity = separateCity(resourceCity)
+            if (typeof separatedCity === 'object') {
+                let listLength = separatedCity.length
+                for (let i = 0; i < listLength; i++) {
+                    let city = separatedCity[i].replace(' ', '')
+                    if (!allCities.includes(city)){
+                        allCities.push(city)
+                    }
+                }
+            }
+            if (typeof separatedCity === 'string') {
+                let city = separatedCity.replace(' ', '')
+                if (!allCities.includes(city)){
+                    allCities.push(city)
+                }
+            } 
+        }
+    }
+    return allCities
+}
+
 
 function separateCategory (catList) {
   if (catList === null) {
@@ -179,21 +255,17 @@ function populateList (resources, idx) {
       categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
       categoryList.appendChild(categoryTag)
     }
-  }
+  } 
 
-  descTag.innerText = resourceDesc
-  if (resourceEligible !== null) {
-    eligibiliyTag.innerHTML = `R<i title="Be sure to explore eligibility requirements" class="fa"></i>`
-  }
   seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
-
   nameTag.innerText = resourceName
   webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
   phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
   emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
-
   descTag.innerText = resourceDesc
-  eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
+  if (resourceEligible !== null){
+    eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
+  }
 
   resourceList.appendChild(resourceTag)
   resourceTag.appendChild(nameTag)
@@ -208,92 +280,93 @@ function populateList (resources, idx) {
   resourceTag.appendChild(seeMoreTag)
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
   query('#search-form').addEventListener('submit', function (event) {
     let input = query('#name')
-    input.value = input.value.toLowerCase()
-    input.value = input.value.charAt(0).toUpperCase()
+    let upperInput = toJoinTitleCaseWords(input.value)
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    searchAny(toTitleCase(input.value), upperInput, resources)
     input.value = ''
   })
   query('#emergency-search').addEventListener('submit', function (event) {
     let input = query('#emergency-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#food-search').addEventListener('submit', function (event) {
     let input = query('#food-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#housing-search').addEventListener('submit', function (event) {
     let input = query('#housing-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#goods-search').addEventListener('submit', function (event) {
     let input = query('#goods-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#transportation-search').addEventListener('submit', function (event) {
     let input = query('#transportation-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#health-search').addEventListener('submit', function (event) {
     let input = query('#health-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#finances-search').addEventListener('submit', function (event) {
     let input = query('#finances-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#care-search').addEventListener('submit', function (event) {
     let input = query('#care-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#education-search').addEventListener('submit', function (event) {
     let input = query('#education-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#employment-search').addEventListener('submit', function (event) {
     let input = query('#employment-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#legal-search').addEventListener('submit', function (event) {
     let input = query('#legal-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#communication-search').addEventListener('submit', function (event) {
     let input = query('#communication-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
   query('#onestop-search').addEventListener('submit', function (event) {
     let input = query('#onestop-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
-    searchAny(input.value)
+    updateList(input.value)
   })
 })

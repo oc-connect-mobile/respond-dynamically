@@ -251,7 +251,7 @@ function populateList(resources, idx){
         categoryList.appendChild(categoryTag)
       }
     }
-
+  }
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
     nameTag.innerText = resourceName
     webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
@@ -264,7 +264,6 @@ function populateList(resources, idx){
     googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
     descTag.innerText = resourceDesc
    
-
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)
     resourceTag.appendChild(infoTag)
@@ -277,7 +276,6 @@ function populateList(resources, idx){
     infoTag.appendChild(googleTag)
     resourceTag.appendChild(descTag)
     resourceTag.appendChild(seeMoreTag) 
-
 }
 
 

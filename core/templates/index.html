@@ -86,13 +86,28 @@
     <div id="searchbar" role="search">
         <form id="search-form">
             <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category..." autofocus>
-            <button id="search-button" class="foo-button mdc-button" type="submit">Search</button>
+            <button id="search-button" class="mdc-button" type="submit">Search</button>
         </form>
+    </div>
+    <div>
+        <p class="filter-title">Remove these cities from search results</p> 
+        <div class="filter-btns">
+        <input class="toggleBtn mdc-button" type="button" onclick="slide('Durham')" value="Durham">
+        <input class="toggleBtn mdc-button" type="button" onclick="slide('ChapelHill')" value="Chapel Hill">
+        <input class="toggleBtn mdc-button" type="button" onclick="slide('Mebane')" value="Mebane">
+        <input class="toggleBtn mdc-button" type="button" onclick="slide('Raleigh')" value="Raleigh">
+        <input class="toggleBtn mdc-button" type="button" onclick="slide('Carrboro')" value="Carrboro">
+        <input class="toggleBtn mdc-button" type="button" onclick="slide('Hillsborough')" value="Hillsborough">
+        </div>
+
+        {% comment %} <input class="toggleBtn on" type="button" value="Durham"/>
+        <input class="toggleBtn on" type="button" value="Mebane"/>
+        <input class="toggleBtn on" type="button" value="ChapelHill"/> {% endcomment %}
     </div>
     <div class="list-of-resources">
     <script>
         let data = {{ data2 | safe }}
-    </script>  
+    </script>   
     </div>  
 </div>
 
@@ -101,16 +116,10 @@
 <div class="bottom-filter">
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
     </button>
-    
-</div> 
-
-
-<div role="main">
-
 {% endcomment %}  
-</div>
+    
 
-
+<script src="{% static "JavaScript/filter.js" %}"></script>
 <script src="{% static "JavaScript/resources.js"%}"></script>
 
 

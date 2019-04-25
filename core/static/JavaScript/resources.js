@@ -33,11 +33,7 @@ function searchAny (input, modifiedInput, resources) {
     let allCities = getAllCities(resources)
     let allSubCats = getAllSubCategories(resources)
     let allSecondaryTags = getAllSecondaryTags(resources)
-    console.log(allCats)
-    console.log(allCities)
-    console.log(allSubCats)
-    console.log(allSecondaryTags)
-    if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1)){
+    if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1) || modifiedInput.some(v=> allSubCats.indexOf(v) !== -1) || modifiedInput.some(v=> allSecondaryTags.indexOf(v) !== -1)){
         updateList(input)
     }  
 }   
@@ -45,20 +41,36 @@ function searchAny (input, modifiedInput, resources) {
 function updateList (input) {
   const resourcesList = query('.list-of-resources')
   resourcesList.innerHTML = ''
+  resources = data
+  let counter = 0
   for (idx = 0; idx < resources.records.length; idx++) {
     cityTest = resources.records[idx]['City_Served__c']
     categoryTest = resources.records[idx]['CEF_Category__c']
-    if (cityTest === null && categoryTest === null) {
+    subCatTest = resources.records[idx]['CEF_Sub_Category__c']
+    secondTagTest = resources.records[idx]['Secondary_Tags__c']
+    if (cityTest === null && categoryTest === null && subCatTest === null && secondTagTest === null ){
       continue
     }
-    if ((cityTest !== null && categoryTest !== null) && cityTest.includes(input) || categoryTest.includes(input)) {
+    if ((cityTest !== null && categoryTest !== null && subCatTest !== null && secondTagTest !== null) && (cityTest.includes(input) || categoryTest.includes(input) || subCatTest.includes(input) || secondTagTest.includes(input))) {
       populateList(resources, idx)
+      counter += 1
     } else if (cityTest !== null && cityTest.includes(input)) {
       populateList(resources, idx)
+      counter += 1
     } else if (categoryTest !== null && categoryTest.includes(input)) {
       populateList(resources, idx)
+      counter += 1
+    }
+     else if (subCatTest !== null && subCatTest.includes(input)) {  
+      populateList(resources, idx)
+      counter += 1
+    }
+     else if (secondTagTest !== null && secondTagTest.includes(input)) {
+      populateList(resources, idx)
+      counter += 1
     }
   }
+  console.log(counter)
 }
 
 function getAllCategories (resources){
@@ -283,8 +295,9 @@ function populateList(resources, idx){
                 city = city.replace(' ', '')
             }
         cityServedTag.classList.add('listed-city', (`${city}`))
+        resourceTag.classList.add(`${city}`)
         cityServedTag.setAttribute('style', 'display:hidden')
-        cityServedList.appendChild(cityServedTag)
+        resourceTag.appendChild(cityServedTag)
       }
     }
     if (typeof cityList === 'string') {
@@ -293,11 +306,12 @@ function populateList(resources, idx){
                 city = city.replace(' ', '')
             }
       cityServedTag.classList.add('listed-city', (`${city}`))
+      resourceTag.classList.add(`${city}`)
       cityServedTag.setAttribute('style', 'display:hidden')
-      cityServedList.appendChild(cityServedTag)
+      resourceTag.appendChild(cityServedTag)
     }
   }
-  cityServedList.setAttribute('style', 'display:hidden')
+  resourceTag.setAttribute('style', 'display:hidden')
 
 let subCatList = separateList(resourceSubCategory)
   if (subCatList !== null) {
@@ -310,8 +324,9 @@ let subCatList = separateList(resourceSubCategory)
                 subCat = subCat.replace(' ', '')
             }
         subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
+        resourceTag.classList.add(`${subCat}`)
         subCategoryTag.setAttribute('style', 'display:hidden')
-        subCategoryList.appendChild(subCategoryTag)
+        resourceTag.appendChild(subCategoryTag)
       }
     }
     if (typeof subCatList === 'string') {
@@ -320,45 +335,41 @@ let subCatList = separateList(resourceSubCategory)
                 subCat = subCat.replace(' ', '')
             }
       subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
+      resourceTag.classList.add(`${subCat}`)
       subCategoryTag.setAttribute('style', 'display:hidden')
-      subCategoryList.appendChild(subCategoryTag)
+      resourceTag.appendChild(subCategoryTag)
     }
   }
-  subCategoryList.setAttribute('style', 'display:hidden')
+  resourceTag.setAttribute('style', 'display:hidden')
 
     let secondTagList = separateList(resourceSecondaryTag)
     if (secondTagList !== null) {
         if (typeof secondTagList === 'object') {  
         let listLength = secondTagList.length
-        console.log(listLength)
         for (let i = 0; i < listLength; i++) {
             let secondTag = document.createElement('span')
-            console.log('object')
-            console.log(secondTagList[i])
             let tag = secondTagList[i].replace(' ', '')
                 while (tag.includes(' ')){
                     tag = tag.replace(' ', '')
                 }
-            console.log(tag)
             secondaryTag.classList.add('listed-tag', (`${tag}`))
+            resourceTag.classList.add(`${tag}`)
             secondaryTag.setAttribute('style', 'display:hidden')
-            secondaryTagList.appendChild(secondaryTag)
+            resourceTag.appendChild(secondaryTag)
         }
         }
         if (typeof secondTagList === 'string') {
-        console.log('string')
-        console.log(secondTagList)
         let tag = secondTagList.replace(' ', '')
                 while (tag.includes(' ')){
                     tag = tag.replace(' ', '')
                 }
-        console.log(tag)
         secondaryTag.classList.add('listed-tag', (`${tag}`))
+        resourceTag.classList.add(`${tag}`)
         secondaryTag.setAttribute('style', 'display:hidden')
-        secondaryTagList.appendChild(secondaryTag)
+        resourceTag.appendChild(secondaryTag)
         }
     }
-    secondaryTagList.setAttribute('style', 'display:hidden')
+    resourceTag.setAttribute('style', 'display:hidden')
 
   let catList = separateList(resourceCategory)
   if (catList !== null) {
@@ -370,6 +381,7 @@ let subCatList = separateList(resourceSubCategory)
         let lowerCat = cat.toLowerCase()
         categoryTag.innerText = catList[i]
         categoryTag.classList.add('listed-cat', (`${cat}`))
+        resourceTag.classList.add(`${cat}`)
         let iconName = addIconToCategory(cat)
         categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
         categoryList.appendChild(categoryTag)
@@ -391,8 +403,8 @@ let subCatList = separateList(resourceSubCategory)
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)
     resourceTag.appendChild(infoTag)
+    resourceTag.appendChild(cityServedList)
     infoTag.appendChild(categoryList)
-    infoTag.appendChild(cityServedList)
     infoTag.appendChild(subCategoryList)
     infoTag.appendChild(secondaryTagList)
     infoTag.appendChild(webTag)
@@ -404,7 +416,14 @@ let subCatList = separateList(resourceSubCategory)
     resourceTag.appendChild(seeMoreTag) 
 }
 
-
+function slide(input) {
+    resource = queryAll('.listed-resource')
+    for (let idx = 0; idx < resource.length; idx++){
+        if (resource[idx].classList.contains(input)){
+            resource[idx].classList.toggle('hide')
+        }
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   query('#search-form').addEventListener('submit', function (event) {

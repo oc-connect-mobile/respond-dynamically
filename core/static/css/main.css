@@ -376,3 +376,17 @@ header {
     color: #ec407a;
 }
 
+.here-is-good {
+    margin: 1rem 1rem 1rem 1rem;
+    border-top: 1px solid black;
+    /* max-width: 375px; */
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: -2px 3px 7px 1px #a0a0a0;
+    background-color: white;
+}

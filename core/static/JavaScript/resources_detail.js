@@ -180,8 +180,7 @@ function addIconToCategory (catList) {
 
 function populate(resources){
   const hereIsGood = query('.here-is-good')
-  const thebreaks = '<br><br><br><br><br><br><br><br><br><br><br>'
-  hereIsGood.innerHTML = thebreaks
+ 
 
 
 
@@ -194,9 +193,14 @@ function populate(resources){
     const categoryList = document.createElement('div')
     const categoryTag = document.createElement('span')
     const descTag = document.createElement('p')
-    const eligibiliyTag = document.createElement('span')
+    const eligibilityTag = document.createElement('div')
     const cityServedTag = document.createElement('div')
     const cityServedList = document.createElement('div')
+
+    const waittimePart = document.createElement('div')
+    const espanolPart = document.createElement('div')
+    const hoursPart = document.createElement('div')
+    const addressPart = document.createElement('div')
     
 
   const resourceId = resources.Id
@@ -209,6 +213,33 @@ function populate(resources){
   const resourceEligible = resources.Eligibility_Criteria__c
   const resourceCity = resources.City_Served__c
 
+  const resourcePrimary_City = resources.Primary_City__c
+  const resourcePrimary_State = resources.Primary_State__c
+  const resourcePrimary_Street = resources.Primary_Street__c
+  const resourcePrimary_Zip = resources.Primary_Zip__c
+  const resourceServices_txt = resources.Services_txt__c
+  const resourcepostalCode = resources.postalCode
+  const resourcestate = resources.state
+  const resourcestreet = resources.street
+  const resourceLastModifiedDate = resources.LastModifiedDate
+  const resourceLastActivityDate = resources.LastActivityDate
+  const resourceLastViewedDate = resources.LastViewedDate
+  const resourceDescription = resources.Description
+  const resourceLatino_Services = resources.Latino_Services__c
+  const resourceHours = resources.Hours__c
+  const resourceSaturday_Hours = resources.Saturday_Hours__c
+  const resourceFriday_Hours = resources.Friday_Hours__c
+  const resourceThursday_Hours = resources.Thursday_Hours__c
+  const resourceWednesday_Hours = resources.Wednesday_Hours__c
+  const resourceTuesday_Hours = resources.Tuesday_Hours__c
+  const resourceMonday_Hours = resources.Monday_Hours__c
+  const resourceSunday_Hours = resources.Sunday_Hours__c
+  const resourceMonday_Friday_Hours = resources.Monday_Friday_Hours__c
+  const resourceOther_Hours = resources.Other_Hours__c
+  const resourceHours_Format = resources.Hours_Format__c
+  const resourceParentId = resources.ParentId
+  const resourceTime_Till_Service = resources.Time_Till_Service__c
+
   console.log(resourceEmail)
 
     resourceTag.className = 'listed-resource'
@@ -218,10 +249,14 @@ function populate(resources){
     webTag.className = 'listed-site'
     phoneTag.className = 'listed-phone'
     emailTag.className = 'listed-email'
-    categoryList.className = 'category-list'
-    eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
-    cityServedTag.className = 'city-list'
-    
+    categoryList.className = 'listed-desc'
+    eligibilityTag.className = 'listed-desc'
+    cityServedTag.className = 'listed-desc'
+    addressPart.className = 'listed-desc'
+    hoursPart.className = 'listed-desc'
+    addressPart.className = 'listed-desc'
+    waittimePart.className = 'listed-desc'
+    espanolPart.className = 'listed-desc'
 
 
   let cityList = separateCity(resourceCity)
@@ -234,6 +269,7 @@ function populate(resources){
         cityServedTag.classList.add('listed-city', (`${city}`))
         cityServedTag.setAttribute('style', 'display:hidden')
         cityServedList.appendChild(cityServedTag)
+        cityServedTag.className = 'listed-desc'
       }
     }
     if (typeof cityList === 'string') {
@@ -241,9 +277,11 @@ function populate(resources){
       cityServedTag.classList.add('listed-city', (`${city}`))
       cityServedTag.setAttribute('style', 'display:hidden')
       cityServedList.appendChild(cityServedTag)
+      cityServedTag.className = 'listed-desc'
     }
   }
-  cityServedList.setAttribute('style', 'display:hidden')
+  // cityServedList.setAttribute('style', 'display:hidden')
+ 
 
   let catList = separateCategory(resourceCategory)
   if (catList !== null) {
@@ -265,29 +303,59 @@ function populate(resources){
     console.log(catList)
     console.log(nameTag)
 
-    
-    nameTag.innerText = resourceName
+    nameTag.innerHTML= `<h2>${resourceName}</h2>`
     webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
     phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
     emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
-    descTag.innerText = resourceDesc
-    if (resourceEligible !== null){
-      eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
-    }
-    descTag.innerText = resourceDesc
-   
-    console.log(nameTag)
+    
+    // if (resourceEligible !== null){}
+    
+    
+    waittimePart.innerHTML = `<h3 class="mdc-button">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`
+
+
+    espanolPart.innerHTML = `<h3 class="mdc-button">Español</h3><p style="margin:.5rem">${resourceLatino_Services}<p>`
+
+    hoursPart.innerHTML = `<h3 class="mdc-button">Hours</h3><p style="margin:.5rem">${resourceHours}<p>`
+
+    addressPart.innerHTML =
+    `<h3 class="mdc-button">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
+    
+    
+    categoryTag.innerHTML =
+    `<h3 class="mdc-button">Categories</h3><p style="margin:.5rem">${catList}<p>`
+
+
+    cityServedTag.innerHTML =
+   `<h3 class="mdc-button">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
+
+    descTag.innerHTML =
+    `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc} <br> ${resourceDescription}<p>`
+
+    eligibilityTag.innerHTML = 
+   `<h3 class="mdc-button">Eligibiltiy Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
+
+  
+
+  
 
     hereIsGood.appendChild(nameTag)
-    hereIsGood.appendChild(infoTag)
-    hereIsGood.appendChild(categoryList)
-    hereIsGood.appendChild(cityServedList)
+    // hereIsGood.appendChild(infoTag)
     hereIsGood.appendChild(webTag)
     hereIsGood.appendChild(phoneTag)
     hereIsGood.appendChild(emailTag)
-    hereIsGood.appendChild(eligibiliyTag)
-
+    hereIsGood.appendChild(categoryTag)
+    hereIsGood.appendChild(cityServedTag)
+    hereIsGood.appendChild(addressPart)
+    hereIsGood.appendChild(hoursPart)
+   
+  
+    hereIsGood.appendChild(waittimePart)
+    hereIsGood.appendChild(espanolPart)
+        
     hereIsGood.appendChild(descTag)
+    hereIsGood.appendChild(eligibilityTag)
+
 
    console.log("end of populate function")
 }
@@ -301,28 +369,29 @@ populate(resources)
 
 
 ////////////////////
-const resourcePrimary_City__c = resources.Primary_City__c
-const resourcePrimary_State__c = resources.Primary_State__c
-const resourcePrimary_Street__c = resources.Primary_Street__c
-const resourcePrimary_Zip__c = resources.Primary_Zip__c
-const resourceServices_txt__c = resources.Services_txt__c
-const resourcepostalCode = resources.postalCode
-const resourcestate = resources.state
-const resourcestreet = resources.street
-const resourceLastModifiedDate = resources.LastModifiedDate
-const resourceLastActivityDate = resources.LastActivityDate
-const resourceLastViewedDate = resources.LastViewedDate
-const resourceDescription = resources.Description
-const resourceLatino_Services__c = resources.Latino_Services__c
-const resourceHours__c = resources.Hours__c
-const resourceSaturday_Hours__c = resources.Saturday_Hours__c
-const resourceFriday_Hours__c = resources.Friday_Hours__c
-const resourceThursday_Hours__c = resources.Thursday_Hours__c
-const resourceWednesday_Hours__c = resources.Wednesday_Hours__c
-const resourceTuesday_Hours__c = resources.Tuesday_Hours__c
-const resourceMonday_Hours__c = resources.Monday_Hours__c
-const resourceSunday_Hours__c = resources.Sunday_Hours__c
-const resourceMonday_Friday_Hours__c = resources.Monday_Friday_Hours__c
-const resourceOther_Hours__c = resources.Other_Hours__c
-const resourceHours_Format__c = resources.Hours_Format__c
-const resourceParentId = resources.ParentId
+// const resourcePrimary_City = resources.Primary_City__c
+// const resourcePrimary_State = resources.Primary_State__c
+// const resourcePrimary_Street = resources.Primary_Street__c
+// const resourcePrimary_Zip = resources.Primary_Zip__c
+// const resourceServices = resources.Services_txt__c
+// const resourcepostalCode = resources.postalCode
+// const resourcestate = resources.state
+// const resourcestreet = resources.street
+// const resourceLastModifiedDate = resources.LastModifiedDate
+// const resourceLastActivityDate = resources.LastActivityDate
+// const resourceLastViewedDate = resources.LastViewedDate
+// const resourceDescription = resources.Description
+// const resourceLatino_Services = resources.Latino_Services__c
+// const resourceHours = resources.Hours__c
+// const resourceSaturday= resources.Saturday_Hours__c
+// const resourceFriday = resources.Friday_Hours__c
+// const resourceThursday = resources.Thursday_Hours__c
+// const resourceWednesday = resources.Wednesday_Hours__c
+// const resourceTuesday= resources.Tuesday_Hours__c
+// const resourceMonday = resources.Monday_Hours__c
+// const resourceSunday = resources.Sunday_Hours__c
+// const resourceMonday_Friday = resources.Monday_Friday_Hours__c
+// const resourceOther_Hours = resources.Other_Hours__c
+// const resourceHours_Format = resources.Hours_Format__c
+// const resourceParentId = resources.ParentId
+// const resourceTime_Till_Service = resources.Time_Till_Service__c

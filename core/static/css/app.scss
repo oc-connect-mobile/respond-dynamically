@@ -92,7 +92,7 @@ $fontFamily: "Open Sans", sans-serif;
   color: white;
 }
 .contact-info button {
-  @include mdc-button-ink-colorrgb(#059EDA);
+  @include mdc-button-ink-color(#059EDA);
   @include mdc-ripple-surface;
   @include mdc-states;
   @include mdc-states-base-color( #059EDA);

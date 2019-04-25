@@ -241,9 +241,12 @@ function populateList(resources, idx){
     const resourceTag = document.createElement('div')
     const nameTag = document.createElement('h2')
     const infoTag = document.createElement('span')
-    const webTag = document.createElement('span')
-    const phoneTag = document.createElement('span') 
-    const emailTag = document.createElement('span')
+    
+    const contactInfoDiv = document.createElement('div')
+    const webTag = document.createElement('button')
+    const phoneTag = document.createElement('button') 
+    const emailTag = document.createElement('button')
+
     const categoryList = document.createElement('div')
     const categoryTag = document.createElement('span')
     const descTag = document.createElement('p')
@@ -274,9 +277,12 @@ function populateList(resources, idx){
     infoTag.className = 'info'
     nameTag.className = 'listed-name'
     descTag.className = 'listed-desc'
+
+    contactInfoDiv.className = 'contact-info'
     webTag.className = 'listed-site'
     phoneTag.className = 'listed-phone'
     emailTag.className = 'listed-email'
+
     categoryList.className = 'category-list'
     eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
     seeMoreTag.className = 'listed-detail'
@@ -390,9 +396,13 @@ let subCatList = separateList(resourceSubCategory)
   }
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
     nameTag.innerText = resourceName
-    webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
-    phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
-    emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+
+    contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
+    
+    webTag.innerHTML = `<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
+    phoneTag.innerHTML = `<a title="Call resource" class="" href="tel:${resourcePhone}"><i class="fa fa-lg fa-phone"></i></a>`
+    emailTag.innerHTML = `<a title= "Email resource" class="" href="mailto:${resourceEmail}"><i class="fa fa-lg fa-envelope"></i></a>`
+
     descTag.innerText = resourceDesc
     if (resourceEligible !== null){
       eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
@@ -413,6 +423,12 @@ let subCatList = separateList(resourceSubCategory)
     infoTag.appendChild(eligibiliyTag)
     infoTag.appendChild(googleTag)
     resourceTag.appendChild(descTag)
+    resourceTag.appendChild(contactInfoDiv)
+    contactInfoDiv.appendChild(webTag)
+    contactInfoDiv.appendChild(phoneTag)
+    contactInfoDiv.appendChild(emailTag)
+
+
     resourceTag.appendChild(seeMoreTag) 
 }
 

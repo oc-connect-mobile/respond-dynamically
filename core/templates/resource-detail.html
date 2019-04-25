@@ -31,7 +31,7 @@
             <div aria-label= "Short Description" class="listed-desc"> {{ details.Description_Short__c }}</div>
         {% endif %}
         {% if details.Eligibility_Criteria__c != None %}
-            <divaria-label= "Eligibility Criteria">
+            <div aria-label= "Eligibility Criteria">
             <div class="listed-desc"> Eligibility Requirements: </div>
             <div class="listed-desc">{% autoescape off %}{{ details.Eligibility_Criteria__c }}{% endautoescape %}</div>
             <div>

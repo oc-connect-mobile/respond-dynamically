@@ -176,6 +176,11 @@ header {
     border-bottom: 1px solid black;
     box-shadow: -2px 3px 7px 1px #a0a0a0;
     background-color: white;
+    transition: all 0.4s ease-in-out;
+}
+.hide{
+    height: 0;
+    display: none;
 }
 /* .listed-resource:hover {
   transform: scale(1.03, 1.03);
@@ -318,10 +323,9 @@ header {
     justify-content: space-evenly;
 }
 
-#searchbar {
+#search-form {
     display: flex;
     flex-flow: column;
-    min-width: 400px;
     justify-content: center;
     align-items: center;
 }
@@ -338,7 +342,21 @@ header {
     min-width: 200px;
     border: 1px solid black;
 }
-
+.filter-title{
+    margin: 0;
+    margin-top: .5rem;
+    text-align: center;
+}
+.filter-btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 300px;
+    height: 100px;
+    max-height: 200px;
+    margin: .5rem;
+}
 
 .i-emergency {
     color: #ef5350;
@@ -388,3 +406,6 @@ header {
     color: #ec407a;
 }
 
+.off {
+    background-color: grey;
+  }

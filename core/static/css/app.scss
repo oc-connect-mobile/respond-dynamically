@@ -81,3 +81,15 @@ body {
 .listed-detail a{
   text-decoration: none;
 }
+
+.contact-info {
+  background-color: purple;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  float: left;
+  left: 0px;
+  bottom: 0px;
+  display: flexbox;
+}

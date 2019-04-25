@@ -31,6 +31,12 @@ function toTitleCase(str) {
 function searchAny (input, modifiedInput, resources) {
     let allCats = getAllCategories(resources)
     let allCities = getAllCities(resources)
+    let allSubCats = getAllSubCategories(resources)
+    let allSecondaryTags = getAllSecondaryTags(resources)
+    console.log(allCats)
+    console.log(allCities)
+    console.log(allSubCats)
+    console.log(allSecondaryTags)
     if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1)){
         updateList(input)
     }  
@@ -60,14 +66,14 @@ function getAllCategories (resources){
     for (idx = 0; idx < resources.records.length; idx++){
         const resourceCategory = resources.records[idx]['CEF_Category__c']
         if (resourceCategory !== null){
-            let separatedCats = separateCategory(resourceCategory)
+            let separatedCats = separateList(resourceCategory)
             if (typeof separatedCats === 'object') {
                 let listLength = separatedCats.length
                 for (let i = 0; i < listLength; i++) {
                     let category = separatedCats[i].replace(' ', '')
                     if (!allCategories.includes(category)){
                         allCategories.push(category)
-                    }
+                    }   
                 }
             }
             if (typeof separatedCats === 'string') {
@@ -86,7 +92,7 @@ function getAllCities (resources){
     for (idx = 0; idx < resources.records.length; idx++){
         const resourceCity = resources.records[idx]['City_Served__c']
         if (resourceCity !== null){
-            let separatedCity = separateCity(resourceCity)
+            let separatedCity = separateList(resourceCity)
             if (typeof separatedCity === 'object') {
                 let listLength = separatedCity.length
                 for (let i = 0; i < listLength; i++) {
@@ -107,27 +113,72 @@ function getAllCities (resources){
     return allCities
 }
 
-
-function separateCategory (catList) {
-  if (catList === null) {
-    return null
-  }
-  if (catList.includes(';')) {
-    let List = catList.split(';')
-    return List
-  }
-  return catList
+function getAllSubCategories (resources){
+    let allSubCategories = []
+    for (idx = 0; idx < resources.records.length; idx++){
+        const resourceSubCategory = resources.records[idx]['CEF_Sub_Category__c']
+        if (resourceSubCategory !== null){
+            let separatedSubCategory = separateList(resourceSubCategory)
+            if (typeof separatedSubCategory === 'object') {
+                let listLength = separatedSubCategory.length
+                for (let i = 0; i < listLength; i++) {
+                    let subCat = separatedSubCategory[i].replace(' ', '')
+                    if (!allSubCategories.includes(subCat)){
+                        allSubCategories.push(subCat)
+                    }
+                }
+            }
+            if (typeof separatedSubCategory === 'string') {
+                let subCat = separatedSubCategory.replace(' ', '')
+                if (!allSubCategories.includes(subCat)){
+                    allSubCategories.push(subCat)
+                }
+            } 
+        }
+    }
+    return allSubCategories
 }
 
-function separateCity (cityList) {
-  if (cityList === null) {
+function getAllSecondaryTags (resources){
+    let allSecondaryTags = []
+    for (idx = 0; idx < resources.records.length; idx++){
+        const resourceSecondaryTag = resources.records[idx]['Secondary_Tags__c']
+        if (resourceSecondaryTag !== null){
+            let separatedSecondaryTags = separateList(resourceSecondaryTag)
+            if (typeof separatedSecondaryTags === 'object') {
+                let listLength = separatedSecondaryTags.length
+                for (let i = 0; i < listLength; i++) {
+                    let secondTag = separatedSecondaryTags[i].replace(' ', '')
+                    if (!allSecondaryTags.includes(secondTag)){
+                        allSecondaryTags.push(secondTag)
+                    }
+                }
+            }
+            if (typeof separatedSecondaryTags === 'string') {
+                let secondTag = separatedSecondaryTags.replace(' ', '')
+                if (!allSecondaryTags.includes(secondTag)){
+                    allSecondaryTags.push(secondTag)
+                }
+            } 
+        }
+    }
+    return allSecondaryTags
+}
+
+
+function separateList (joinedList) {
+  if (joinedList === null) {
     return null
   }
-  if (cityList.includes(';')) {
-    let List = cityList.split(';')
-    return List
+  if (joinedList.includes(';')) {
+    let separatedList = joinedList.split(';')
+    return separatedList
   }
-  return cityList
+  if (joinedList.includes('|')) {
+    let separatedList = joinedList.split('|')
+    return separatedList
+  }
+  return joinedList
 }
 
 function addIconToCategory (catList) {
@@ -188,6 +239,10 @@ function populateList(resources, idx){
     const seeMoreTag = document.createElement('button')
     const cityServedTag = document.createElement('div')
     const cityServedList = document.createElement('div')
+    const subCategoryTag = document.createElement('div')
+    const subCategoryList = document.createElement('div')
+    const secondaryTag = document.createElement('div')
+    const secondaryTagList = document.createElement('div')
     const googleTag = document.createElement('span')
 
   const resourceId = resources.records[idx]['Id']
@@ -199,6 +254,8 @@ function populateList(resources, idx){
   const resourceDesc = resources.records[idx]['Description_Short__c']
   const resourceEligible = resources.records[idx]['Eligibility_Criteria__c']
   const resourceCity = resources.records[idx]['City_Served__c']
+  const resourceSubCategory = resources.records[idx]['CEF_Sub_Category__c']
+  const resourceSecondaryTag = resources.records[idx]['Secondary_Tags__c']
 
 
     resourceTag.className = 'listed-resource'
@@ -215,13 +272,16 @@ function populateList(resources, idx){
     googleTag.className = 'google-search'
 
 
-  let cityList = separateCity(resourceCity)
+  let cityList = separateList(resourceCity)
   if (cityList !== null) {
     if (typeof cityList === 'object') {
       let listLength = cityList.length
       for (let i = 0; i < listLength; i++) {
         let cityServedTag = document.createElement('span')
         let city = cityList[i].replace(' ', '')
+        while (city.includes(' ')){
+                city = city.replace(' ', '')
+            }
         cityServedTag.classList.add('listed-city', (`${city}`))
         cityServedTag.setAttribute('style', 'display:hidden')
         cityServedList.appendChild(cityServedTag)
@@ -229,6 +289,9 @@ function populateList(resources, idx){
     }
     if (typeof cityList === 'string') {
       let city = cityList.replace(' ', '')
+      while (city.includes(' ')){
+                city = city.replace(' ', '')
+            }
       cityServedTag.classList.add('listed-city', (`${city}`))
       cityServedTag.setAttribute('style', 'display:hidden')
       cityServedList.appendChild(cityServedTag)
@@ -236,7 +299,68 @@ function populateList(resources, idx){
   }
   cityServedList.setAttribute('style', 'display:hidden')
 
-  let catList = separateCategory(resourceCategory)
+let subCatList = separateList(resourceSubCategory)
+  if (subCatList !== null) {
+    if (typeof subCatList === 'object') {  
+      let listLength = subCatList.length
+      for (let i = 0; i < listLength; i++) {
+        let subCategoryTag = document.createElement('span')
+        let subCat = subCatList[i].replace(' ', '')
+            while (subCat.includes(' ')){
+                subCat = subCat.replace(' ', '')
+            }
+        subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
+        subCategoryTag.setAttribute('style', 'display:hidden')
+        subCategoryList.appendChild(subCategoryTag)
+      }
+    }
+    if (typeof subCatList === 'string') {
+      let subCat = subCatList.replace(' ', '')
+            while (subCat.includes(' ')){
+                subCat = subCat.replace(' ', '')
+            }
+      subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
+      subCategoryTag.setAttribute('style', 'display:hidden')
+      subCategoryList.appendChild(subCategoryTag)
+    }
+  }
+  subCategoryList.setAttribute('style', 'display:hidden')
+
+    let secondTagList = separateList(resourceSecondaryTag)
+    if (secondTagList !== null) {
+        if (typeof secondTagList === 'object') {  
+        let listLength = secondTagList.length
+        console.log(listLength)
+        for (let i = 0; i < listLength; i++) {
+            let secondTag = document.createElement('span')
+            console.log('object')
+            console.log(secondTagList[i])
+            let tag = secondTagList[i].replace(' ', '')
+                while (tag.includes(' ')){
+                    tag = tag.replace(' ', '')
+                }
+            console.log(tag)
+            secondaryTag.classList.add('listed-tag', (`${tag}`))
+            secondaryTag.setAttribute('style', 'display:hidden')
+            secondaryTagList.appendChild(secondaryTag)
+        }
+        }
+        if (typeof secondTagList === 'string') {
+        console.log('string')
+        console.log(secondTagList)
+        let tag = secondTagList.replace(' ', '')
+                while (tag.includes(' ')){
+                    tag = tag.replace(' ', '')
+                }
+        console.log(tag)
+        secondaryTag.classList.add('listed-tag', (`${tag}`))
+        secondaryTag.setAttribute('style', 'display:hidden')
+        secondaryTagList.appendChild(secondaryTag)
+        }
+    }
+    secondaryTagList.setAttribute('style', 'display:hidden')
+
+  let catList = separateList(resourceCategory)
   if (catList !== null) {
     if (typeof catList === 'object') {
       let listLength = catList.length
@@ -269,6 +393,8 @@ function populateList(resources, idx){
     resourceTag.appendChild(infoTag)
     infoTag.appendChild(categoryList)
     infoTag.appendChild(cityServedList)
+    infoTag.appendChild(subCategoryList)
+    infoTag.appendChild(secondaryTagList)
     infoTag.appendChild(webTag)
     infoTag.appendChild(phoneTag)
     infoTag.appendChild(emailTag)

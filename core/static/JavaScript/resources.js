@@ -446,7 +446,7 @@ function slideUpResource(input) {
     }
 }
 
-function hideFilters() {
+function hideCityFilters() {
     filterBox = query('.city-filter-box')
     filterBox.classList.toggle('hide')
 }

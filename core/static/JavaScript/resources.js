@@ -237,6 +237,11 @@ function addIconToCategory (catList) {
 
 
 function populateList(resources, idx){
+    const welcomeTag = query('.welcome')
+    const welcomeMessage = query('.welcome-message')
+    welcomeTag.innerText = ''
+    welcomeMessage.innerText = ''
+
     const resourceList = query('.list-of-resources')
     const resourceTag = document.createElement('div')
     const nameTag = document.createElement('h2')
@@ -432,13 +437,23 @@ let subCatList = separateList(resourceSubCategory)
     resourceTag.appendChild(seeMoreTag) 
 }
 
-function slide(input) {
+function slideUpResource(input) {
     resource = queryAll('.listed-resource')
     for (let idx = 0; idx < resource.length; idx++){
         if (resource[idx].classList.contains(input)){
             resource[idx].classList.toggle('hide')
         }
     }
+}
+
+function hideFilters() {
+    filterBox = query('.city-filter-box')
+    filterBox.classList.toggle('hide')
+}
+
+function hideCatFilters() {
+    filterBox = query('.category-btns-box')
+    filterBox.classList.toggle('hide')
 }
 
 document.addEventListener('DOMContentLoaded', function () {

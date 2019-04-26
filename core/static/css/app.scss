@@ -37,17 +37,15 @@ $fontFamily: "Open Sans", sans-serif;
 }
 
 .bottom-filter {
-  background-color: rgba(51, 51, 51, 0.336);
+  // background-color: rgba(51, 51, 51, 0.336);
   overflow: hidden;
   position: fixed;
   bottom: 0;
-  width: 100%;
-  display: flex;
+  width: 98%;
 }
-.bottom-filter .button-container {
-  float: right;
-}
+
 .bottom-filter .mdc-button {
+  float: right;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -60,6 +58,21 @@ $fontFamily: "Open Sans", sans-serif;
   padding: 0;
   min-width: 60px;
   min-height: 60px;
+}
+
+.bottom-back-btn {
+  // background-color: rgba(51, 51, 51, 0.336);
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+}
+
+.bottom-back-btn .mdc-button {
+  float: left;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 0;
 }
 
 .listed-detail {
@@ -92,18 +105,33 @@ $fontFamily: "Open Sans", sans-serif;
   color: white;
 }
 .contact-info button {
-  @include mdc-button-ink-color(#059EDA);
-  @include mdc-ripple-surface;
-  @include mdc-states;
-  @include mdc-states-base-color( #059EDA);
-  // background-color: #059EDA;
+
+  background-color: #059EDA;
   border-radius: 50%;
   width: 50px;
   height: 50px;
   padding: 0;
+
   text-decoration: none;
 }
 
 .category-list {
   float: right;
+}
+
+.info-menu {
+  margin: 15px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.637); 
+}
+.welcome {
+  color: #059EDA;
+  background-color: rgba(255, 255, 255, 0.637);
+  border: solid 1px rgb(230, 228, 228);
+  border-radius: 10px;
+  text-shadow: 2px 2px 2px 2px rgb(131, 130, 130);
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 0;
 }

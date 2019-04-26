@@ -71,21 +71,13 @@ header {
     font-size: 14pt;
     color: black;
     background-color: rgba(255, 255, 255, 0.637);
-    line-height: 50%s;
+    /* line-height: 50%s; */
     margin: auto;
     
 }
 
-.info-menu {
-    
-    color:#057AB4;
-    padding: 1rem;
-    text-align: center;
-    line-height: 100%;  
-}
-
 .info-span {
-    line-height: 100%;
+    /* line-height: 100%; */
    
 }
 
@@ -121,7 +113,7 @@ header {
 
 
 .content-container {
-    padding-top: 60px;
+    padding-top: 70px;
     margin-left: 10px;
 }
 .detail-container{

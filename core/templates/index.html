@@ -8,41 +8,20 @@
 
 
 <div class="welcome"><h3>Welcome,</h3></div>
-<div class="info-menu" id="filter">
+<div class="info-menu">
         <p>Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
 
 
+<div id="searchbar" role="search">
+    <form id="search-form">
+        <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category..." autofocus>
+        <button id="search-button" class="mdc-button" type="submit">Search</button>
+    </form>
+</div>
 
-<h4>Use a filter or search below</h4>
-<div aria-label="Here a various ways to filter using checkboxes">  
-        {% comment %} Modals {% endcomment %}
-
-    {% comment %} <div class="mb block">
-        <div id="filter01" class="mdc-dialog">
-            <div class="mdc-dialog__surface">
-               
-            <form method="GET" class="modal-content" action="">
-                <h3 class="mdc-dialog__header">
-                        <h2 class="mdc-dialog__header__title">
-                            County
-                        </h2>
-                    </h3>
-                <section class="mdc-dialog__body">
-                {% csrf_token %}
-                {{ county_form.as_p }}
-                </section> 
-                <footer class="mdc-dialog__footer">
-                        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">
-                        FILTER</button>
-                        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">
-                        CLEAR FILTER</button>
-                </footer>
-            </form>
-            </div>
-        </div>
-    </div> {% endcomment %}
-
-
+<div aria-label="Here a various ways to filter using checkboxes"> 
+    <br> 
+    <h4>Filter by Category:</h4>  
     <div id="category-buttons">
 
         <form id="emergency-search">       
@@ -81,19 +60,12 @@
         <form id="communication-search">       
             <button id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Filter by communication category" aria-hidden="true">feedback</i></button>
         </form>
-        <form id="onestop-search">       
-            <button id="onestop-button" class="foo-button mdc-button" type="submit" value="One Stop"><i class="material-icons i-stars" aria-label="Emergency" aria-hidden="true">stars</i></button>
-        </form>
     </div>
 
-    <div id="searchbar" role="search">
-        <form id="search-form">
-            <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category..." autofocus>
-            <button id="search-button" class="mdc-button" type="submit">Search</button>
-        </form>
-    </div>
     <div>
-        <p class="filter-title">Remove these cities from search results</p> 
+        <br>
+        <h4>Filter by Location:</h4>
+        <p class="filter-title">Click a city to remove it from search results</p> 
         <div class="filter-btns">
         <input class="toggleBtn mdc-button" type="button" onclick="slide('Durham')" value="Durham">
         <input class="toggleBtn mdc-button" type="button" onclick="slide('ChapelHill')" value="Chapel Hill">
@@ -108,11 +80,7 @@
         <input class="toggleBtn on" type="button" value="ChapelHill"/> {% endcomment %}
     </div>
 </div>
-    <div class="list-of-resources">
-    <script>
-        let data = {{ data2 | safe }}
-    </script>   
-    </div>  
+    
 </div>
 
 	
@@ -121,7 +89,97 @@
     <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
     </button>
 </div> 
+
+{% comment %} Modals {% endcomment %}
+
+<div id="filter" class="mdc-dialog">
     
+        
+    <h3 class="mdc-dialog__header">
+        <h2 class="mdc-dialog__header__title modal-content">
+            Filter Resources
+        </h2>
+    </h3>
+
+    <section class="mdc-dialog__body modal-content">
+        <h4>Use a filter or search below</h4>
+    
+                    
+        <div id="category-buttons" aria-label="Here a various ways to filter using checkboxes">
+    
+            <form id="emergency-search">       
+                <button id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
+            </form>
+            <form id="food-search">       
+                <button id="food-button" class="foo-button mdc-button" type="submit" value="Food"><i class="material-icons i-food" aria-label="Filter by food category" aria-hidden="true">local_dining</i></button>
+            </form>
+            <form id="housing-search">       
+                <button id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">local_hotel</i></button>
+            </form>
+            <form id="goods-search">       
+                <button id="goods-button" class="foo-button mdc-button" type="submit" value="Goods"><i class="material-icons i-goods" aria-label="Filter by goods" aria-hidden="true">shopping_basket</i></button>
+            </form>
+            <form id="transportation-search">       
+                <button id="transportation-button" class="foo-button mdc-button" type="submit" value="Transportation"><i class="material-icons i-transportation" aria-label="Filter by Transportation category" aria-hidden="true">commute</i></button>
+            </form>
+            <form id="health-search">       
+                <button id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">local_hospital</i></button>
+            </form>
+            <form id="finances-search">       
+                <button id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">account_balance</i></button>
+            </form>
+            <form id="care-search">       
+                <button id="care-button" class="foo-button mdc-button" type="submit" value="Care"><i class="material-icons i-care" aria-label="Filter by care category" aria-hidden="true">accessibility_new</i></button>
+            </form>
+            <form id="education-search">       
+                <button id="education-button" class="foo-button mdc-button" type="submit" value="Education"><i class="material-icons i-education" aria-label="Filter by Education category" aria-hidden="true">school</i></button>
+            </form>
+            <form id="employment-search">       
+                <button id="employment-button" class="foo-button mdc-button" type="submit" value="Employment"><i class="material-icons i-employment" aria-label="Filter by employment category" aria-hidden="true">work</i></button>
+            </form>
+            <form id="legal-search">       
+                <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">business_center</i></button>
+            </form>
+            <form id="communication-search">       
+                <button id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Filter by communication category" aria-hidden="true">feedback</i></button>
+            </form>
+        </div>
+    
+        <div id="searchbar" role="search">
+            <form id="search-form">
+                <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category..." autofocus>
+                <button id="search-button" class="mdc-button" type="submit">Search</button>
+            </form>
+        </div>
+        <div>
+            <p class="filter-title">Remove these cities from search results</p> 
+            <div class="filter-btns">
+            <input class="toggleBtn mdc-button" type="button" onclick="slide('Durham')" value="Durham">
+            <input class="toggleBtn mdc-button" type="button" onclick="slide('ChapelHill')" value="Chapel Hill">
+            <input class="toggleBtn mdc-button" type="button" onclick="slide('Mebane')" value="Mebane">
+            <input class="toggleBtn mdc-button" type="button" onclick="slide('Raleigh')" value="Raleigh">
+            <input class="toggleBtn mdc-button" type="button" onclick="slide('Carrboro')" value="Carrboro">
+            <input class="toggleBtn mdc-button" type="button" onclick="slide('Hillsborough')" value="Hillsborough">
+            </div>
+        </div>
+     
+            
+    </section> 
+    
+    <footer class="mdc-dialog__footer">
+            <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">
+            FILTER</button>
+            <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">
+            CLEAR FILTER</button>
+    </footer>
+
+</div>
+
+<div class="list-of-resources">
+    <script>
+        let data = {{ data2 | safe }}
+    </script>   
+</div>     
 
 <script src="{% static "JavaScript/filter.js" %}"></script>
 <script src="{% static "JavaScript/resources.js"%}"></script>

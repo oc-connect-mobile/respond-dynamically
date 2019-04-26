@@ -18,6 +18,10 @@ $fontFamily: "Open Sans", sans-serif;
 @import "@material/checkbox/mdc-checkbox";
 @import "@material/chips/mdc-chips";
 
+.mdc-dialog {
+  margin: auto;
+  display: flexbox;
+}
 
 .text-center {
   text-align: center;

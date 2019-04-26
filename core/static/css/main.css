@@ -330,9 +330,11 @@ header {
 }
 #search-button {
     margin: 0;
-    width: 30%;
-    min-width: 200px;
+    background-color: #058BC7;
+    color: white;
+    max-width: 8rem;
     border: 1px solid black;
+
 }
 .filter-title{
     margin: 0;

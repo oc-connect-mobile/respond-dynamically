@@ -12,6 +12,7 @@ from pprint import pprint
 from django.shortcuts import redirect
 
 from .super_detail_salesforce import superDetailsf
+from django import forms
 
 # Create your views here.
 
@@ -22,84 +23,49 @@ def index(request):
     a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+County_Served__c,+City_Served__c,+Website,+Eligibility_Criteria__c,+CEF_Sub_Category__c,+Secondary_Tags__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
-    y= "+ORDER+BY+Website+NULLS+LAST"
-    #+LIMIT+3"
+    y= "+ORDER+BY+Website"
+    #+NULLS+LAST+LIMIT+3"
+
+    r = "parameterizedSearch/?q="
+    s = "&sobject=Account"
+    q = ""
+    t = "&Account.fields=id"
+    #&Account.limit=2"
+    p = ")+AND+"
+
+    soqlkv = a+b+x+y
+
 
     if request.method == 'GET':
-       
-        city_form = CityFilterForm(request.GET)
-        if city_form.is_valid():
-            city_string = city_form.ingest()
-            print("printing city string")
-            print(city_string)
-
-        #if 'clear' in request.GET:
-            #county_form = CountyFilterForm(request.GET)
-            #category_form = CategoryFilterForm(request.GET)
-            #city_form = CityFilterForm()
-        
-        county_form = CountyFilterForm(request.GET)
-        if county_form.is_valid():
-                county_string = county_form.ingest()
-                print("printing county string")
-                print(county_string)
-        
-        # if 'clear' in request.GET:
-        #     #category_form = CategoryFilterForm(request.GET)
-        #     #city_form = CityFilterForm(request.GET)
-        #     county_form = CountyFilterForm()    
-
-        category_form = CategoryFilterForm(request.GET)
-        if category_form.is_valid():
-            category_string = category_form.ingest()
-            print("printing category string")
-            print(category_string)
-
-        #if 'clear' in request.GET:
-            #city_form = CityFilterForm(request.GET)
-            #county_form = CountyFilterForm(request.GET)
-            #category_form = CategoryFilterForm()
-        
-        secondary_form = SecondaryFilterForm(request.GET)
-        if secondary_form.is_valid():
-            secondary_string = secondary_form.ingest()
-            print("printing secondary string")
-            print(secondary_string)
-
-        #if 'clear' in request.GET:
-            #city_form = CityFilterForm(request.GET)
-            #county_form = CountyFilterForm(request.GET)
-            #secondary_form = SecondaryFilterForm()
-
-        lucky_form = LuckySearchForm(request.GET)
-        if lucky_form.is_valid():
-            lucky_string = lucky_form.ingest()
-            print("printing lucky string")
-            print(lucky_string)
-
-
-        
-        soqlkv = a+b+county_string+city_string+category_string+secondary_string+lucky_string+x+y
-        
-
+        if request.GET.get('luckyq'):
+            q = request.GET.get('luckyq')
+            soqlkv = r+q+s+t
+            data1 = supersf(soqlkv)
+            data3 = (data1["searchRecords"])
+            data4 = []
+            for j in data3:
+                for k,v in j.items():
+                    if type(v) == str:
+                        data4 += (k,v)
+            for i in data4:
+                data4.remove('Id')
+            data5 = data4
+            data4[:] = ["id='"+j+"'+OR+" for j in data4]    
+            data5.append("id='001U0000008jpEpIAI'")
+            string = ""
+            u = string.join(data5)
+            v = "("+u+p
+            soqlkv = a+b+v+x+y    
+    
     data1 = supersf(soqlkv)
     data2 = json.dumps(data1)
-    records = data1['records'] # this is now a list
+    # records = data1['records'] # this is now a list
     print(data2)
-    
-#printable = data1["records"][1]["Name"]
-
 
 
     context = {
         'data2': data2,
         'data1': data1,
-        'records': records,
-        'county_form': county_form,
-        'city_form': city_form,
-        'category_form': category_form,
-        'secondary_form': secondary_form,
-        'lucky_form': lucky_form
         }   
 
     # Render the HTML template index.html with the data in the context variable

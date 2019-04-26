@@ -347,9 +347,16 @@ header {
     min-width: 300px;
     height: 100px;
     max-height: 200px;
-    margin: .5rem;
 }
+.filter-toggles{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.toggleBtn{
 
+}
 .i-emergency {
     color: #ef5350;
 }

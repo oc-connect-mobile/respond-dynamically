@@ -6,12 +6,15 @@
 
 
 
-<div class="info-menu">
-        <p class="mdc-typography--overline overline-title">a community listing of services and resources offered by organizations in the Triangle</p>
-<h3>Use a filter or search below</h3>
-</div>
 
-<div aria-label="Here a various ways to filter using checkboxes" class="">  
+<div class="welcome"><h3>Welcome,</h3></div>
+<div class="info-menu" id="filter">
+        <p>Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
+
+
+
+<h4>Use a filter or search below</h4>
+<div aria-label="Here a various ways to filter using checkboxes">  
         {% comment %} Modals {% endcomment %}
 
     {% comment %} <div class="mb block">
@@ -104,6 +107,7 @@
         <input class="toggleBtn on" type="button" value="Mebane"/>
         <input class="toggleBtn on" type="button" value="ChapelHill"/> {% endcomment %}
     </div>
+</div>
     <div class="list-of-resources">
     <script>
         let data = {{ data2 | safe }}
@@ -112,11 +116,11 @@
 </div>
 
 	
-{% comment %}
+
 <div class="bottom-filter">
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter05').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
     </button>
-{% endcomment %}  
+</div> 
     
 
 <script src="{% static "JavaScript/filter.js" %}"></script>

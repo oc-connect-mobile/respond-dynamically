@@ -18,8 +18,9 @@ $fontFamily: "Open Sans", sans-serif;
 @import "@material/checkbox/mdc-checkbox";
 @import "@material/chips/mdc-chips";
 
-body {
-  font-family: $fontFamily;
+.mdc-dialog {
+  margin: auto;
+  display: flexbox;
 }
 
 .text-center {
@@ -40,17 +41,15 @@ body {
 }
 
 .bottom-filter {
-  background-color: rgba(51, 51, 51, 0.336);
+  // background-color: rgba(51, 51, 51, 0.336);
   overflow: hidden;
   position: fixed;
   bottom: 0;
-  width: 100%;
-  display: flex;
+  width: 98%;
 }
-.bottom-filter .button-container {
-  float: right;
-}
+
 .bottom-filter .mdc-button {
+  float: right;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -64,6 +63,22 @@ body {
   min-width: 60px;
   min-height: 60px;
 }
+
+.bottom-back-btn {
+  // background-color: rgba(51, 51, 51, 0.336);
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+}
+
+.bottom-back-btn .mdc-button {
+  float: left;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+}
+
 .listed-detail {
   background-color: purple;
   border-radius: 50%;
@@ -80,4 +95,47 @@ body {
 }
 .listed-detail a{
   text-decoration: none;
+}
+
+
+.contact-info {
+  padding: 10px;
+  position: relative;
+  float: left;
+  left: 0px;
+  bottom: -25px;
+}
+.contact-info .fa {
+  color: white;
+}
+.contact-info button {
+
+  background-color: #059EDA;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+
+  text-decoration: none;
+}
+
+.category-list {
+  float: right;
+}
+
+.info-menu {
+  margin: 15px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.637); 
+}
+.welcome {
+  color: #059EDA;
+  background-color: rgba(255, 255, 255, 0.637);
+  border: solid 1px rgb(230, 228, 228);
+  border-radius: 10px;
+  text-shadow: 2px 2px 2px 2px rgb(131, 130, 130);
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 0;
 }

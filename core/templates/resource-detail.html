@@ -7,15 +7,20 @@
 
 
 <div role="main">
-        <div class="here-is-good">
-<script>
-        let data2 = {{ data2 | safe }}
- </script>  
+    <div class="here-is-good">
+        <script>
+            let data2 = {{ data2 | safe }}
+        </script> 
+    </div>
  
-           
+    <div class="bottom-back-btn">
+            <button class="mdc-button mdc-button--raised showDialogBtn" onclick="history.go(-1)" style="width:auto;"><i class="fa fa-2x fa-chevron-left"></i>
+            </button>
+    </div> 
+
 </div>
- 
 
 <script src="{% static "JavaScript/resources_detail.js"%}"></script>
+ 
 
 {% endblock %}

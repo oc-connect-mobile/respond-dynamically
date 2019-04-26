@@ -31,7 +31,9 @@ function toTitleCase(str) {
 function searchAny (input, modifiedInput, resources) {
     let allCats = getAllCategories(resources)
     let allCities = getAllCities(resources)
-    if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1)){
+    let allSubCats = getAllSubCategories(resources)
+    let allSecondaryTags = getAllSecondaryTags(resources)
+    if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1) || modifiedInput.some(v=> allSubCats.indexOf(v) !== -1) || modifiedInput.some(v=> allSecondaryTags.indexOf(v) !== -1)){
         updateList(input)
     }  
 }   
@@ -39,20 +41,36 @@ function searchAny (input, modifiedInput, resources) {
 function updateList (input) {
   const resourcesList = query('.list-of-resources')
   resourcesList.innerHTML = ''
+  resources = data
+  let counter = 0
   for (idx = 0; idx < resources.records.length; idx++) {
     cityTest = resources.records[idx]['City_Served__c']
     categoryTest = resources.records[idx]['CEF_Category__c']
-    if (cityTest === null && categoryTest === null) {
+    subCatTest = resources.records[idx]['CEF_Sub_Category__c']
+    secondTagTest = resources.records[idx]['Secondary_Tags__c']
+    if (cityTest === null && categoryTest === null && subCatTest === null && secondTagTest === null ){
       continue
     }
-    if ((cityTest !== null && categoryTest !== null) && cityTest.includes(input) || categoryTest.includes(input)) {
+    if ((cityTest !== null && categoryTest !== null && subCatTest !== null && secondTagTest !== null) && (cityTest.includes(input) || categoryTest.includes(input) || subCatTest.includes(input) || secondTagTest.includes(input))) {
       populateList(resources, idx)
+      counter += 1
     } else if (cityTest !== null && cityTest.includes(input)) {
       populateList(resources, idx)
+      counter += 1
     } else if (categoryTest !== null && categoryTest.includes(input)) {
       populateList(resources, idx)
+      counter += 1
+    }
+     else if (subCatTest !== null && subCatTest.includes(input)) {  
+      populateList(resources, idx)
+      counter += 1
+    }
+     else if (secondTagTest !== null && secondTagTest.includes(input)) {
+      populateList(resources, idx)
+      counter += 1
     }
   }
+  console.log(counter)
 }
 
 function getAllCategories (resources){
@@ -60,14 +78,14 @@ function getAllCategories (resources){
     for (idx = 0; idx < resources.records.length; idx++){
         const resourceCategory = resources.records[idx]['CEF_Category__c']
         if (resourceCategory !== null){
-            let separatedCats = separateCategory(resourceCategory)
+            let separatedCats = separateList(resourceCategory)
             if (typeof separatedCats === 'object') {
                 let listLength = separatedCats.length
                 for (let i = 0; i < listLength; i++) {
                     let category = separatedCats[i].replace(' ', '')
                     if (!allCategories.includes(category)){
                         allCategories.push(category)
-                    }
+                    }   
                 }
             }
             if (typeof separatedCats === 'string') {
@@ -86,7 +104,7 @@ function getAllCities (resources){
     for (idx = 0; idx < resources.records.length; idx++){
         const resourceCity = resources.records[idx]['City_Served__c']
         if (resourceCity !== null){
-            let separatedCity = separateCity(resourceCity)
+            let separatedCity = separateList(resourceCity)
             if (typeof separatedCity === 'object') {
                 let listLength = separatedCity.length
                 for (let i = 0; i < listLength; i++) {
@@ -107,27 +125,72 @@ function getAllCities (resources){
     return allCities
 }
 
-
-function separateCategory (catList) {
-  if (catList === null) {
-    return null
-  }
-  if (catList.includes(';')) {
-    let List = catList.split(';')
-    return List
-  }
-  return catList
+function getAllSubCategories (resources){
+    let allSubCategories = []
+    for (idx = 0; idx < resources.records.length; idx++){
+        const resourceSubCategory = resources.records[idx]['CEF_Sub_Category__c']
+        if (resourceSubCategory !== null){
+            let separatedSubCategory = separateList(resourceSubCategory)
+            if (typeof separatedSubCategory === 'object') {
+                let listLength = separatedSubCategory.length
+                for (let i = 0; i < listLength; i++) {
+                    let subCat = separatedSubCategory[i].replace(' ', '')
+                    if (!allSubCategories.includes(subCat)){
+                        allSubCategories.push(subCat)
+                    }
+                }
+            }
+            if (typeof separatedSubCategory === 'string') {
+                let subCat = separatedSubCategory.replace(' ', '')
+                if (!allSubCategories.includes(subCat)){
+                    allSubCategories.push(subCat)
+                }
+            } 
+        }
+    }
+    return allSubCategories
 }
 
-function separateCity (cityList) {
-  if (cityList === null) {
+function getAllSecondaryTags (resources){
+    let allSecondaryTags = []
+    for (idx = 0; idx < resources.records.length; idx++){
+        const resourceSecondaryTag = resources.records[idx]['Secondary_Tags__c']
+        if (resourceSecondaryTag !== null){
+            let separatedSecondaryTags = separateList(resourceSecondaryTag)
+            if (typeof separatedSecondaryTags === 'object') {
+                let listLength = separatedSecondaryTags.length
+                for (let i = 0; i < listLength; i++) {
+                    let secondTag = separatedSecondaryTags[i].replace(' ', '')
+                    if (!allSecondaryTags.includes(secondTag)){
+                        allSecondaryTags.push(secondTag)
+                    }
+                }
+            }
+            if (typeof separatedSecondaryTags === 'string') {
+                let secondTag = separatedSecondaryTags.replace(' ', '')
+                if (!allSecondaryTags.includes(secondTag)){
+                    allSecondaryTags.push(secondTag)
+                }
+            } 
+        }
+    }
+    return allSecondaryTags
+}
+
+
+function separateList (joinedList) {
+  if (joinedList === null) {
     return null
   }
-  if (cityList.includes(';')) {
-    let List = cityList.split(';')
-    return List
+  if (joinedList.includes(';')) {
+    let separatedList = joinedList.split(';')
+    return separatedList
   }
-  return cityList
+  if (joinedList.includes('|')) {
+    let separatedList = joinedList.split('|')
+    return separatedList
+  }
+  return joinedList
 }
 
 function addIconToCategory (catList) {
@@ -178,9 +241,12 @@ function populateList(resources, idx){
     const resourceTag = document.createElement('div')
     const nameTag = document.createElement('h2')
     const infoTag = document.createElement('span')
-    const webTag = document.createElement('span')
-    const phoneTag = document.createElement('span') 
-    const emailTag = document.createElement('span')
+    
+    const contactInfoDiv = document.createElement('div')
+    const webTag = document.createElement('button')
+    const phoneTag = document.createElement('button') 
+    const emailTag = document.createElement('button')
+
     const categoryList = document.createElement('div')
     const categoryTag = document.createElement('span')
     const descTag = document.createElement('p')
@@ -188,6 +254,10 @@ function populateList(resources, idx){
     const seeMoreTag = document.createElement('button')
     const cityServedTag = document.createElement('div')
     const cityServedList = document.createElement('div')
+    const subCategoryTag = document.createElement('div')
+    const subCategoryList = document.createElement('div')
+    const secondaryTag = document.createElement('div')
+    const secondaryTagList = document.createElement('div')
     const googleTag = document.createElement('span')
 
   const resourceId = resources.records[idx]['Id']
@@ -199,15 +269,20 @@ function populateList(resources, idx){
   const resourceDesc = resources.records[idx]['Description_Short__c']
   const resourceEligible = resources.records[idx]['Eligibility_Criteria__c']
   const resourceCity = resources.records[idx]['City_Served__c']
+  const resourceSubCategory = resources.records[idx]['CEF_Sub_Category__c']
+  const resourceSecondaryTag = resources.records[idx]['Secondary_Tags__c']
 
 
     resourceTag.className = 'listed-resource'
     infoTag.className = 'info'
     nameTag.className = 'listed-name'
     descTag.className = 'listed-desc'
+
+    contactInfoDiv.className = 'contact-info'
     webTag.className = 'listed-site'
     phoneTag.className = 'listed-phone'
     emailTag.className = 'listed-email'
+
     categoryList.className = 'category-list'
     eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
     seeMoreTag.className = 'listed-detail'
@@ -215,28 +290,94 @@ function populateList(resources, idx){
     googleTag.className = 'google-search'
 
 
-  let cityList = separateCity(resourceCity)
+  let cityList = separateList(resourceCity)
   if (cityList !== null) {
     if (typeof cityList === 'object') {
       let listLength = cityList.length
       for (let i = 0; i < listLength; i++) {
         let cityServedTag = document.createElement('span')
         let city = cityList[i].replace(' ', '')
+        while (city.includes(' ')){
+                city = city.replace(' ', '')
+            }
         cityServedTag.classList.add('listed-city', (`${city}`))
+        resourceTag.classList.add(`${city}`)
         cityServedTag.setAttribute('style', 'display:hidden')
-        cityServedList.appendChild(cityServedTag)
+        resourceTag.appendChild(cityServedTag)
       }
     }
     if (typeof cityList === 'string') {
       let city = cityList.replace(' ', '')
+      while (city.includes(' ')){
+                city = city.replace(' ', '')
+            }
       cityServedTag.classList.add('listed-city', (`${city}`))
+      resourceTag.classList.add(`${city}`)
       cityServedTag.setAttribute('style', 'display:hidden')
-      cityServedList.appendChild(cityServedTag)
+      resourceTag.appendChild(cityServedTag)
     }
   }
-  cityServedList.setAttribute('style', 'display:hidden')
+  resourceTag.setAttribute('style', 'display:hidden')
 
-  let catList = separateCategory(resourceCategory)
+let subCatList = separateList(resourceSubCategory)
+  if (subCatList !== null) {
+    if (typeof subCatList === 'object') {  
+      let listLength = subCatList.length
+      for (let i = 0; i < listLength; i++) {
+        let subCategoryTag = document.createElement('span')
+        let subCat = subCatList[i].replace(' ', '')
+            while (subCat.includes(' ')){
+                subCat = subCat.replace(' ', '')
+            }
+        subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
+        resourceTag.classList.add(`${subCat}`)
+        subCategoryTag.setAttribute('style', 'display:hidden')
+        resourceTag.appendChild(subCategoryTag)
+      }
+    }
+    if (typeof subCatList === 'string') {
+      let subCat = subCatList.replace(' ', '')
+            while (subCat.includes(' ')){
+                subCat = subCat.replace(' ', '')
+            }
+      subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
+      resourceTag.classList.add(`${subCat}`)
+      subCategoryTag.setAttribute('style', 'display:hidden')
+      resourceTag.appendChild(subCategoryTag)
+    }
+  }
+  resourceTag.setAttribute('style', 'display:hidden')
+
+    let secondTagList = separateList(resourceSecondaryTag)
+    if (secondTagList !== null) {
+        if (typeof secondTagList === 'object') {  
+        let listLength = secondTagList.length
+        for (let i = 0; i < listLength; i++) {
+            let secondTag = document.createElement('span')
+            let tag = secondTagList[i].replace(' ', '')
+                while (tag.includes(' ')){
+                    tag = tag.replace(' ', '')
+                }
+            secondaryTag.classList.add('listed-tag', (`${tag}`))
+            resourceTag.classList.add(`${tag}`)
+            secondaryTag.setAttribute('style', 'display:hidden')
+            resourceTag.appendChild(secondaryTag)
+        }
+        }
+        if (typeof secondTagList === 'string') {
+        let tag = secondTagList.replace(' ', '')
+                while (tag.includes(' ')){
+                    tag = tag.replace(' ', '')
+                }
+        secondaryTag.classList.add('listed-tag', (`${tag}`))
+        resourceTag.classList.add(`${tag}`)
+        secondaryTag.setAttribute('style', 'display:hidden')
+        resourceTag.appendChild(secondaryTag)
+        }
+    }
+    resourceTag.setAttribute('style', 'display:hidden')
+
+  let catList = separateList(resourceCategory)
   if (catList !== null) {
     if (typeof catList === 'object') {
       let listLength = catList.length
@@ -246,6 +387,7 @@ function populateList(resources, idx){
         let lowerCat = cat.toLowerCase()
         categoryTag.innerText = catList[i]
         categoryTag.classList.add('listed-cat', (`${cat}`))
+        resourceTag.classList.add(`${cat}`)
         let iconName = addIconToCategory(cat)
         categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
         categoryList.appendChild(categoryTag)
@@ -254,9 +396,13 @@ function populateList(resources, idx){
   }
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
     nameTag.innerText = resourceName
-    webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
-    phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
-    emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+
+    contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
+    
+    webTag.innerHTML = `<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
+    phoneTag.innerHTML = `<a title="Call resource" class="" href="tel:${resourcePhone}"><i class="fa fa-lg fa-phone"></i></a>`
+    emailTag.innerHTML = `<a title= "Email resource" class="" href="mailto:${resourceEmail}"><i class="fa fa-lg fa-envelope"></i></a>`
+
     descTag.innerText = resourceDesc
     if (resourceEligible !== null){
       eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
@@ -267,18 +413,33 @@ function populateList(resources, idx){
     resourceList.appendChild(resourceTag)
     resourceTag.appendChild(nameTag)
     resourceTag.appendChild(infoTag)
+    resourceTag.appendChild(cityServedList)
     infoTag.appendChild(categoryList)
-    infoTag.appendChild(cityServedList)
+    infoTag.appendChild(subCategoryList)
+    infoTag.appendChild(secondaryTagList)
     infoTag.appendChild(webTag)
     infoTag.appendChild(phoneTag)
     infoTag.appendChild(emailTag)
     infoTag.appendChild(eligibiliyTag)
     infoTag.appendChild(googleTag)
     resourceTag.appendChild(descTag)
+    resourceTag.appendChild(contactInfoDiv)
+    contactInfoDiv.appendChild(webTag)
+    contactInfoDiv.appendChild(phoneTag)
+    contactInfoDiv.appendChild(emailTag)
+
+
     resourceTag.appendChild(seeMoreTag) 
 }
 
-
+function slide(input) {
+    resource = queryAll('.listed-resource')
+    for (let idx = 0; idx < resource.length; idx++){
+        if (resource[idx].classList.contains(input)){
+            resource[idx].classList.toggle('hide')
+        }
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   query('#search-form').addEventListener('submit', function (event) {

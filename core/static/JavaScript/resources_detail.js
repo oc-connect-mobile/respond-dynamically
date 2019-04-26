@@ -201,6 +201,7 @@ function populate(resources){
     const espanolPart = document.createElement('div')
     const hoursPart = document.createElement('div')
     const addressPart = document.createElement('div')
+    const mapPart = document.createElement('div')
     
 
   const resourceId = resources.Id
@@ -240,8 +241,6 @@ function populate(resources){
   const resourceParentId = resources.ParentId
   const resourceTime_Till_Service = resources.Time_Till_Service__c
 
-  console.log(resourceEmail)
-
     resourceTag.className = 'listed-resource'
     infoTag.className = 'info'
     nameTag.className = 'listed-name'
@@ -249,7 +248,7 @@ function populate(resources){
     webTag.className = 'listed-site'
     phoneTag.className = 'listed-phone'
     emailTag.className = 'listed-email'
-    categoryList.className = 'listed-desc'
+    categoryList.className = 'category-list'
     eligibilityTag.className = 'listed-desc'
     cityServedTag.className = 'listed-desc'
     addressPart.className = 'listed-desc'
@@ -257,6 +256,7 @@ function populate(resources){
     addressPart.className = 'listed-desc'
     waittimePart.className = 'listed-desc'
     espanolPart.className = 'listed-desc'
+    mapPart.className = 'listed-desc'
 
 
   let cityList = separateCity(resourceCity)
@@ -283,85 +283,75 @@ function populate(resources){
   // cityServedList.setAttribute('style', 'display:hidden')
  
 
+  nameTag.innerHTML= `<h2>${resourceName}</h2>`
+  webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
+  phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
+  emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+    
   let catList = separateCategory(resourceCategory)
+  console.log(catList)
+  console.log(typeof(catList))
   if (catList !== null) {
     if (typeof catList === 'object') {
       let listLength = catList.length
+      console.log(listLength)
       for (let i = 0; i < listLength; i++) {
         let categoryTag = document.createElement('span')
         let cat = catList[i].replace(' ', '')
         let lowerCat = cat.toLowerCase()
+        console.log(lowerCat)
         categoryTag.innerText = catList[i]
         categoryTag.classList.add('listed-cat', (`${cat}`))
+        console.log(categoryTag.classList)
         let iconName = addIconToCategory(cat)
         categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
         categoryList.appendChild(categoryTag)
-      }
+      } }
+    else { 
+      let categoryTag = document.createElement('span')
+      let cat = catList
+      let lowerCat = cat.toLowerCase()
+      console.log(lowerCat)
+      categoryTag.innerText = catList
+      categoryTag.classList.add('listed-cat', (`${cat}`))
+      console.log(categoryTag.classList)
+      let iconName = addIconToCategory(cat)
+      categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+      categoryList.appendChild(categoryTag)
     }
-  }
-
-    console.log(catList)
-    console.log(nameTag)
-
-    nameTag.innerHTML= `<h2>${resourceName}</h2>`
-    webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
-    phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
-    emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
-    
-    // if (resourceEligible !== null){}
+    }
+  
     
     
     waittimePart.innerHTML = `<h3 class="mdc-button">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`
-
-
     espanolPart.innerHTML = `<h3 class="mdc-button">Español</h3><p style="margin:.5rem">${resourceLatino_Services}<p>`
-
     hoursPart.innerHTML = `<h3 class="mdc-button">Hours</h3><p style="margin:.5rem">${resourceHours}<p>`
-
-    addressPart.innerHTML =
-    `<h3 class="mdc-button">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
-    
-    
-    categoryTag.innerHTML =
-    `<h3 class="mdc-button">Categories</h3><p style="margin:.5rem">${catList}<p>`
-
-
-    cityServedTag.innerHTML =
-   `<h3 class="mdc-button">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
-
-    descTag.innerHTML =
-    `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc} <br> ${resourceDescription}<p>`
-
-    eligibilityTag.innerHTML = 
-   `<h3 class="mdc-button">Eligibiltiy Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
-
-  
-
-  
+    addressPart.innerHTML = `<h3 class="mdc-button">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
+    // categoryTag.innerHTML = `<h3 class="mdc-button">Categories</h3>`
+    cityServedTag.innerHTML =  `<h3 class="mdc-button">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
+    if (resourceDescription !== null) { 
+      descTag.innerHTML = `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc} <br> ${resourceDescription}<p>`}
+    else {
+      descTag.innerHTML = `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc}` }
+    eligibilityTag.innerHTML = `<h3 class="mdc-button">Eligibiltiy Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
+    // mapPart.innerHTML = `<h3 class="mdc-button">Maps</h3><a href="maps.google.com/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}">Map</a>'
 
     hereIsGood.appendChild(nameTag)
     // hereIsGood.appendChild(infoTag)
     hereIsGood.appendChild(webTag)
     hereIsGood.appendChild(phoneTag)
     hereIsGood.appendChild(emailTag)
-    hereIsGood.appendChild(categoryTag)
+    hereIsGood.appendChild(categoryList)
     hereIsGood.appendChild(cityServedTag)
     hereIsGood.appendChild(addressPart)
     hereIsGood.appendChild(hoursPart)
-   
-  
-    hereIsGood.appendChild(waittimePart)
-    hereIsGood.appendChild(espanolPart)
-        
+    if (resourceTime_Till_Service !== null) { hereIsGood.appendChild(waittimePart) }
+    if (resourceLatino_Services !== null) {hereIsGood.appendChild(espanolPart)}
     hereIsGood.appendChild(descTag)
-    hereIsGood.appendChild(eligibilityTag)
-
-
-   console.log("end of populate function")
+    if (resourceEligible !== null) {hereIsGood.appendChild(eligibilityTag) }
+    // hereIsGood.appendChild(mapPart)
 }
-
   
-
 populate(resources) 
 
 

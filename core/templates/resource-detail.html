@@ -1,47 +1,26 @@
 {% extends "base.html" %}
 
 {% block title %} {% endblock %}
+{% load static %}
 
 {% block content %}
 
-   
-    <div class="detail-container" role="main" aria-label = "This is a detail view of the resource">
-        <div class="listed-name"><h3>{{ details.Name }}</h3></div>
 
-        <div>
-            {% if details.Website %}
-            <span aria-label= "Website" class="listed-site"><a class="foo-button mdc-button" href="{{ details.Website }}"><i class="fa fa-globe"></i> Website</a></span>
-            {% endif %}
-            {% if details.Phone %}
-            <span aria-label= "Phone" class="listed-phone"><a class="foo-button mdc-button" href="tel:{{ details.Phone }}"><i class="fa fa-phone"></i>  Phone</a></span>
-            {% endif %}
-            {% if details.Company_Email__c %}
-            <span aria-label= "Email" class="listed-email "><a class="foo-button mdc-button" href="mailto:{{ details.Company_Email__c }}"><i class="fa fa-envelope"></i>  Email</a></span>
-            {% endif %}
-        </div>
-        {% if details.Monday_Friday_Hours__c %}
-        <div aria-label= "Hours" class="listed_desc">Hours: {{ details.Monday_Friday_Hours__c }}</div>
-        {% endif %}
-        {% if details.Imported_Address__c %}
-        <div aria-label= "Location" class="listed_desc">Location: {{ details.Imported_Address__c }}</div>
-        {% endif %}
-        {% if details.Detailed_Description__c != None %}
-            <div aria-label= "Detailed Description" class="listed-desc"> {% autoescape off %}{{ details.Detailed_Description__c }}{% endautoescape %}</div>
-        {% elif details.Description_Short__c != None %}
-            <div aria-label= "Short Description" class="listed-desc"> {{ details.Description_Short__c }}</div>
-        {% endif %}
-        {% if details.Eligibility_Criteria__c != None %}
-            <div aria-label= "Eligibility Criteria">
-            <div class="listed-desc"> Eligibility Requirements: </div>
-            <div class="listed-desc">{% autoescape off %}{{ details.Eligibility_Criteria__c }}{% endautoescape %}</div>
-            <div>
-        {% endif %}
-
-    </div> 
+<div role="main">
+    <div class="here-is-good">
+        <script>
+            let data2 = {{ data2 | safe }}
+        </script> 
+    </div>
+ 
     <div class="bottom-back-btn">
             <button class="mdc-button mdc-button--raised showDialogBtn" onclick="history.go(-1)" style="width:auto;"><i class="fa fa-2x fa-chevron-left"></i>
             </button>
-        </div>  
+    </div> 
 
+</div>
+
+<script src="{% static "JavaScript/resources_detail.js"%}"></script>
+ 
 
 {% endblock %}

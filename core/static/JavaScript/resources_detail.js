@@ -193,7 +193,8 @@ function populate(resources){
     const categoryList = document.createElement('div')
     const categoryTag = document.createElement('span')
     const descTag = document.createElement('p')
-    const eligibilityTag = document.createElement('div')
+    const eligibilityTag = document.createElement('span')
+    const eligibilityPart = document.createElement('div')
     const cityServedTag = document.createElement('div')
     const cityServedList = document.createElement('div')
 
@@ -213,6 +214,8 @@ function populate(resources){
   const resourceDesc = resources.Description_Short__c
   const resourceEligible = resources.Eligibility_Criteria__c
   const resourceCity = resources.City_Served__c
+  const googleTag = document.createElement('span')
+  const mapTag = document.createElement('span')
 
   const resourcePrimary_City = resources.Primary_City__c
   const resourcePrimary_State = resources.Primary_State__c
@@ -249,7 +252,8 @@ function populate(resources){
     phoneTag.className = 'listed-phone'
     emailTag.className = 'listed-email'
     categoryList.className = 'category-list'
-    eligibilityTag.className = 'listed-desc'
+    eligibilityPart.className = 'listed-desc'
+    eligibilityTag.className = 'mdc-button'
     cityServedTag.className = 'listed-desc'
     addressPart.className = 'listed-desc'
     hoursPart.className = 'listed-desc'
@@ -257,6 +261,8 @@ function populate(resources){
     waittimePart.className = 'listed-desc'
     espanolPart.className = 'listed-desc'
     mapPart.className = 'listed-desc'
+    googleTag.className = 'google-search'
+    mapTag.className = 'google-search'
 
 
   let cityList = separateCity(resourceCity)
@@ -281,12 +287,19 @@ function populate(resources){
     }
   }
   // cityServedList.setAttribute('style', 'display:hidden')
- 
+  
 
   nameTag.innerHTML= `<h2>${resourceName}</h2>`
   webTag.innerHTML = `<a title="Visit resource's web page" class="foo-button mdc-button" href="${resourceWeb}"><i class="fa fa-globe"></i> Website</a>`
   phoneTag.innerHTML = `<a title="Call resource" class="foo-button mdc-button" href="tel:${resourcePhone}"><i class="fa fa-phone"></i>  Phone</a>`
-  emailTag.innerHTML = `<a title= "Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+  emailTag.innerHTML = `<a title="Email resource" class="foo-button mdc-button" href="mailto:${resourceEmail}"><i class="fa fa-envelope"></i>  Email</a>`
+  if (resourceEligible !== null){
+    eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i>See Requirements</a>`
+  }
+  googleTag.innerHTML = `<a title="Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
+  mapTag.innerHTML = `<a title="Google directions" class="foo-button mdc-button" href="https://www.maps.google.com/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fab fa-google"></i>Directions</a>`
+
+
     
   let catList = separateCategory(resourceCategory)
   console.log(catList)
@@ -320,36 +333,40 @@ function populate(resources){
       categoryList.appendChild(categoryTag)
     }
     }
-  
     
+    cityList.toString().replace(",", ", ")
     
     waittimePart.innerHTML = `<h3 class="mdc-button">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`
     espanolPart.innerHTML = `<h3 class="mdc-button">Español</h3><p style="margin:.5rem">${resourceLatino_Services}<p>`
     hoursPart.innerHTML = `<h3 class="mdc-button">Hours</h3><p style="margin:.5rem">${resourceHours}<p>`
     addressPart.innerHTML = `<h3 class="mdc-button">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
-    // categoryTag.innerHTML = `<h3 class="mdc-button">Categories</h3>`
+    categoryTag.innerHTML = `<h3 class="mdc-button">Categories</h3>`
     cityServedTag.innerHTML =  `<h3 class="mdc-button">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
     if (resourceDescription !== null) { 
       descTag.innerHTML = `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc} <br> ${resourceDescription}<p>`}
     else {
       descTag.innerHTML = `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc}` }
-    eligibilityTag.innerHTML = `<h3 class="mdc-button">Eligibiltiy Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
-    // mapPart.innerHTML = `<h3 class="mdc-button">Maps</h3><a href="maps.google.com/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}">Map</a>'
+    eligibilityPart.innerHTML = `<h3 class="mdc-button" id="Elig">Eligibiltiy Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
+    // mapPart.innerHTML = `<h3 class="mdc-button" ><a href="https://maps.google.com/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}">Map</a></h3>`
 
     hereIsGood.appendChild(nameTag)
     // hereIsGood.appendChild(infoTag)
     hereIsGood.appendChild(webTag)
     hereIsGood.appendChild(phoneTag)
     hereIsGood.appendChild(emailTag)
+    hereIsGood.appendChild(eligibilityTag)
+    hereIsGood.appendChild(googleTag)
+    hereIsGood.appendChild(mapTag)
+    // hereIsGood.appendChild(categoryTag)
     hereIsGood.appendChild(categoryList)
     hereIsGood.appendChild(cityServedTag)
-    hereIsGood.appendChild(addressPart)
-    hereIsGood.appendChild(hoursPart)
+    if (resourcePrimary_Street !== null) {hereIsGood.appendChild(addressPart)}
+    if (resourceHours !== null) { hereIsGood.appendChild(hoursPart)}
     if (resourceTime_Till_Service !== null) { hereIsGood.appendChild(waittimePart) }
     if (resourceLatino_Services !== null) {hereIsGood.appendChild(espanolPart)}
     hereIsGood.appendChild(descTag)
-    if (resourceEligible !== null) {hereIsGood.appendChild(eligibilityTag) }
-    // hereIsGood.appendChild(mapPart)
+    if (resourceEligible !== null) {hereIsGood.appendChild(eligibilityPart) }
+    hereIsGood.appendChild(mapPart)
 }
   
 populate(resources) 

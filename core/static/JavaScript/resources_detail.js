@@ -186,7 +186,7 @@ function populate(resources){
 
     const resourceTag = document.createElement('div')
     const nameTag = document.createElement('h2')
-    const infoTag = document.createElement('span')
+    const infoTag = document.createElement('div')
     const webTag = document.createElement('span')
     const phoneTag = document.createElement('span') 
     const emailTag = document.createElement('span')
@@ -245,13 +245,13 @@ function populate(resources){
   const resourceTime_Till_Service = resources.Time_Till_Service__c
 
     resourceTag.className = 'listed-resource'
-    infoTag.className = 'info'
+    infoTag.className = 'infodiv'
     nameTag.className = 'listed-name'
     descTag.className = 'listed-desc'
     webTag.className = 'listed-site'
     phoneTag.className = 'listed-phone'
     emailTag.className = 'listed-email'
-    categoryList.className = 'category-list'
+    categoryList.className = 'infodiv'
     eligibilityPart.className = 'listed-desc'
     eligibilityTag.className = 'mdc-button'
     cityServedTag.className = 'listed-desc'
@@ -297,7 +297,7 @@ function populate(resources){
     eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i>See Requirements</a>`
   }
   googleTag.innerHTML = `<a title="Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
-  mapTag.innerHTML = `<a title="Google directions" class="foo-button mdc-button" href="https://www.maps.google.com/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fab fa-google"></i>Directions</a>`
+  mapTag.innerHTML = `<a title="Google directions" class="foo-button mdc-button" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fab fa-google"></i>Directions</a>`
 
 
     
@@ -334,32 +334,30 @@ function populate(resources){
     }
     }
     
-    cityList.toString().replace(",", ", ")
     
-    waittimePart.innerHTML = `<h3 class="mdc-button">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`
-    espanolPart.innerHTML = `<h3 class="mdc-button">Español</h3><p style="margin:.5rem">${resourceLatino_Services}<p>`
-    hoursPart.innerHTML = `<h3 class="mdc-button">Hours</h3><p style="margin:.5rem">${resourceHours}<p>`
-    addressPart.innerHTML = `<h3 class="mdc-button">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
-    categoryTag.innerHTML = `<h3 class="mdc-button">Categories</h3>`
-    cityServedTag.innerHTML =  `<h3 class="mdc-button">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
+    waittimePart.innerHTML = `<h3 class="h3style">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`
+    espanolPart.innerHTML = `<h3 class="h3style">Español</h3><p style="margin:.5rem">${resourceLatino_Services}<p>`
+    hoursPart.innerHTML = `<h3 class="h3style">Hours</h3><p style="margin:.5rem">${resourceHours}<p>`
+    addressPart.innerHTML = `<h3 class="h3style">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
+    categoryTag.innerHTML = ``
+    cityServedTag.innerHTML =  `<h3 class="h3style">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
     if (resourceDescription !== null) { 
-      descTag.innerHTML = `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc} <br> ${resourceDescription}<p>`}
+      descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem">${resourceDesc} <br><br> ${resourceDescription}<p>`}
     else {
-      descTag.innerHTML = `<h3 class="mdc-button">Description</h3><p style="margin:.5rem">${resourceDesc}` }
-    eligibilityPart.innerHTML = `<h3 class="mdc-button" id="Elig">Eligibiltiy Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
-    // mapPart.innerHTML = `<h3 class="mdc-button" ><a href="https://maps.google.com/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}">Map</a></h3>`
+      descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem">${resourceDesc}` }
+    eligibilityPart.innerHTML = `<h3 class="h3style" id="Elig">Eligibility Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
 
     hereIsGood.appendChild(nameTag)
-    // hereIsGood.appendChild(infoTag)
-    hereIsGood.appendChild(webTag)
-    hereIsGood.appendChild(phoneTag)
-    hereIsGood.appendChild(emailTag)
-    hereIsGood.appendChild(eligibilityTag)
-    hereIsGood.appendChild(googleTag)
-    hereIsGood.appendChild(mapTag)
-    // hereIsGood.appendChild(categoryTag)
+    hereIsGood.appendChild(infoTag)
+    infoTag.appendChild(webTag)
+    infoTag.appendChild(phoneTag)
+    infoTag.appendChild(emailTag)
+    infoTag.appendChild(googleTag)
+    if (cityList !== null) {infoTag.appendChild(mapTag)}
+    if (resourceEligible !== null) {infoTag.appendChild(eligibilityTag)}
+    hereIsGood.appendChild(categoryTag)
     hereIsGood.appendChild(categoryList)
-    hereIsGood.appendChild(cityServedTag)
+    if (cityList !== null) {hereIsGood.appendChild(cityServedTag)}
     if (resourcePrimary_Street !== null) {hereIsGood.appendChild(addressPart)}
     if (resourceHours !== null) { hereIsGood.appendChild(hoursPart)}
     if (resourceTime_Till_Service !== null) { hereIsGood.appendChild(waittimePart) }

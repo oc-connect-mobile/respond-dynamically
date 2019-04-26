@@ -415,3 +415,15 @@ header {
 .off {
     background-color: grey;
   }
+
+.h3style {
+      color: #00adef;
+      font-size: .9rem;
+      text-transform: uppercase;
+      padding: .5rem;
+      letter-spacing: 0.1em
+  }
+
+  .infodiv {
+    padding: 1rem;
+  }

@@ -555,7 +555,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
 
-  query('#clear-button').addEventListener('submit', function (event) {
+  document.getElementById.addEventListener('click', function (event) {
     console.log("CLEAR BUTTON HIT")
     const resourcesList = query('.list-of-resources')
     resourcesList.innerHTML = ''

@@ -43,6 +43,8 @@ function updateList (input) {
   const resourcesList = query('.list-of-resources')
   resourcesList.innerHTML = ''
   resources = data
+  let filters = query('.city-filter-box')
+  filters.classList.remove('hide')
   let counter = 0
   for (idx = 0; idx < resources.records.length; idx++) {
     cityTest = resources.records[idx]['City_Served__c']
@@ -441,53 +443,41 @@ function slideUpResource(input) {
     let noSpaceInput = input.replace(' ', '')
     resource = queryAll('.listed-resource')
     let button = query(`.toggleButton-${noSpaceInput}`)
+    let buttons = queryAll('.toggleButton')
     for (let idx = 0; idx < resource.length; idx++){
         if (resource[idx].classList.contains(noSpaceInput) && resource[idx].classList.contains('hide')){
-            console.log('1')
-            if (isButtonToggled(button)){
-            button.classList.add('toggle-selected')
-            }
+            isButtonToggled(button, buttons)
             resource[idx].classList.remove('hide')
         }
         else if (resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
-            console.log('2')
-            if (isButtonToggled(button)){
-            button.classList.add('toggle-selected')
-            }
-        }
-        else if (resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
-            console.log('3')
-            if (isButtonToggled(button)){
-            button.classList.remove('toggle-selected')
-            }
+            isButtonToggled(button, buttons)
+            resource[idx].classList.remove('hide')
         }
         else if (!resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
-            console.log('4')
-            if (isButtonToggled(button)){
-            button.classList.add('toggle-selected')
-            }
+            isButtonToggled(button, buttons)
             resource[idx].classList.add('hide')
         }
-        else if (!resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
-            console.log('5')
-            if (isButtonToggled(button)){
-            button.classList.remove('toggle-selected')
-            }
-        }
         else if (!resource[idx].classList.contains(noSpaceInput) && resource[idx].classList.contains('hide')){
-            console.log('6')
-            if (isButtonToggled(button)){
-            button.classList.add('toggle-selected')
-            }
+            isButtonToggled(button, buttons)
+            resource[idx].classList.remove('hide')
         }
     }
 }   
 
-function isButtonToggled(button){
-    if (button.classList.contains('toggle-selected')){
-        return true
+function isButtonToggled(button, buttons){
+    for (let idx = 0; idx < buttons.length; idx++){
+        console.log(button.value)
+        console.log(buttons[idx].value)
+        if (buttons[idx].value !== button.value){
+            buttons[idx].classList.remove ('toggle-selected')
+        }
+        else if (!button.classList.contains('toggle-selected')){
+            button.classList.add('toggle-selected')
+        }
+        else {
+            button.classList.remove('toggle-selected')
+        }
     }
-    return false
 }
 function isHideToggled(resource){
     if (resource.classList.contains('hide')){
@@ -499,12 +489,12 @@ function isHideToggled(resource){
 }
 
 function hideCityFilters() {
-    filterBox = query('.city-filter-box')
+    filterBox = query('.filter-btns')
     filterBox.classList.toggle('hide')
 }
 
 function hideCatFilters() {
-    filterBox = query('.category-btns-box')
+    filterBox = query('.category-search-btns')
     filterBox.classList.toggle('hide')
 }
 

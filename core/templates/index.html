@@ -18,15 +18,14 @@
             <button id="search-button" class="mdc-button" type="submit">Search</button>
         </form>
     </div>
-    <div class="filter-toggles">
-        <input class="toggleBtn mdc-button" type="button" onclick="hideCatFilters()" value="Hide Categories">
-        <input class="toggleBtn mdc-button" type="button" onclick="hideCityFilters()" value="Hide Cities">
-    </div>
     <div class="category-btns-box" aria-label="Here a various ways to filter using checkboxes"> 
         <br> 
-        <h4>Search by Category:</h4>  
-        <div id="category-buttons">
-            
+        <div class="category-search-header">
+            <h4 class="category-header">Search by Category:</h4> 
+            <input class="" type="button" onclick="hideCatFilters()" value="Toggle Categories"> 
+        </div>
+        <div class="category-search-btns">
+        
             <form id="emergency-search">       
                 <button id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
             </form>
@@ -66,24 +65,28 @@
         </div>
     </div>
     
-    <div class="city-filter-box">
+    <div class="city-filter-box hide">
         <br>
-        <h4>Filter by Location:</h4>
-        <p class="filter-title">Click a city to remove it from search results</p> 
+        <div class="filter-city-header">
+            <h4 class="filter-header">Filter by Location:</h4>
+            <input class="" type="button" onclick="hideCityFilters()" value="Toggle Cities">
+        </div>
         <div class="filter-btns">
-        <input class="toggleBtn toggleButton-Durham" type="button" onclick="slideUpResource('Durham')" value="Durham">
-        <input class="toggleBtn toggleButton-ChapelHill" type="button" onclick="slideUpResource('ChapelHill')" value="Chapel Hill">
-        <input class="toggleBtn toggleButton-Mebane" type="button" onclick="slideUpResource('Mebane')" value="Mebane">
-        <input class="toggleBtn toggleButton-Raleigh" type="button" onclick="slideUpResource('Raleigh')" value="Raleigh">
-        <input class="toggleBtn toggleButton-Carrboro" type="button" onclick="slideUpResource('Carrboro')" value="Carrboro">
-        <input class="toggleBtn toggleButton-Hillsborough" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
-    </div>
-
-        {% comment %} <input class="toggleBtn on" type="button" value="Durham"/>
-        <input class="toggleBtn on" type="button" value="Mebane"/>
-        <input class="toggleBtn on" type="button" value="ChapelHill"/> {% endcomment %}
-       
-    </div>
+            <input class="toggleButton toggleButton-Durham" type="button" onclick="slideUpResource('Durham')" value="Durham">
+            <input class="toggleButton toggleButton-ChapelHill" type="button" onclick="slideUpResource('ChapelHill')" value="Chapel Hill">
+            <input class="toggleButton toggleButton-Mebane" type="button" onclick="slideUpResource('Mebane')" value="Mebane">
+            <input class="toggleButton toggleButton-Raleigh" type="button" onclick="slideUpResource('Raleigh')" value="Raleigh">
+            <input class="toggleButton toggleButton-Carrboro" type="button" onclick="slideUpResource('Carrboro')" value="Carrboro">
+            <input class="toggleButton toggleButton-Hillsborough" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
+            <input class="toggleButton toggleButton-Morrisville" type="button" onclick="slideUpResource('Morrisville')" value="Morrisville">
+            <input class="toggleButton toggleButton-Carr" type="button" onclick="slideUpResource('Carr')" value="Carr">
+            <input class="toggleButton toggleButton-Cheeks" type="button" onclick="slideUpResource('Cheeks')" value="Cheeks">
+            <input class="toggleButton toggleButton-Bingham" type="button" onclick="slideUpResource('Bingham')" value="Bingham">
+            <input class="toggleButton toggleButton-CedarGrove" type="button" onclick="slideUpResource('CedarGrove')" value="Cedar Grove">
+            <input class="toggleButton toggleButton-Eno" type="button" onclick="slideUpResource('Eno')" value="Eno">
+            <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
+        </div>
+    </div> 
 </div>
 
 	

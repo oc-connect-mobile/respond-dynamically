@@ -170,10 +170,7 @@ header {
     background-color: white;
     transition: all 0.4s ease-in-out;
 }
-.hide{
-    height: 0;
-    display: none;
-}
+
 /* .listed-resource:hover {
   transform: scale(1.03, 1.03);
   cursor: pointer;
@@ -309,7 +306,7 @@ header {
 }
 
 
-#category-buttons{
+.category-search-btns{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -354,8 +351,30 @@ header {
     justify-content: space-evenly;
     align-items: center;
 }
-.toggleBtn{
+.toggleButton{
+    background-color: #51C6EE;
+    border: 1px solid black;
 
+}
+.toggle-selected{
+    background-color: #045A92;
+    color: white;
+}
+.hide{
+    height: 0;
+    display: none;
+}
+.category-search-header{
+    display: flex;
+}
+.category-header{
+    margin-right: 1rem;
+}
+.filter-city-header{
+    display: flex;
+}
+.filter-header{
+    margin-right: 1rem;
 }
 .i-emergency {
     color: #ef5350;

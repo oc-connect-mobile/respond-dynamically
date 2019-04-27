@@ -207,16 +207,16 @@ function addIconToCategory (catList) {
     return 'local_hotel'
   }
   if (catList.indexOf('Goods') >= 0) {
-    return 'shopping_basket'
+    return 'shopping_cart'
   }
   if (catList.indexOf('Transportation') >= 0) {
     return 'commute'
   }
   if (catList.indexOf('Health') >= 0) {
-    return 'local_hospital'
+    return 'favorite'
   }
   if (catList.indexOf('Finances') >= 0) {
-    return 'account_balance'
+    return 'monetization_on'
   }
   if (catList.indexOf('Care') >= 0) {
     return 'accessibility_new'
@@ -225,13 +225,13 @@ function addIconToCategory (catList) {
     return 'school'
   }
   if (catList.indexOf('Employment') >= 0) {
-    return 'business_center'
+    return 'work'
   }
   if (catList.indexOf('Legal') >= 0) {
-    return 'local_hospital'
+    return 'gavel'
   }
   if (catList.indexOf('Communication') >= 0) {
-    return 'feedback'
+    return 'headset_mic'
   }
   if (catList.indexOf('OneStop') >= 0) {
     return 'stars'

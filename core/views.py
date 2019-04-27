@@ -85,7 +85,7 @@ def index(request):
     data1 = supersf(soqlkv)
     data2 = json.dumps(data1)
     records = data1['records'] # this is now a list
-    print(data2)
+    # print(data2)
     
 #printable = data1["records"][1]["Name"]
 

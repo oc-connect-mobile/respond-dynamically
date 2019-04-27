@@ -406,9 +406,28 @@ let subCatList = separateList(resourceSubCategory)
 
     contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
     
-    webTag.innerHTML = `<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
-    phoneTag.innerHTML = `<a title="Call resource" class="" href="tel:${resourcePhone}"><i class="fa fa-lg fa-phone"></i></a>`
-    emailTag.innerHTML = `<a title= "Email resource" class="" href="mailto:${resourceEmail}"><i class="fa fa-lg fa-envelope"></i></a>`
+    webTag.innerHTML = resourceWeb
+      if (resourceWeb !== null){
+        webTag.innerHTML =`<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
+      }
+      else {
+        webTag.classList.add('hide')
+      }
+    phoneTag.innerHTML = resourcePhone
+      if (resourcePhone !== null){
+        phoneTag.innerHTML = `<a title="Call resource" href="tel:${resourcePhone}"><i class="fa fa-lg fa-phone"></i></a>`
+      }
+      else {
+        phoneTag.classList.add('hide')
+      }
+
+    emailTag.innerHTML = resourceEmail
+      if (resourceEmail !== null){
+        emailTag.innerHTML =`<a title= "Email resource" class="" href="mailto:${resourceEmail}"><i class="fa fa-lg fa-envelope"></i></a>`
+      }
+      else {
+        emailTag.classList.add('hide')
+      }
 
     descTag.innerText = resourceDesc
     if (resourceEligible !== null){

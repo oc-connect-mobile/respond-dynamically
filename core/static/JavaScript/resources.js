@@ -1,4 +1,5 @@
 let resources = data
+// let sosl = sosl
 
 function query (selector) {
   return document.querySelector(selector)
@@ -456,6 +457,7 @@ let subCatList = separateList(resourceSubCategory)
 
 
     resourceTag.appendChild(seeMoreTag) 
+    console.log("end of populateList")
 }
 
 function slideUpResource(input) {
@@ -518,14 +520,14 @@ function hideCatFilters() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  query('#search-form').addEventListener('submit', function (event) {
-    let input = query('#name')
-    let upperInput = toJoinTitleCaseWords(input.value)
-    // don't try to submit this form. Do what I ask instead.
-    event.preventDefault()
-    searchAny(toTitleCase(input.value), upperInput, resources)
-    input.value = ''
-  })
+  // query('#search-form').addEventListener('submit', function (event) {
+  //   let input = query('#name')
+  //   let upperInput = toJoinTitleCaseWords(input.value)
+  //   // don't try to submit this form. Do what I ask instead.
+  //   event.preventDefault()
+  //   searchAny(toTitleCase(input.value), upperInput, resources)
+  //   input.value = ''
+  // })
   query('#emergency-search').addEventListener('submit', function (event) {
     let input = query('#emergency-button')
     // don't try to submit this form. Do what I ask instead.
@@ -597,6 +599,33 @@ document.addEventListener('DOMContentLoaded', function () {
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
     updateList(input.value)
+  })
+  
+  query('#onestop-search').addEventListener('submit', function (event) {
+    let input = query('#onestop-button')
+    // don't try to submit this form. Do what I ask instead.
+    event.preventDefault()
+    updateList(input.value)
+  })
+
+  document.getElementById('search-button2').addEventListener('click', function (event) {
+    console.log("SEARCH BUTTON HIT")
+    const resourcesList = query('.list-of-resources')
+    resourcesList.innerHTML = ''
+    resources = data
+    populateList(resources) 
+  })
+
+
+  document.getElementById.addEventListener('click', function (event) {
+    console.log("CLEAR BUTTON HIT")
+    const resourcesList = query('.list-of-resources')
+    resourcesList.innerHTML = ''
+    resources = data
+    let counter = 0
+    for (idx = 0; idx < resources.records.length; idx++) {
+      populateList(resources, idx) }
+    
   })
 //   query('#onestop-search').addEventListener('submit', function (event) {
 //     let input = query('#onestop-button')

@@ -55,7 +55,10 @@ def index(request):
             string = ""
             u = string.join(data5)
             v = "("+u+p
-            soqlkv = a+b+v+x+y    
+            soqlkv = a+b+v+x+y
+        if request.GET.get('clear'):
+            print("clear")
+            soqlkv = a+b+x+y
     
     data1 = supersf(soqlkv)
     data2 = json.dumps(data1)

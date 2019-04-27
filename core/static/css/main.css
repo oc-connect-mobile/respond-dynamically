@@ -436,3 +436,10 @@ header {
   .infodiv {
     padding: 1rem;
   }
+
+  #clear-button {
+    margin: 0;
+    background-color: #058BC7;
+    color: white;
+    max-width: 8rem;
+    border: 1px solid black;

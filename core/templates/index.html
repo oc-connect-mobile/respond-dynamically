@@ -7,21 +7,20 @@
 
 
 
-<div class="welcome"><h3 class="h3index">Welcome</h3></div>
-<div class="info-menu" id="filter">
-        <p class="welcome-message">Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
+<div class="welcome"><h3>Welcome,</h3></div>
 
+<div class="info-menu">
+    <p class="welcome-message">Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
 
     
-    <div class="filter-toggles">
-        <input class="toggleBtn mdc-button" type="button" onclick="hideCatFilters()" value="Hide Categories">
-        <input class="toggleBtn mdc-button" type="button" onclick="hideCityFilters()" value="Hide Cities">
-    </div>
     <div class="category-btns-box" aria-label="Here a various ways to filter using checkboxes"> 
         <br> 
-        <h4 class="h3index">What are you looking for?</h4>  
-        <div id="category-buttons">
-            
+        <div class="category-search-header">
+            <h4 class="category-header">Search by Category:</h4> 
+            <input class="" type="button" onclick="hideCatFilters()" value="Toggle Categories"> 
+        </div>
+        <div class="category-search-btns">
+        
             <form id="emergency-search">       
                 <button id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
             </form>
@@ -61,29 +60,34 @@
         </div>
     </div>
     
-    <div class="city-filter-box">
+    <div class="city-filter-box hide">
         <br>
-        <h4 class="h3index">Where do you want to look?</h4>
-        <p class="filter-title">Click a city to remove it from search results</p> 
+        <div class="filter-city-header">
+            <h4 class="filter-header">Filter by Location:</h4>
+            <input class="" type="button" onclick="hideCityFilters()" value="Toggle Cities">
+        </div>
         <div class="filter-btns">
-        <input class="toggleBtn mdc-button" type="button" onclick="slideUpResource('Durham')" value="Durham">
-        <input class="toggleBtn mdc-button" type="button" onclick="slideUpResource('ChapelHill')" value="Chapel Hill">
-        <input class="toggleBtn mdc-button" type="button" onclick="slideUpResource('Mebane')" value="Mebane">
-        <input class="toggleBtn mdc-button" type="button" onclick="slideUpResource('Raleigh')" value="Raleigh">
-        <input class="toggleBtn mdc-button" type="button" onclick="slideUpResource('Carrboro')" value="Carrboro">
-        <input class="toggleBtn mdc-button" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
-    </div>
-
-        {% comment %} <input class="toggleBtn on" type="button" value="Durham"/>
-        <input class="toggleBtn on" type="button" value="Mebane"/>
-        <input class="toggleBtn on" type="button" value="ChapelHill"/> {% endcomment %}
-       
+            <input class="toggleButton toggleButton-Durham" type="button" onclick="slideUpResource('Durham')" value="Durham">
+            <input class="toggleButton toggleButton-ChapelHill" type="button" onclick="slideUpResource('ChapelHill')" value="Chapel Hill">
+            <input class="toggleButton toggleButton-Mebane" type="button" onclick="slideUpResource('Mebane')" value="Mebane">
+            <input class="toggleButton toggleButton-Raleigh" type="button" onclick="slideUpResource('Raleigh')" value="Raleigh">
+            <input class="toggleButton toggleButton-Carrboro" type="button" onclick="slideUpResource('Carrboro')" value="Carrboro">
+            <input class="toggleButton toggleButton-Hillsborough" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
+            <input class="toggleButton toggleButton-Morrisville" type="button" onclick="slideUpResource('Morrisville')" value="Morrisville">
+            <input class="toggleButton toggleButton-Carr" type="button" onclick="slideUpResource('Carr')" value="Carr">
+            <input class="toggleButton toggleButton-Cheeks" type="button" onclick="slideUpResource('Cheeks')" value="Cheeks">
+            <input class="toggleButton toggleButton-Bingham" type="button" onclick="slideUpResource('Bingham')" value="Bingham">
+            <input class="toggleButton toggleButton-CedarGrove" type="button" onclick="slideUpResource('CedarGrove')" value="Cedar Grove">
+            <input class="toggleButton toggleButton-Eno" type="button" onclick="slideUpResource('Eno')" value="Eno">
+            <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
+        </div>
+    </div> 
 </div>
 
 	
 
 <div class="bottom-filter">
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter').style.display='block'" style="width:auto;"><i class="fa fa-search fa-2x"></i>
+    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter')"><i class="fa fa-search fa-2x"></i>
     </button>
 </div> 
 
@@ -191,8 +195,8 @@
     </script>   
 </div>     
 
-<script src="{% static "JavaScript/filter.js" %}"></script>
-<script src="{% static "JavaScript/resources.js"%}"></script>
+<script src="{% static 'JavaScript/filter.js' %}"></script>
+<script src="{% static 'JavaScript/resources.js' %}"></script>
 
 
 {% endblock %}

@@ -44,8 +44,9 @@ $fontFamily: "Open Sans", sans-serif;
   // background-color: rgba(51, 51, 51, 0.336);
   overflow: hidden;
   position: fixed;
-  bottom: 0;
   width: 98%;
+  bottom: 1px;
+  right: 1px;
 }
 
 .bottom-filter .mdc-button {
@@ -54,6 +55,7 @@ $fontFamily: "Open Sans", sans-serif;
   width: 60px;
   height: 60px;
   padding: 0;
+
 }
 .bottom-filter .mdc-button--raised:not(:disabled){
   color: white;  
@@ -68,15 +70,21 @@ $fontFamily: "Open Sans", sans-serif;
   // background-color: rgba(51, 51, 51, 0.336);
   overflow: hidden;
   position: fixed;
-  bottom: 0;
+  width: 100%;
+  bottom: 1px;
+  right: 1px;
 }
 
 .bottom-back-btn .mdc-button {
-  float: left;
+  color: white;
+  float: right;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   padding: 0;
+}
+.bottom-back-btn .mdc-button--raised:not(:disabled){
+  color: white;  
 }
 
 .listed-detail {

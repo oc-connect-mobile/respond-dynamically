@@ -86,6 +86,7 @@ def index(request):
     data2 = json.dumps(data1)
     records = data1['records'] # this is now a list
     print(data2)
+    
 #printable = data1["records"][1]["Name"]
 
 
@@ -109,8 +110,14 @@ def resource_detail(request, id):
     soqlkv = id
 
     detail1 = superDetailsf(soqlkv)
+    data2 = json.dumps(detail1)
+    
+    pprint(data2)
+    # attributes = data2['attributes']
 
     context = {
         'details': detail1,
+        'data2': data2,
+        # 'attributes': attributes,
     }
     return render(request, 'resource-detail.html', context=context)

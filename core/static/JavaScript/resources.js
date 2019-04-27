@@ -537,10 +537,17 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault()
     updateList(input.value)
   })
+  
   query('#onestop-search').addEventListener('submit', function (event) {
     let input = query('#onestop-button')
     // don't try to submit this form. Do what I ask instead.
     event.preventDefault()
     updateList(input.value)
+  })
+  query('#search-button').addEventListener('submit', function (event) {
+    populateList(resources, idx)
+  })
+  query('#clear-button').addEventListener('submit', function (event) {
+    populateList(resources, idx)
   })
 })

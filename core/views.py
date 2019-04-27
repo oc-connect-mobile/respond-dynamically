@@ -33,6 +33,7 @@ def index(request):
     #&Account.limit=2"
     p = ")+AND+"
 
+    data9 = []
     soqlkv = a+b+x+y
 
 
@@ -51,11 +52,14 @@ def index(request):
                 data4.remove('Id')
             data5 = data4
             data4[:] = ["id='"+j+"'+OR+" for j in data4]    
-            data5.append("id='001U0000008jpEpIAI'")
+            data5.append("id='0012100000gHwtGAAS'")
+            # data5.append("id='001U0000008jpEpIAI'")
             string = ""
             u = string.join(data5)
             v = "("+u+p
             soqlkv = a+b+v+x+y
+            # data9 = json.dumps(data3)
+            # return data9
         if request.GET.get('clear'):
             print("clear")
             soqlkv = a+b+x+y
@@ -69,6 +73,7 @@ def index(request):
     context = {
         'data2': data2,
         'data1': data1,
+        # 'data9': data9,
         }   
 
     # Render the HTML template index.html with the data in the context variable

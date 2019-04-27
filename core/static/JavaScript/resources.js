@@ -33,6 +33,7 @@ function searchAny (input, modifiedInput, resources) {
     let allCities = getAllCities(resources)
     let allSubCats = getAllSubCategories(resources)
     let allSecondaryTags = getAllSecondaryTags(resources)
+
     if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1) || modifiedInput.some(v=> allSubCats.indexOf(v) !== -1) || modifiedInput.some(v=> allSecondaryTags.indexOf(v) !== -1)){
         updateList(input)
     }  
@@ -234,7 +235,6 @@ function addIconToCategory (catList) {
     return 'stars'
   }
 }
-
 
 function populateList(resources, idx){
     const welcomeTag = query('.welcome')
@@ -438,11 +438,63 @@ let subCatList = separateList(resourceSubCategory)
 }
 
 function slideUpResource(input) {
+    let noSpaceInput = input.replace(' ', '')
     resource = queryAll('.listed-resource')
+    let button = query(`.toggleButton-${noSpaceInput}`)
     for (let idx = 0; idx < resource.length; idx++){
-        if (resource[idx].classList.contains(input)){
-            resource[idx].classList.toggle('hide')
+        if (resource[idx].classList.contains(noSpaceInput) && resource[idx].classList.contains('hide')){
+            console.log('1')
+            if (isButtonToggled(button)){
+            button.classList.add('toggle-selected')
+            }
+            resource[idx].classList.remove('hide')
         }
+        else if (resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
+            console.log('2')
+            if (isButtonToggled(button)){
+            button.classList.add('toggle-selected')
+            }
+        }
+        else if (resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
+            console.log('3')
+            if (isButtonToggled(button)){
+            button.classList.remove('toggle-selected')
+            }
+        }
+        else if (!resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
+            console.log('4')
+            if (isButtonToggled(button)){
+            button.classList.add('toggle-selected')
+            }
+            resource[idx].classList.add('hide')
+        }
+        else if (!resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
+            console.log('5')
+            if (isButtonToggled(button)){
+            button.classList.remove('toggle-selected')
+            }
+        }
+        else if (!resource[idx].classList.contains(noSpaceInput) && resource[idx].classList.contains('hide')){
+            console.log('6')
+            if (isButtonToggled(button)){
+            button.classList.add('toggle-selected')
+            }
+        }
+    }
+}   
+
+function isButtonToggled(button){
+    if (button.classList.contains('toggle-selected')){
+        return true
+    }
+    return false
+}
+function isHideToggled(resource){
+    if (resource.classList.contains('hide')){
+        resource.classList.remove('hide')       
+    }
+    else{
+        resource.classList.add('hide')
     }
 }
 
@@ -537,10 +589,10 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault()
     updateList(input.value)
   })
-  query('#onestop-search').addEventListener('submit', function (event) {
-    let input = query('#onestop-button')
-    // don't try to submit this form. Do what I ask instead.
-    event.preventDefault()
-    updateList(input.value)
-  })
+//   query('#onestop-search').addEventListener('submit', function (event) {
+//     let input = query('#onestop-button')
+//     // don't try to submit this form. Do what I ask instead.
+//     event.preventDefault()
+//     updateList(input.value)
+//   })
 })

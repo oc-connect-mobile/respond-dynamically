@@ -355,8 +355,15 @@ header {
     align-items: center;
 }
 .toggleBtn{
+    background-color: #51C6EE;
+    border: 1px solid black;
 
 }
+.toggle-selected{
+    background-color: #045A92;
+    color: white;
+}
+
 .i-emergency {
     color: #ef5350;
 }

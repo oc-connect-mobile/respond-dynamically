@@ -36,7 +36,6 @@ def index(request):
     data9 = []
     soqlkv = a+b+x+y
 
-
     if request.method == 'GET':
         if request.GET.get('luckyq'):
             q = request.GET.get('luckyq')
@@ -66,9 +65,7 @@ def index(request):
     
     data1 = supersf(soqlkv)
     data2 = json.dumps(data1)
-    # records = data1['records'] # this is now a list
     # print(data2)
-
 
     context = {
         'data2': data2,

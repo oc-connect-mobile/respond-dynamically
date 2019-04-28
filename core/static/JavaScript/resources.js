@@ -29,16 +29,16 @@ function toTitleCase(str) {
 	return str.join(' ')
 }
 
-function searchAny (input, modifiedInput, resources) {
-    let allCats = getAllCategories(resources)
-    let allCities = getAllCities(resources)
-    let allSubCats = getAllSubCategories(resources)
-    let allSecondaryTags = getAllSecondaryTags(resources)
+// function searchAny (input, modifiedInput, resources) {
+//     let allCats = getAllCategories(resources)
+//     let allCities = getAllCities(resources)
+//     let allSubCats = getAllSubCategories(resources)
+//     let allSecondaryTags = getAllSecondaryTags(resources)
 
-    if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1) || modifiedInput.some(v=> allSubCats.indexOf(v) !== -1) || modifiedInput.some(v=> allSecondaryTags.indexOf(v) !== -1)){
-        updateList(input)
-    }  
-}   
+//     if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1) || modifiedInput.some(v=> allSubCats.indexOf(v) !== -1) || modifiedInput.some(v=> allSecondaryTags.indexOf(v) !== -1)){
+//         updateList(input)
+//     }  
+// }   
 
 function updateList (input) {
   const resourcesList = query('.list-of-resources')
@@ -50,12 +50,10 @@ function updateList (input) {
   for (idx = 0; idx < resources.records.length; idx++) {
     cityTest = resources.records[idx]['City_Served__c']
     categoryTest = resources.records[idx]['CEF_Category__c']
-    subCatTest = resources.records[idx]['CEF_Sub_Category__c']
-    secondTagTest = resources.records[idx]['Secondary_Tags__c']
-    if (cityTest === null && categoryTest === null && subCatTest === null && secondTagTest === null ){
+    if (cityTest === null && categoryTest === null){
       continue
     }
-    if ((cityTest !== null && categoryTest !== null && subCatTest !== null && secondTagTest !== null) && (cityTest.includes(input) || categoryTest.includes(input) || subCatTest.includes(input) || secondTagTest.includes(input))) {
+    if ((cityTest !== null && categoryTest !== null) && (cityTest.includes(input) || categoryTest.includes(input))) {
       populateList(resources, idx)
       counter += 1
     } else if (cityTest !== null && cityTest.includes(input)) {
@@ -65,15 +63,8 @@ function updateList (input) {
       populateList(resources, idx)
       counter += 1
     }
-     else if (subCatTest !== null && subCatTest.includes(input)) {  
-      populateList(resources, idx)
-      counter += 1
-    }
-     else if (secondTagTest !== null && secondTagTest.includes(input)) {
-      populateList(resources, idx)
-      counter += 1
-    }
   }
+//   query('.resources-number').innerHTML = `<p class="resources-number">We found ${counter} resources for you.</p>`
   console.log(counter)
 }
 
@@ -128,59 +119,6 @@ function getAllCities (resources){
     }
     return allCities
 }
-
-function getAllSubCategories (resources){
-    let allSubCategories = []
-    for (idx = 0; idx < resources.records.length; idx++){
-        const resourceSubCategory = resources.records[idx]['CEF_Sub_Category__c']
-        if (resourceSubCategory !== null){
-            let separatedSubCategory = separateList(resourceSubCategory)
-            if (typeof separatedSubCategory === 'object') {
-                let listLength = separatedSubCategory.length
-                for (let i = 0; i < listLength; i++) {
-                    let subCat = separatedSubCategory[i].replace(' ', '')
-                    if (!allSubCategories.includes(subCat)){
-                        allSubCategories.push(subCat)
-                    }
-                }
-            }
-            if (typeof separatedSubCategory === 'string') {
-                let subCat = separatedSubCategory.replace(' ', '')
-                if (!allSubCategories.includes(subCat)){
-                    allSubCategories.push(subCat)
-                }
-            } 
-        }
-    }
-    return allSubCategories
-}
-
-function getAllSecondaryTags (resources){
-    let allSecondaryTags = []
-    for (idx = 0; idx < resources.records.length; idx++){
-        const resourceSecondaryTag = resources.records[idx]['Secondary_Tags__c']
-        if (resourceSecondaryTag !== null){
-            let separatedSecondaryTags = separateList(resourceSecondaryTag)
-            if (typeof separatedSecondaryTags === 'object') {
-                let listLength = separatedSecondaryTags.length
-                for (let i = 0; i < listLength; i++) {
-                    let secondTag = separatedSecondaryTags[i].replace(' ', '')
-                    if (!allSecondaryTags.includes(secondTag)){
-                        allSecondaryTags.push(secondTag)
-                    }
-                }
-            }
-            if (typeof separatedSecondaryTags === 'string') {
-                let secondTag = separatedSecondaryTags.replace(' ', '')
-                if (!allSecondaryTags.includes(secondTag)){
-                    allSecondaryTags.push(secondTag)
-                }
-            } 
-        }
-    }
-    return allSecondaryTags
-}
-
 
 function separateList (joinedList) {
   if (joinedList === null) {
@@ -239,7 +177,7 @@ function addIconToCategory (catList) {
   }
 }
 
-function populateList(resources, idx){
+function populateList(resources){
     const welcomeTag = query('.welcome')
     const welcomeMessage = query('.welcome-message')
     welcomeTag.innerText = ''
@@ -249,6 +187,7 @@ function populateList(resources, idx){
     const resourceTag = document.createElement('div')
     const nameTag = document.createElement('h2')
     const infoTag = document.createElement('span')
+    const numOfResources = document.createElement('div')
     
     const contactInfoDiv = document.createElement('div')
     const webTag = document.createElement('button')
@@ -262,11 +201,9 @@ function populateList(resources, idx){
     const seeMoreTag = document.createElement('button')
     const cityServedTag = document.createElement('div')
     const cityServedList = document.createElement('div')
-    const subCategoryTag = document.createElement('div')
     const subCategoryList = document.createElement('div')
-    const secondaryTag = document.createElement('div')
     const secondaryTagList = document.createElement('div')
-    const googleTag = document.createElement('span')
+    // const googleTag = document.createElement('span')
 
   const resourceId = resources.records[idx]['Id']
   const resourceName = resources.records[idx].Name
@@ -277,11 +214,9 @@ function populateList(resources, idx){
   const resourceDesc = resources.records[idx]['Description_Short__c']
   const resourceEligible = resources.records[idx]['Eligibility_Criteria__c']
   const resourceCity = resources.records[idx]['City_Served__c']
-  const resourceSubCategory = resources.records[idx]['CEF_Sub_Category__c']
-  const resourceSecondaryTag = resources.records[idx]['Secondary_Tags__c']
-
 
     resourceTag.className = 'listed-resource'
+    numOfResources.className = 'resources-number'
     infoTag.className = 'info'
     nameTag.className = 'listed-name'
     descTag.className = 'listed-desc'
@@ -295,7 +230,7 @@ function populateList(resources, idx){
     eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
     seeMoreTag.className = 'listed-detail'
     cityServedTag.className = 'city-list'
-    googleTag.className = 'google-search'
+    // googleTag.className = 'google-search'
 
 
   let cityList = separateList(resourceCity)
@@ -327,64 +262,6 @@ function populateList(resources, idx){
   }
   resourceTag.setAttribute('style', 'display:hidden')
 
-let subCatList = separateList(resourceSubCategory)
-  if (subCatList !== null) {
-    if (typeof subCatList === 'object') {  
-      let listLength = subCatList.length
-      for (let i = 0; i < listLength; i++) {
-        let subCategoryTag = document.createElement('span')
-        let subCat = subCatList[i].replace(' ', '')
-            while (subCat.includes(' ')){
-                subCat = subCat.replace(' ', '')
-            }
-        subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
-        resourceTag.classList.add(`${subCat}`)
-        subCategoryTag.setAttribute('style', 'display:hidden')
-        resourceTag.appendChild(subCategoryTag)
-      }
-    }
-    if (typeof subCatList === 'string') {
-      let subCat = subCatList.replace(' ', '')
-            while (subCat.includes(' ')){
-                subCat = subCat.replace(' ', '')
-            }
-      subCategoryTag.classList.add('listed-subCat', (`${subCat}`))
-      resourceTag.classList.add(`${subCat}`)
-      subCategoryTag.setAttribute('style', 'display:hidden')
-      resourceTag.appendChild(subCategoryTag)
-    }
-  }
-  resourceTag.setAttribute('style', 'display:hidden')
-
-    let secondTagList = separateList(resourceSecondaryTag)
-    if (secondTagList !== null) {
-        if (typeof secondTagList === 'object') {  
-        let listLength = secondTagList.length
-        for (let i = 0; i < listLength; i++) {
-            let secondTag = document.createElement('span')
-            let tag = secondTagList[i].replace(' ', '')
-                while (tag.includes(' ')){
-                    tag = tag.replace(' ', '')
-                }
-            secondaryTag.classList.add('listed-tag', (`${tag}`))
-            resourceTag.classList.add(`${tag}`)
-            secondaryTag.setAttribute('style', 'display:hidden')
-            resourceTag.appendChild(secondaryTag)
-        }
-        }
-        if (typeof secondTagList === 'string') {
-        let tag = secondTagList.replace(' ', '')
-                while (tag.includes(' ')){
-                    tag = tag.replace(' ', '')
-                }
-        secondaryTag.classList.add('listed-tag', (`${tag}`))
-        resourceTag.classList.add(`${tag}`)
-        secondaryTag.setAttribute('style', 'display:hidden')
-        resourceTag.appendChild(secondaryTag)
-        }
-    }
-    resourceTag.setAttribute('style', 'display:hidden')
-
   let catList = separateList(resourceCategory)
   if (catList !== null) {
     if (typeof catList === 'object') {
@@ -401,12 +278,29 @@ let subCatList = separateList(resourceSubCategory)
         categoryList.appendChild(categoryTag)
       }
     }
+    else{
+        let categoryTag = document.createElement('span')
+        let cat = catList.replace(' ', '')
+        let lowerCat = cat.toLowerCase()
+        categoryTag.innerText = catList
+        categoryTag.classList.add('listed-cat', (`${cat}`))
+        resourceTag.classList.add(`${cat}`)
+        let iconName = addIconToCategory(cat)
+        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+        categoryList.appendChild(categoryTag)
+    }
   }
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
     nameTag.innerText = resourceName
 
-    contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
-    
+    if (resourceWeb === null && resourcePhone === null && resourceEmail === null){
+        contactInfoDiv.classList.add('hide')
+    }
+    else {
+        contactInfoDiv.classList.remove('hide')
+        contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
+    }
+
     webTag.innerHTML = resourceWeb
       if (resourceWeb !== null){
         webTag.innerHTML =`<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
@@ -434,10 +328,11 @@ let subCatList = separateList(resourceSubCategory)
     if (resourceEligible !== null){
       eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
     }
-    googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
+    // googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
     descTag.innerText = resourceDesc
    
     resourceList.appendChild(resourceTag)
+    resourceList.appendChild(numOfResources)
     resourceTag.appendChild(nameTag)
     resourceTag.appendChild(infoTag)
     resourceTag.appendChild(cityServedList)
@@ -448,13 +343,12 @@ let subCatList = separateList(resourceSubCategory)
     infoTag.appendChild(phoneTag)
     infoTag.appendChild(emailTag)
     infoTag.appendChild(eligibiliyTag)
-    infoTag.appendChild(googleTag)
+    // infoTag.appendChild(googleTag)
     resourceTag.appendChild(descTag)
     resourceTag.appendChild(contactInfoDiv)
     contactInfoDiv.appendChild(webTag)
     contactInfoDiv.appendChild(phoneTag)
     contactInfoDiv.appendChild(emailTag)
-
 
     resourceTag.appendChild(seeMoreTag) 
     console.log("end of populateList")
@@ -487,8 +381,6 @@ function slideUpResource(input) {
 
 function isButtonToggled(button, buttons){
     for (let idx = 0; idx < buttons.length; idx++){
-        console.log(button.value)
-        console.log(buttons[idx].value)
         if (buttons[idx].value !== button.value){
             buttons[idx].classList.remove ('toggle-selected')
         }
@@ -594,43 +486,22 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault()
     updateList(input.value)
   })
-  query('#communication-search').addEventListener('submit', function (event) {
-    let input = query('#communication-button')
-    // don't try to submit this form. Do what I ask instead.
-    event.preventDefault()
-    updateList(input.value)
-  })
   
-  query('#onestop-search').addEventListener('submit', function (event) {
-    let input = query('#onestop-button')
-    // don't try to submit this form. Do what I ask instead.
-    event.preventDefault()
-    updateList(input.value)
-  })
-
   document.getElementById('search-button2').addEventListener('click', function (event) {
     console.log("SEARCH BUTTON HIT")
     const resourcesList = query('.list-of-resources')
     resourcesList.innerHTML = ''
-    resources = data
-    populateList(resources) 
+    // resources = data
+    updateList(resources) 
   })
 
-
-  document.getElementById.addEventListener('click', function (event) {
+  document.getElementById('clearbar').addEventListener('click', function (event) {
     console.log("CLEAR BUTTON HIT")
     const resourcesList = query('.list-of-resources')
     resourcesList.innerHTML = ''
     resources = data
-    let counter = 0
     for (idx = 0; idx < resources.records.length; idx++) {
-      populateList(resources, idx) }
-    
+      populateList(resources, idx) 
+    }
   })
-//   query('#onestop-search').addEventListener('submit', function (event) {
-//     let input = query('#onestop-button')
-//     // don't try to submit this form. Do what I ask instead.
-//     event.preventDefault()
-//     updateList(input.value)
-//   })
 })

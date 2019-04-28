@@ -171,6 +171,9 @@ header {
     transition: all 0.4s ease-in-out;
 }
 
+.resouces-number{
+    text-align: center;
+}
 /* .listed-resource:hover {
   transform: scale(1.03, 1.03);
   cursor: pointer;

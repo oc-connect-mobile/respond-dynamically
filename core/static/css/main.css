@@ -45,10 +45,24 @@ header {
     background-size: contain;
     background-position: 80%;   
 }
+nav {
+overflow: hidden;
+  position: fixed;
+  width: 98%;
+  bottom: 1px;
+
+}
+nav ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
 .main-title2 {
     text-decoration: none;
     color: white;
-    font-size: 2rem;
+
 }
 
 .banner {
@@ -65,6 +79,10 @@ header {
     padding-left: 20px;
     position: fixed;
     z-index: 10;
+}
+.banner h1 {
+    font-size: 24px;
+    margin: 0;
 }
 
 .overline-title {

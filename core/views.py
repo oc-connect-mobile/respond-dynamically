@@ -12,7 +12,7 @@ from pprint import pprint
 from django.shortcuts import redirect
 
 from .super_detail_salesforce import superDetailsf
-from django import forms
+# from django import forms
 
 # Create your views here.
 
@@ -23,7 +23,7 @@ def index(request):
     a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+County_Served__c,+City_Served__c,+Website,+Eligibility_Criteria__c,+CEF_Sub_Category__c,+Secondary_Tags__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,Primary_City__c+FROM+Account"
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
-    y= "+ORDER+BY+Website"
+    y= "+ORDER+BY+Website+NULLS+LAST"
     #+NULLS+LAST+LIMIT+3"
     
     soqlkv = a+b+x+y

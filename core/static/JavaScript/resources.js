@@ -28,16 +28,16 @@ function toTitleCase(str) {
 	return str.join(' ')
 }
 
-function searchAny (input, modifiedInput, resources) {
-    let allCats = getAllCategories(resources)
-    let allCities = getAllCities(resources)
-    let allSubCats = getAllSubCategories(resources)
-    let allSecondaryTags = getAllSecondaryTags(resources)
+// function searchAny (input, modifiedInput, resources) {
+//     let allCats = getAllCategories(resources)
+//     let allCities = getAllCities(resources)
+//     let allSubCats = getAllSubCategories(resources)
+//     let allSecondaryTags = getAllSecondaryTags(resources)
 
-    if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1) || modifiedInput.some(v=> allSubCats.indexOf(v) !== -1) || modifiedInput.some(v=> allSecondaryTags.indexOf(v) !== -1)){
-        updateList(input)
-    }  
-}   
+//     if (modifiedInput.some(v=> allCats.indexOf(v) !== -1) || modifiedInput.some(v=> allCities.indexOf(v) !== -1) || modifiedInput.some(v=> allSubCats.indexOf(v) !== -1) || modifiedInput.some(v=> allSecondaryTags.indexOf(v) !== -1)){
+//         updateList(input)
+//     }  
+// }   
 
 function updateList (input) {
   const resourcesList = query('.list-of-resources')
@@ -213,10 +213,10 @@ function addIconToCategory (catList) {
     return 'commute'
   }
   if (catList.indexOf('Health') >= 0) {
-    return 'local_hospital'
+    return 'favorite'
   }
   if (catList.indexOf('Finances') >= 0) {
-    return 'account_balance'
+    return 'monetization_on'
   }
   if (catList.indexOf('Care') >= 0) {
     return 'accessibility_new'
@@ -225,17 +225,17 @@ function addIconToCategory (catList) {
     return 'school'
   }
   if (catList.indexOf('Employment') >= 0) {
-    return 'business_center'
+    return 'work'
   }
   if (catList.indexOf('Legal') >= 0) {
-    return 'local_hospital'
+    return 'gavel'
   }
-  if (catList.indexOf('Communication') >= 0) {
-    return 'feedback'
-  }
-  if (catList.indexOf('OneStop') >= 0) {
-    return 'stars'
-  }
+//   if (catList.indexOf('Communication') >= 0) {
+//     return 'feedback'
+//   }
+//   if (catList.indexOf('OneStop') >= 0) {
+//     return 'stars'
+//   }
 }
 
 function populateList(resources, idx){
@@ -403,9 +403,14 @@ let subCatList = separateList(resourceSubCategory)
   }
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
     nameTag.innerText = resourceName
-
-    contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
     
+    if (resourceWeb === null && resourcePhone === null && resourceEmail === null){
+       contactInfoDiv.classList.add('hide')
+    }
+    else {
+       contactInfoDiv.classList.remove('hide')
+       contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
+   }
     webTag.innerHTML = resourceWeb
       if (resourceWeb !== null){
         webTag.innerHTML =`<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
@@ -518,14 +523,14 @@ function hideCatFilters() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  query('#search-form').addEventListener('submit', function (event) {
-    let input = query('#name')
-    let upperInput = toJoinTitleCaseWords(input.value)
-    // don't try to submit this form. Do what I ask instead.
-    event.preventDefault()
-    searchAny(toTitleCase(input.value), upperInput, resources)
-    input.value = ''
-  })
+//   query('#search-form').addEventListener('submit', function (event) {
+//     let input = query('#name')
+//     let upperInput = toJoinTitleCaseWords(input.value)
+//     // don't try to submit this form. Do what I ask instead.
+//     event.preventDefault()
+//     searchAny(toTitleCase(input.value), upperInput, resources)
+//     input.value = ''
+//   })
   query('#emergency-search').addEventListener('submit', function (event) {
     let input = query('#emergency-button')
     // don't try to submit this form. Do what I ask instead.

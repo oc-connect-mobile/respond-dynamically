@@ -12,12 +12,12 @@
 <div class="info-menu">
     <p class="welcome-message">Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
 
-    <div id="searchbar" role="search">
+    {% comment %} <div id="searchbar" role="search">
         <form id="search-form">
             <input id="name" type="text" aria-label="Search for City or Category" placeholder="Search for City or Category..." autofocus>
             <button id="search-button" class="mdc-button" type="submit">Search</button>
         </form>
-    </div>
+    </div> {% endcomment %}
     <div class="category-btns-box" aria-label="Here a various ways to filter using checkboxes"> 
         <br> 
         <div class="category-search-header">
@@ -42,10 +42,10 @@
                 <button id="transportation-button" class="foo-button mdc-button" type="submit" value="Transportation"><i class="material-icons i-transportation" aria-label="Filter by Transportation category" aria-hidden="true">commute</i></button>
             </form>
             <form id="health-search">       
-                <button id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">local_hospital</i></button>
+                <button id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">favorite</i></button>
             </form>
             <form id="finances-search">       
-                <button id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">account_balance</i></button>
+                <button id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">monetization_on</i></button>
             </form>
             <form id="care-search">       
                 <button id="care-button" class="foo-button mdc-button" type="submit" value="Care"><i class="material-icons i-care" aria-label="Filter by care category" aria-hidden="true">accessibility_new</i></button>
@@ -57,10 +57,7 @@
                 <button id="employment-button" class="foo-button mdc-button" type="submit" value="Employment"><i class="material-icons i-employment" aria-label="Filter by employment category" aria-hidden="true">work</i></button>
             </form>
             <form id="legal-search">       
-                <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">business_center</i></button>
-            </form>
-            <form id="communication-search">       
-                <button id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Filter by communication category" aria-hidden="true">feedback</i></button>
+                <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">gavel</i></button>
             </form>
         </div>
     </div>

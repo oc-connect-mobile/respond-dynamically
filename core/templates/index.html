@@ -15,11 +15,11 @@ OC Connect Mobile: List of organizations and resources
     <p class="welcome-message">Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
 
     
-    <div class="category-btns-box" aria-label="Here a various ways to filter by need" id="search-options"> 
+    <div class="category-btns-box" aria-label="Here a various ways to filter by need"> 
         <div class="category-search-header">
             <h4 class="category-header h3index">What type of need do you have? Click to see results.</h4>
         </div>
-        <div class="category-search-btns">
+        <div class="category-search-btns" id="search-options">
         
             <form id="emergency-search">       
                 <button title="emergencies" id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
@@ -111,7 +111,7 @@ OC Connect Mobile: List of organizations and resources
 	
 
 <div class="bottom-filter">
-    <button title="filter" aria-label="filter" class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('search-options')"><i class="fas fa-2x fa-angle-double-up"></i>
+    <button title="filter" aria-label="filter" class="mdc-button mdc-button--raised showDialogBtn"><a href="#search-options"><i class="fas fa-2x fa-angle-double-up"></i></a>
     </button>
     <button style="float: left" title="info" aria-label="Site info" class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('info')"><i class="fa fa-2x fa-info"></i>
     </button>
@@ -120,7 +120,8 @@ OC Connect Mobile: List of organizations and resources
 {% comment %} Modals {% endcomment %}
 
 <div id="info" class="mdc-dialog">
-       
+<div class="mdc-dialog__container">
+<div class="mdc-dialog__surface">
     <h3 class="mdc-dialog__header">
         <h4 class="mdc-dialog__header__title modal-content">
             About OC Connect

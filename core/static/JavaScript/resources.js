@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const resourcesList = query('.list-of-resources')
     resourcesList.innerHTML = ''
     // resources = data
-    updateList(resources) 
+    populateList(resources) 
   })
 
   document.getElementById('clearbar').addEventListener('click', function (event) {

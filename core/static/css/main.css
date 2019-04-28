@@ -217,6 +217,10 @@ header {
     padding-left: .5rem; 
     /* padding-right: .5rem;   */
 }
+.google-search {
+    margin:0;
+}
+
 .listed-cat {
     padding: 0;
     margin: 0;

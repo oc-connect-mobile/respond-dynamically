@@ -8,7 +8,7 @@ function query (selector) {
 function queryAll (selector) {
   return document.querySelectorAll(selector)
 }
-   
+
 function toJoinTitleCaseWords(str) {
     let lowerInput = str.toLowerCase()
     lowerInput = lowerInput.split(' ')
@@ -55,10 +55,6 @@ resourcesList.innerHTML = ''
   }
 }
 }
-///////////////////////////
-
-
-
 
 function getAllCategories (resources){
     let allCategories = []
@@ -261,8 +257,8 @@ function populate(resources){
 	// mapPart.className = 'listed-desc'
 	
     categoryList.className = 'infodiv'
-    eligibilityPart.className = 'listed-desc'
-    eligibilityTag.className = 'mdc-button'
+    eligibilityPart.className = 'infodiv'
+    eligibilityTag.className = 'listed-cat'
     cityServedTag.className = 'listed-desc'
     addressPart.className = 'listed-desc'
     hoursPart.className = 'listed-desc'
@@ -295,7 +291,7 @@ function populate(resources){
   // cityServedList.setAttribute('style', 'display:hidden')
   
 
-  nameTag.innerHTML= `<h2>${resourceName}</h2>`
+  nameTag.innerHTML= `<h3>${resourceName}</h3>`
 
 
   contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
@@ -324,9 +320,9 @@ function populate(resources){
 	  }
 	mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
 	  
-  if (resourceEligible !== null){
-    eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i>See Requirements</a>`
-  }
+//   if (resourceEligible !== null){
+//     eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i></a>`
+//   }
 
   
 
@@ -360,10 +356,14 @@ function populate(resources){
       categoryTag.classList.add('listed-cat', (`${cat}`))
       console.log(categoryTag.classList)
       let iconName = addIconToCategory(cat)
-      categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+	  categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+	  if (resourceEligible !== null){
+		    eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i></a>`
+		  }
+
       categoryList.appendChild(categoryTag)
     }
-    }
+	}
     
     
     waittimePart.innerHTML = `<h3 class="h3style">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`

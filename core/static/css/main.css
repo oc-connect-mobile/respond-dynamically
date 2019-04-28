@@ -94,24 +94,6 @@ header {
     z-index: 10;   
 }
 
-
-
-/* Removes formatting from inputs */
-/* input[type=checkbox],
-    input[type=email],
-    input[type=tel],
-    input[type=url],
-    input[type=search] {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  border-radius: 0;
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-} */
-
-
-
 .content-container {
     padding-top: 70px;
     margin-left: 10px;
@@ -121,7 +103,6 @@ header {
     flex-flow: column;
     margin: 1rem 1rem 1rem 1rem;
     border-top: 1px solid black;
-    /* max-width: 375px; */
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
     border-bottom-left-radius: 15px;
@@ -140,8 +121,6 @@ header {
 .detail-container :nth-child(6) {order: 5;}
 .detail-container :nth-child(7) {order: 4;}
 .detail-container :nth-child(8) {order: 2;}
-
-
 
 .pagination{
     display: flex;
@@ -171,19 +150,12 @@ header {
     transition: all 0.4s ease-in-out;
 }
 
-/* .listed-resource:hover {
-  transform: scale(1.03, 1.03);
-  cursor: pointer;
-  box-shadow: -3px 4px 8px 2px #c0c0c0;
-} */
-.listed-name{
-    font-size: 20px;    
-    /* text-align: center; */
+.listed-name h3{
+    font-size: 24px;    
     margin: 0 0 .5rem 0;
     padding: .5rem 1rem;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    /* background-color: #00adef; */
     color: white;
     background-clip: padding-box;
     box-shadow: -2px 3px 7px 1px lightgrey;
@@ -191,7 +163,6 @@ header {
 }
 .listed-site{
     margin: 0;
-    /* padding-left: 1rem;  */
 }
 .listed-criteria{
     font-weight: bold;
@@ -232,9 +203,9 @@ header {
     float: right;
 }
 .listed-desc{
-    margin: .5rem;
-    padding: .25rem .5rem .5rem .5rem; 
-    border-top: 1px solid #a5a3a3;
+    /* margin: .5rem; */
+    /* padding: .25rem .5rem .5rem .5rem;  */
+    /* border-top: 1px solid #a5a3a3; */
 }
 
   
@@ -448,10 +419,12 @@ header {
 
 .h3style {
       color: #00adef;
+      border-bottom: 1px solid #a5a3a3;
       font-size: .9rem;
       text-transform: uppercase;
-      padding: .5rem;
-      letter-spacing: 0.1em
+      padding-left: .5rem;
+      letter-spacing: 0.1em;
+      margin: 0;
   }
 
   .infodiv {

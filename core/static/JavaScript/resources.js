@@ -143,7 +143,7 @@ function addIconToCategory (catList) {
     return 'local_dining'
   }
   if (catList.indexOf('Housing') >= 0) {
-    return 'local_hotel'
+    return 'home'
   }
   if (catList.indexOf('Goods') >= 0) {
     return 'shopping_cart'
@@ -185,7 +185,7 @@ function populateList(resources, idx){
 
     const resourceList = query('.list-of-resources')
     const resourceTag = document.createElement('div')
-    const nameTag = document.createElement('h2')
+    const nameTag = document.createElement('h3')
     const infoTag = document.createElement('span')
     const numOfResources = document.createElement('div')
     
@@ -291,7 +291,7 @@ function populateList(resources, idx){
     }
   }
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
-    nameTag.innerText = resourceName
+    nameTag.innerHTML= `<h3>${resourceName}</h3>`
 
     if (resourceWeb === null && resourcePhone === null && resourceEmail === null){
         contactInfoDiv.classList.add('hide')
@@ -326,7 +326,7 @@ function populateList(resources, idx){
 
     descTag.innerText = resourceDesc
     if (resourceEligible !== null){
-      eligibiliyTag.innerHTML = `<i class="fa fa-ruler-combined" title="Some eligibility requirements exist"></i>Some Requirements`
+      eligibiliyTag.innerHTML = `<i class="fa fa-flag" title="Some eligibility requirements exist"></i>`
     }
     // googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
     descTag.innerText = resourceDesc

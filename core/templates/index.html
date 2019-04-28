@@ -17,7 +17,7 @@ OC Connect Mobile: List of organizations and resources
     
     <div class="category-btns-box" aria-label="Here a various ways to filter by need"> 
         <div class="category-search-header">
-            <h4 class="category-header h3index">What type of need to you have? Click to see results.</h4>
+            <h4 class="category-header h3index">What type of need do you have? Click to see results.</h4>
         </div>
         <div class="category-search-btns">
         
@@ -31,16 +31,16 @@ OC Connect Mobile: List of organizations and resources
                 <button title="housing" id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">local_hotel</i></button>
             </form>
             <form id="goods-search">       
-                <button title="good" id="goods-button" class="foo-button mdc-button" type="submit" value="Goods"><i class="material-icons i-goods" aria-label="Filter by goods" aria-hidden="true">shopping_basket</i></button>
+                <button id="goods-button" class="foo-button mdc-button" type="submit" value="Goods"><i class="material-icons i-goods" aria-label="Filter by goods" aria-hidden="true">shopping_cart</i></button>
             </form>
             <form id="transportation-search">       
                 <button title="transportation" id="transportation-button" class="foo-button mdc-button" type="submit" value="Transportation"><i class="material-icons i-transportation" aria-label="Filter by Transportation category" aria-hidden="true">commute</i></button>
             </form>
             <form id="health-search">       
-                <button title="health" id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">local_hospital</i></button>
+                <button id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">favorite</i></button>
             </form>
             <form id="finances-search">       
-                <button title="finances" id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">account_balance</i></button>
+                <button id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">monetization_on</i></button>
             </form>
             <form id="care-search">       
                 <button title="care" id="care-button" class="foo-button mdc-button" type="submit" value="Care"><i class="material-icons i-care" aria-label="Filter by care category" aria-hidden="true">accessibility_new</i></button>
@@ -52,14 +52,14 @@ OC Connect Mobile: List of organizations and resources
                 <button title="employment" id="employment-button" class="foo-button mdc-button" type="submit" value="Employment"><i class="material-icons i-employment" aria-label="Filter by employment category" aria-hidden="true">work</i></button>
             </form>
             <form id="legal-search">       
-                <button title="legal" id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">business_center</i></button>
+                <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">gavel</i></button>
             </form>
-            <form id="communication-search">       
-                <button title="communication" id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Filter by communication category" aria-hidden="true">feedback</i></button>
-            </form>
+            {% comment %} <form id="communication-search">       
+                <button id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Filter by communication category" aria-hidden="true">headset_mic</i></button>
+            </form> {% endcomment %}
         </div>
         <div>
-            <input class="index-button" type="button" onclick="hideCatFilters()" value="hide need filters"> 
+            <input class="index-button" type="button" onclick="hideCatFilters()" value="Toggle Categories"> 
         </div>
     </div>
     
@@ -84,7 +84,7 @@ OC Connect Mobile: List of organizations and resources
             <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
         </div>
         <div>
-                <input class="index-button" style="align-items: center" type="button" onclick="hideCityFilters()" value="hide city filters">
+            <input class="index-button" style="align-items: center" type="button" onclick="hideCityFilters()" value="Toggle City Filters">
         </div>
     </div> 
 </div>

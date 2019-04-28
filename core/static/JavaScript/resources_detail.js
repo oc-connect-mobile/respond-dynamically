@@ -296,7 +296,7 @@ function populate(resources){
   if (resourceEligible !== null){
     eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i>See Requirements</a>`
   }
-  googleTag.innerHTML = `<a title="Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
+  // googleTag.innerHTML = `<a title="Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
   mapTag.innerHTML = `<a title="Google directions" class="foo-button mdc-button" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fab fa-google"></i>Directions</a>`
 
 

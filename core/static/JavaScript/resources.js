@@ -177,7 +177,7 @@ function addIconToCategory (catList) {
   }
 }
 
-function populateList(resources){
+function populateList(resources, idx){
     const welcomeTag = query('.welcome')
     const welcomeMessage = query('.welcome-message')
     welcomeTag.innerText = ''
@@ -412,14 +412,15 @@ function hideCatFilters() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // query('#search-form').addEventListener('submit', function (event) {
-  //   let input = query('#name')
-  //   let upperInput = toJoinTitleCaseWords(input.value)
-  //   // don't try to submit this form. Do what I ask instead.
-  //   event.preventDefault()
-  //   searchAny(toTitleCase(input.value), upperInput, resources)
-  //   input.value = ''
-  // })
+//   query('#search-form').addEventListener('submit', function (event) {
+//     let input = query('#name')
+//     let upperInput = toJoinTitleCaseWords(input.value)
+//     // don't try to submit this form. Do what I ask instead.
+//     event.preventDefault()
+//     searchAny(toTitleCase(input.value), upperInput, resources)
+//     input.value = ''
+//   })
+
   query('#emergency-search').addEventListener('submit', function (event) {
     let input = query('#emergency-button')
     // don't try to submit this form. Do what I ask instead.
@@ -487,21 +488,21 @@ document.addEventListener('DOMContentLoaded', function () {
     updateList(input.value)
   })
   
-  document.getElementById('search-button2').addEventListener('click', function (event) {
-    console.log("SEARCH BUTTON HIT")
-    const resourcesList = query('.list-of-resources')
-    resourcesList.innerHTML = ''
-    // resources = data
-    populateList(resources) 
-  })
+//   document.getElementById('search-button2').addEventListener('click', function (event) {
+//     console.log("SEARCH BUTTON HIT")
+//     const resourcesList = query('.list-of-resources')
+//     resourcesList.innerHTML = ''
+//     // resources = data
+//     populateList(resources) 
+//   })
 
-  document.getElementById('clearbar').addEventListener('click', function (event) {
-    console.log("CLEAR BUTTON HIT")
-    const resourcesList = query('.list-of-resources')
-    resourcesList.innerHTML = ''
-    resources = data
-    for (idx = 0; idx < resources.records.length; idx++) {
-      populateList(resources, idx) 
-    }
-  })
+//   document.getElementById('clearbar').addEventListener('click', function (event) {
+//     console.log("CLEAR BUTTON HIT")
+//     const resourcesList = query('.list-of-resources')
+//     resourcesList.innerHTML = ''
+//     resources = data
+//     for (idx = 0; idx < resources.records.length; idx++) {
+//       populateList(resources, idx) 
+//     }
+//   })
 })

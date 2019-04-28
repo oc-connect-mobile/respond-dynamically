@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %} {% endblock %}
+{% block title %}
+OC Connect Mobile: List of organizations and resources
+{% endblock %}
 {% load static %}
 {% block content %}
 
 
-
+<div role="main">
 
 <div class="welcome h3index"><h3>Welcome</h3></div>
 
@@ -13,26 +15,26 @@
     <p class="welcome-message">Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
 
     
-    <div class="category-btns-box" aria-label="Here a various ways to filter using checkboxes"> 
+    <div class="category-btns-box" aria-label="Here a various ways to filter by need"> 
         <div class="category-search-header">
             <h4 class="category-header h3index">What type of need do you have? Click to see results.</h4>
         </div>
         <div class="category-search-btns">
         
             <form id="emergency-search">       
-                <button id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
+                <button title="emergencies" id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
             </form>
             <form id="food-search">       
-                <button id="food-button" class="foo-button mdc-button" type="submit" value="Food"><i class="material-icons i-food" aria-label="Filter by food category" aria-hidden="true">local_dining</i></button>
+                <button title="food" id="food-button" class="foo-button mdc-button" type="submit" value="Food"><i class="material-icons i-food" aria-label="Filter by food category" aria-hidden="true">local_dining</i></button>
             </form>
             <form id="housing-search">       
-                <button id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">local_hotel</i></button>
+                <button title="housing" id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">local_hotel</i></button>
             </form>
             <form id="goods-search">       
                 <button id="goods-button" class="foo-button mdc-button" type="submit" value="Goods"><i class="material-icons i-goods" aria-label="Filter by goods" aria-hidden="true">shopping_cart</i></button>
             </form>
             <form id="transportation-search">       
-                <button id="transportation-button" class="foo-button mdc-button" type="submit" value="Transportation"><i class="material-icons i-transportation" aria-label="Filter by Transportation category" aria-hidden="true">commute</i></button>
+                <button title="transportation" id="transportation-button" class="foo-button mdc-button" type="submit" value="Transportation"><i class="material-icons i-transportation" aria-label="Filter by Transportation category" aria-hidden="true">commute</i></button>
             </form>
             <form id="health-search">       
                 <button id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">favorite</i></button>
@@ -41,13 +43,13 @@
                 <button id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">monetization_on</i></button>
             </form>
             <form id="care-search">       
-                <button id="care-button" class="foo-button mdc-button" type="submit" value="Care"><i class="material-icons i-care" aria-label="Filter by care category" aria-hidden="true">accessibility_new</i></button>
+                <button title="care" id="care-button" class="foo-button mdc-button" type="submit" value="Care"><i class="material-icons i-care" aria-label="Filter by care category" aria-hidden="true">accessibility_new</i></button>
             </form>
             <form id="education-search">       
-                <button id="education-button" class="foo-button mdc-button" type="submit" value="Education"><i class="material-icons i-education" aria-label="Filter by Education category" aria-hidden="true">school</i></button>
+                <button title="education" id="education-button" class="foo-button mdc-button" type="submit" value="Education"><i class="material-icons i-education" aria-label="Filter by Education category" aria-hidden="true">school</i></button>
             </form>
             <form id="employment-search">       
-                <button id="employment-button" class="foo-button mdc-button" type="submit" value="Employment"><i class="material-icons i-employment" aria-label="Filter by employment category" aria-hidden="true">work</i></button>
+                <button title="employment" id="employment-button" class="foo-button mdc-button" type="submit" value="Employment"><i class="material-icons i-employment" aria-label="Filter by employment category" aria-hidden="true">work</i></button>
             </form>
             <form id="legal-search">       
                 <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">gavel</i></button>
@@ -90,7 +92,7 @@
 	
 
 <div class="bottom-filter">
-    <button class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter')"><i class="fa fa-search fa-2x"></i>
+    <button title="filter" aria-label="filter" class="mdc-button mdc-button--raised showDialogBtn" onclick="document.getElementById('filter')"><i class="fa fa-search fa-2x"></i>
     </button>
 </div> 
 
@@ -99,9 +101,9 @@
 <div id="filter" class="mdc-dialog">
        
     <h3 class="mdc-dialog__header">
-        <h2 class="mdc-dialog__header__title modal-content">
+        <h4 class="mdc-dialog__header__title modal-content">
             Filter Resources
-        </h2>
+        </h4>
     </h3>
         
     <section class="mdc-dialog__body modal-content">
@@ -147,7 +149,7 @@
             </form>
         </div>
     
-        <div id="searchbar" role="search">
+        <div id="searchbar">
             <form id="search-form" style="align-items: center">
                 <input id="name" type="text" aria-label="Search for City or Category" placeholder="Enter a search term..." autofocus>
                 <button id="search-button" class="mdc-button" type="submit">Search</button>
@@ -170,15 +172,15 @@
     </section> 
     
     <footer class="mdc-dialog__footer">
-        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">
+        <button title="filter" type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="filter">
         FILTER</button>
-        <button type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">
+        <button title="clear filter" type="submit" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept" name="clear">
         CLEAR FILTER</button>
     </footer>
 
 </div>
 
-<div id="searchbar" role="search">
+<div id="searchbar" >
     <h4 class="h3index">Do you want to filter results by a search term?</h4>
         <form id="searchform" name="searchform" style="align-self:center">
             <input name="luckyq" id="luckyq" type="text" aria-label="Search" placeholder="Enter a search term..." autofocus>
@@ -201,5 +203,6 @@
 <script src="{% static 'JavaScript/filter.js' %}"></script>
 <script src="{% static 'JavaScript/resources.js' %}"></script>
 
+</div>
 
 {% endblock %}

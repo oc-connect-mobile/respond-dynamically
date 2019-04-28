@@ -112,7 +112,7 @@ nav ul {
 }
 
 .content-container {
-    padding-top: 70px;
+    padding-top: 50px;
     margin-left: 10px;
 }
 .detail-container{
@@ -314,6 +314,7 @@ nav ul {
     justify-content: center;
     align-items: center;
 }
+
 #name{
     margin: .5rem;
     width: 30%;

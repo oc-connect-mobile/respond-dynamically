@@ -12,6 +12,7 @@ from pprint import pprint
 from django.shortcuts import redirect
 
 from .super_detail_salesforce import superDetailsf
+from django import forms
 
 # Create your views here.
 
@@ -19,87 +20,22 @@ from .super_detail_salesforce import superDetailsf
 def index(request):
     """View function for home page of site."""
     """ url = "/services/data/v45.0/" """
-    a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+County_Served__c,+City_Served__c,+Website,+Eligibility_Criteria__c,+CEF_Sub_Category__c,+Secondary_Tags__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c+FROM+Account"
+    a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+County_Served__c,+City_Served__c,+Website,+Eligibility_Criteria__c,+CEF_Sub_Category__c,+Secondary_Tags__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,Primary_City__c+FROM+Account"
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
-    y= "+ORDER+BY+Website+NULLS+LAST"
-    #+LIMIT+3"
-
-    # if request.method == 'GET':
-       
-    #     city_form = CityFilterForm(request.GET)
-    #     if city_form.is_valid():
-    #         city_string = city_form.ingest()
-    #         print("printing city string")
-    #         print(city_string)
-
-    #     #if 'clear' in request.GET:
-    #         #county_form = CountyFilterForm(request.GET)
-    #         #category_form = CategoryFilterForm(request.GET)
-    #         #city_form = CityFilterForm()
-        
-    #     county_form = CountyFilterForm(request.GET)
-    #     if county_form.is_valid():
-    #             county_string = county_form.ingest()
-    #             print("printing county string")
-    #             print(county_string)
-        
-    #     # if 'clear' in request.GET:
-    #     #     #category_form = CategoryFilterForm(request.GET)
-    #     #     #city_form = CityFilterForm(request.GET)
-    #     #     county_form = CountyFilterForm()    
-
-    #     category_form = CategoryFilterForm(request.GET)
-    #     if category_form.is_valid():
-    #         category_string = category_form.ingest()
-    #         print("printing category string")
-    #         print(category_string)
-
-    #     #if 'clear' in request.GET:
-    #         #city_form = CityFilterForm(request.GET)
-    #         #county_form = CountyFilterForm(request.GET)
-    #         #category_form = CategoryFilterForm()
-        
-    #     secondary_form = SecondaryFilterForm(request.GET)
-    #     if secondary_form.is_valid():
-    #         secondary_string = secondary_form.ingest()
-    #         print("printing secondary string")
-    #         print(secondary_string)
-
-    #     #if 'clear' in request.GET:
-    #         #city_form = CityFilterForm(request.GET)
-    #         #county_form = CountyFilterForm(request.GET)
-    #         #secondary_form = SecondaryFilterForm()
-
-    #     lucky_form = LuckySearchForm(request.GET)
-    #     if lucky_form.is_valid():
-    #         lucky_string = lucky_form.ingest()
-    #         print("printing lucky string")
-    #         print(lucky_string)
-
-
-        
+    y= "+ORDER+BY+Website"
+    #+NULLS+LAST+LIMIT+3"
+    
     soqlkv = a+b+x+y
-        
 
     data1 = supersf(soqlkv)
     data2 = json.dumps(data1)
-    records = data1['records'] # this is now a list
-    print(data2)
-    
-#printable = data1["records"][1]["Name"]
-
-
+    # print(data2)
 
     context = {
         'data2': data2,
         'data1': data1,
-        'records': records,
-        # 'county_form': county_form,
-        # 'city_form': city_form,
-        # 'category_form': category_form,
-        # 'secondary_form': secondary_form,
-        # 'lucky_form': lucky_form
+
         }   
 
     # Render the HTML template index.html with the data in the context variable

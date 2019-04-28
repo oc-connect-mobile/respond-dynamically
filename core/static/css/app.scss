@@ -113,9 +113,16 @@ $fontFamily: "Open Sans", sans-serif;
   left: 0px;
   bottom: -25px;
 }
-.contact-info .fa {
+
+.contact-info i {
   color: white;
 }
+.material-icons.md-36 { font-size: 36px; 
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
 .contact-info button {
 
   background-color: #059EDA;
@@ -123,8 +130,12 @@ $fontFamily: "Open Sans", sans-serif;
   width: 50px;
   height: 50px;
   padding: 0;
-
+  line-height: 0;
   text-decoration: none;
+}
+
+.here-is-good .contact-info {
+  bottom: 20px;
 }
 
 .category-list {

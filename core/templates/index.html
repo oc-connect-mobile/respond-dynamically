@@ -17,7 +17,7 @@ OC Connect Mobile: List of organizations and resources
     <div class="category-btns-box" aria-label="Here a various ways to search by need"> 
 
         <div class="category-search-header">
-            <h4 class="category-header h3index">What type of need do you have? Click to see results.</h4>
+            <h4 class="category-header h3index">What type of need do you have? Click to see results</h4>
         </div>
         <div class="category-search-btns">
         
@@ -54,12 +54,10 @@ OC Connect Mobile: List of organizations and resources
             <form id="legal-search">       
                 <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">gavel</i></button>
             </form>
-            {% comment %} <form id="communication-search">       
-                <button id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Filter by communication category" aria-hidden="true">headset_mic</i></button>
-            </form> {% endcomment %}
+            
         </div>
         <div class="search-btns-toggle"> 
-            <input class="index-button category-toggle" type="button" onclick="hideCatFilters()" value="Hide Categories"> 
+            <input class="index-button category-toggle" type="button" onclick="hideCatFilters()" value="Show/Hide Categories"> 
         </div>
     </div>
     
@@ -84,21 +82,10 @@ OC Connect Mobile: List of organizations and resources
             <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
         </div>
         <div class="filter-btns-toggle">
-            <input class="index-button filter-toggle" style="align-items: center" type="button" onclick="hideCityFilters()" value="Hide Filters">
+            <input class="index-button filter-toggle" style="align-items: center" type="button" onclick="hideCityFilters()" value="show/hide filters">
         </div>
     </div>
-    {% comment %} <div id="searchbar" >
-        <h4 class="h3index">Do you want to filter results by a search term?</h4>
-            <form id="searchform" name="searchform" style="align-self:center">
-                <input name="luckyq" id="luckyq" type="text" aria-label="Search" placeholder="Enter a search term..." autofocus>
-                <button id="search-button2" class="mdc-button" type="submit">Search & Filter</button>
-            </form>
-    </div>
-    <div id="clearbar" aria-label="Clear all search and filtering">
-        <form id="clearform" name="searchform" style="align-self:center">
-            <button name="clear" id="clear-button" class="mdc-button" type="submit">Clear All</button>
-        </form>
-    </div> {% endcomment %}
+   
 </div>  
     <div class="list-of-resources">
         <script>
@@ -118,13 +105,9 @@ OC Connect Mobile: List of organizations and resources
 </div> 
 
 
-
-
-
 <div class="list-of-resources">
     <script>
         let data = {{ data2 | safe }}
-        // let sosl = {{ data9 | safe }}
     </script>   
 </div>     
 

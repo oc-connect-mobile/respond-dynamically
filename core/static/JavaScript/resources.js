@@ -280,7 +280,7 @@ function populateList(resources, idx){
         categoryTag.classList.add('listed-cat', (`${cat}`))
         resourceTag.classList.add(`${cat}`)
         let iconName = addIconToCategory(cat)
-        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" style="padding:.3rem" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
         categoryList.appendChild(categoryTag)
       }
     }
@@ -292,12 +292,16 @@ function populateList(resources, idx){
         categoryTag.classList.add('listed-cat', (`${cat}`))
         resourceTag.classList.add(`${cat}`)
         let iconName = addIconToCategory(cat)
-        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" style="padding:.3rem"title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
         categoryList.appendChild(categoryTag)
     }
   }
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
-    nameTag.innerHTML= `<h3>${resourceName}</h3>`
+
+    if (resourceEligible !== null){
+      nameTag.innerHTML = `<h3>${resourceName} <i title="see details for eligibility" class="fas fa-flag" style="font-size:1rem; color:#FF8765;" ></i></h3>`
+    } else {nameTag.innerHTML = `<h3>${resourceName}</h3>`}
+
 
     if (resourceWeb === null && resourcePhone === null && resourceEmail === null){
         contactInfoDiv.classList.add('hide')
@@ -331,11 +335,13 @@ function populateList(resources, idx){
       }
       mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
 
-    descTag.innerText = resourceDesc
-    if (resourceEligible !== null){
-      eligibiliyTag.innerHTML = `<i class="fa fa-flag" title="Some eligibility requirements exist"></i>`
-    }
-    // googleTag.innerHTML = `<a title= "Google search" class="foo-button mdc-button" href="https://www.google.com/search?q=${resourceName}"><i class="fab fa-google"></i>  Google</a>`
+
+    descTag.innerHTML = `<br><p>${resourceDesc}</p>`
+    // if (resourceEligible !== null){
+    //   eligibiliyTag.innerHTML = `<i class="fas fa-flag" title="Some eligibility requirements exist"></i>Some Requirements`
+    // }
+
+
     descTag.innerText = resourceDesc
    
     resourceList.appendChild(resourceTag)
@@ -343,16 +349,15 @@ function populateList(resources, idx){
     resourceTag.appendChild(nameTag)
     resourceTag.appendChild(infoTag)
     resourceTag.appendChild(cityServedList)
-    infoTag.appendChild(categoryList)
+    
     infoTag.appendChild(subCategoryList)
     infoTag.appendChild(secondaryTagList)
     infoTag.appendChild(webTag)
     infoTag.appendChild(phoneTag)
     infoTag.appendChild(emailTag)
-    infoTag.appendChild(mapTag)
-    infoTag.appendChild(eligibiliyTag)
-    // infoTag.appendChild(googleTag)
+
     resourceTag.appendChild(descTag)
+    infoTag.appendChild(categoryList)
     resourceTag.appendChild(contactInfoDiv)
     contactInfoDiv.appendChild(webTag)
     contactInfoDiv.appendChild(phoneTag)
@@ -360,7 +365,7 @@ function populateList(resources, idx){
     contactInfoDiv.appendChild(mapTag)
 
     resourceTag.appendChild(seeMoreTag) 
-    console.log("end of populateList")
+    
 }
 
 function slideUpResource(input) {

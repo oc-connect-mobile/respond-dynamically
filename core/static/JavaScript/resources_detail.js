@@ -1,5 +1,5 @@
 let resources = data2
-console.log(resources.Name)
+
 
 function query (selector) {
   return document.querySelector(selector)
@@ -139,19 +139,19 @@ function addIconToCategory (catList) {
     return 'local_dining'
   }
   if (catList.indexOf('Housing') >= 0) {
-    return 'local_hotel'
+    return 'home'
   }
   if (catList.indexOf('Goods') >= 0) {
-    return 'shopping_basket'
+    return 'shopping_cart'
   }
   if (catList.indexOf('Transportation') >= 0) {
     return 'commute'
   }
   if (catList.indexOf('Health') >= 0) {
-    return 'local_hospital'
+    return 'favorite'
   }
   if (catList.indexOf('Finances') >= 0) {
-    return 'account_balance'
+    return 'monetization_on'
   }
   if (catList.indexOf('Care') >= 0) {
     return 'accessibility_new'
@@ -160,13 +160,13 @@ function addIconToCategory (catList) {
     return 'school'
   }
   if (catList.indexOf('Employment') >= 0) {
-    return 'business_center'
+    return 'work'
   }
   if (catList.indexOf('Legal') >= 0) {
-    return 'local_hospital'
+    return 'gavel'
   }
   if (catList.indexOf('Communication') >= 0) {
-    return 'feedback'
+    return 'headset_mic'
   }
   if (catList.indexOf('OneStop') >= 0) {
     return 'stars'
@@ -247,14 +247,12 @@ function populate(resources){
     resourceTag.className = 'listed-resource'
     infoTag.className = 'infodiv'
     nameTag.className = 'listed-name'
-	descTag.className = 'listed-desc'
+	  descTag.className = 'listed-desc'
 	
     contactInfoDiv.className = 'contact-info'
     webTag.className = 'listed-site'
     phoneTag.className = 'listed-phone'
-	emailTag.className = 'listed-email'
-	mapTag.className = 'google-search'
-	// mapPart.className = 'listed-desc'
+	  emailTag.className = 'listed-email'
 	
     categoryList.className = 'infodiv'
     eligibilityPart.className = 'infodiv'
@@ -287,11 +285,13 @@ function populate(resources){
       cityServedList.appendChild(cityServedTag)
       cityServedTag.className = 'listed-desc'
     }
-  }
-  // cityServedList.setAttribute('style', 'display:hidden')
+  }  
+  
   
 
-  nameTag.innerHTML= `<h3>${resourceName}</h3>`
+  if (resourceEligible !== null){
+   nameTag.innerHTML = `<h3>${resourceName}  <a class="foo-button mdc-buttons" style="text-decoration:none" title="skip to eligibility requirements below" href="#Elig"><i class="fas fa-flag" style="font-size:1rem; color: #FF8765"></i></a></h3>`
+  } else {nameTag.innerHTML= `<h3>${resourceName}</h3>`}
 
 
   contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
@@ -319,59 +319,52 @@ function populate(resources){
         emailTag.classList.add('hide')
 	  }
 	mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
-	  
-//   if (resourceEligible !== null){
-//     eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i></a>`
-//   }
 
   
 
 
     
   let catList = separateCategory(resourceCategory)
-  console.log(catList)
-  console.log(typeof(catList))
+  
   if (catList !== null) {
     if (typeof catList === 'object') {
       let listLength = catList.length
-      console.log(listLength)
+      
       for (let i = 0; i < listLength; i++) {
         let categoryTag = document.createElement('span')
         let cat = catList[i].replace(' ', '')
         let lowerCat = cat.toLowerCase()
-        console.log(lowerCat)
+        
         categoryTag.innerText = catList[i]
         categoryTag.classList.add('listed-cat', (`${cat}`))
-        console.log(categoryTag.classList)
+        
         let iconName = addIconToCategory(cat)
-        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+        categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" style="padding:.3rem" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
         categoryList.appendChild(categoryTag)
       } }
     else { 
       let categoryTag = document.createElement('span')
       let cat = catList
       let lowerCat = cat.toLowerCase()
-      console.log(lowerCat)
+      
       categoryTag.innerText = catList
       categoryTag.classList.add('listed-cat', (`${cat}`))
-      console.log(categoryTag.classList)
+      
       let iconName = addIconToCategory(cat)
-	  categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
-	  if (resourceEligible !== null){
-		    eligibilityTag.innerHTML = `<a class="foo-button mdc-buttons" style="text-decoration:none" title="See requirements below" href="#Elig"><i class="fas fa-flag"></i></a>`
-		  }
+	  categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" style="padding:.3rem" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+	  
 
       categoryList.appendChild(categoryTag)
     }
 	}
-    
+    newCity = JSON.stringify(cityList).replace(`[`,``).replace(`]`,``).replace(/[""]/g, "").replace(/[,]/g, `, `)
     
     waittimePart.innerHTML = `<h3 class="h3style">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`
     espanolPart.innerHTML = `<h3 class="h3style">Español</h3><p style="margin:.5rem">${resourceLatino_Services}<p>`
     hoursPart.innerHTML = `<h3 class="h3style">Hours</h3><p style="margin:.5rem">${resourceHours}<p>`
     addressPart.innerHTML = `<h3 class="h3style">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
     categoryTag.innerHTML = ``
-    cityServedTag.innerHTML =  `<h3 class="h3style">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
+    cityServedTag.innerHTML =  `<br><h3 class="h3style">Cities Served</h3><p style="margin:.5rem">${newCity}<p>`
     if (resourceDescription !== null) { 
       descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem">${resourceDesc} <br><br> ${resourceDescription}<p>`}
     else {
@@ -384,7 +377,7 @@ function populate(resources){
 	
     infoTag.appendChild(googleTag)
     if (cityList !== null) {contactInfoDiv.appendChild(mapTag)}
-    if (resourceEligible !== null) {hereIsGood.appendChild(eligibilityTag)}
+    // if (resourceEligible !== null) {hereIsGood.appendChild(eligibilityTag)}
     hereIsGood.appendChild(categoryTag)
     hereIsGood.appendChild(categoryList)
     if (cityList !== null) {hereIsGood.appendChild(cityServedTag)}

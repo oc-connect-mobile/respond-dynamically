@@ -28,9 +28,11 @@
 <body>
 
     <div role = "banner" class="banner" >
-        <h1><a class="mdc-typography--heading4 main-title2" href="{% url 'index' %}">OC Connect Mobile</a></h1>
+            
+        <h1><a class="mdc-typography--heading4 main-title2" href="{% url 'index' %}"><img src="static/img/occonnect.png" alt="OC Connect Logo" height="42">OC Connect Mobile</a></h1>
     </div>
-    <div class="content-container">    
+    
+    <div class="content-container" id="search-options">    
     {% block content %}  {% endblock %}
     </div>
         

@@ -56,3 +56,8 @@ def resource_detail(request, id):
         
     }
     return render(request, 'resource-detail.html', context=context)
+
+def about_page(request):
+
+    response = render(request, 'about.html')
+    return response

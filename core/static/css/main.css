@@ -45,16 +45,29 @@ header {
     background-size: contain;
     background-position: 80%;   
 }
+nav {
+overflow: hidden;
+  position: fixed;
+  width: 98%;
+  bottom: 1px;
+
+}
+nav ul {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
 .main-title2 {
     text-decoration: none;
     color: white;
-    font-size: 2rem;
+
 }
 
 .banner {
     width: 100%;
-    background-color:#057AB4;
-    /* margin: 0rem .5rem 1rem .5rem; */
+    background-image: radial-gradient(circle at top right, #00adef, #038dc4);    /* margin: 0rem .5rem 1rem .5rem; */
     border-top: 1px solid black;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -65,6 +78,10 @@ header {
     padding-left: 20px;
     position: fixed;
     z-index: 10;
+}
+.banner h1 {
+    font-size: 24px;
+    margin: 0;
 }
 
 .overline-title {
@@ -95,7 +112,7 @@ header {
 }
 
 .content-container {
-    padding-top: 70px;
+    padding-top: 50px;
     margin-left: 10px;
 }
 .detail-container{
@@ -191,6 +208,10 @@ header {
     margin: 0;
     padding-left: .5rem; 
     /* padding-right: .5rem;   */
+}
+.listed-map {
+    margin: 0;
+
 }
 .google-search {
     margin:0;
@@ -297,6 +318,7 @@ header {
     justify-content: center;
     align-items: center;
 }
+
 #name{
     margin: .5rem;
     width: 30%;

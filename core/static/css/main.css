@@ -355,8 +355,10 @@ nav ul {
     align-items: center;
 }
 .toggleButton{
-    background-color: #51C6EE;
+    margin: 2px 2px;
+    background-color: #B3E6F8;
     border: 1px solid black;
+    border-radius: 5px;
 
 }
 .toggle-selected{
@@ -471,19 +473,33 @@ nav ul {
         text-align: center;
         color: #058BC7;
 }
-
+.search-btns-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter-btns-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .index-button {
-    margin: 0;
-    background-color: white;
+    
+    /* background-color: white; */
     color: #058BC7;
-    max-width: 8rem;
+    max-width: 10rem;
     border: 1px #058BC7;
-    text-align: center;
+    text-align: center; 
     font-size: .7rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     padding: .2rem;
     border: 1px #058BC7;
+
+    /* align-items: center; */
+}
+
     display: flex;
     justify-content: center;
 }
+

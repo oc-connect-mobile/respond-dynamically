@@ -401,9 +401,11 @@ function isHideToggled(resource){
     }
 }
 
+
 function hideCityFilters() {
     filterBox = query('.filter-btns')
     filterBox.classList.toggle('hide')
+    
 }
 
 function hideCatFilters() {

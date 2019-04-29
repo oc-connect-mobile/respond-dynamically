@@ -58,8 +58,8 @@ OC Connect Mobile: List of organizations and resources
                 <button id="communication-button" class="foo-button mdc-button" type="submit" value="Communication"><i class="material-icons i-communication" aria-label="Filter by communication category" aria-hidden="true">headset_mic</i></button>
             </form> {% endcomment %}
         </div>
-        <div> 
-            <input class="index-button" type="button" onclick="hideCatFilters()" value="Toggle Categories"> 
+        <div class="search-btns-toggle"> 
+            <input class="index-button category-toggle" type="button" onclick="hideCatFilters()" value="Hide Categories"> 
         </div>
     </div>
     
@@ -74,20 +74,20 @@ OC Connect Mobile: List of organizations and resources
             <input class="toggleButton toggleButton-Mebane" type="button" onclick="slideUpResource('Mebane')" value="Mebane">
             <input class="toggleButton toggleButton-Raleigh" type="button" onclick="slideUpResource('Raleigh')" value="Raleigh">
             <input class="toggleButton toggleButton-Carrboro" type="button" onclick="slideUpResource('Carrboro')" value="Carrboro">
-            <input class="toggleButton toggleButton-Hillsborough" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
             <input class="toggleButton toggleButton-Morrisville" type="button" onclick="slideUpResource('Morrisville')" value="Morrisville">
+            <input class="toggleButton toggleButton-Eno" type="button" onclick="slideUpResource('Eno')" value="Eno">
             <input class="toggleButton toggleButton-Carr" type="button" onclick="slideUpResource('Carr')" value="Carr">
             <input class="toggleButton toggleButton-Cheeks" type="button" onclick="slideUpResource('Cheeks')" value="Cheeks">
             <input class="toggleButton toggleButton-Bingham" type="button" onclick="slideUpResource('Bingham')" value="Bingham">
             <input class="toggleButton toggleButton-CedarGrove" type="button" onclick="slideUpResource('CedarGrove')" value="Cedar Grove">
-            <input class="toggleButton toggleButton-Eno" type="button" onclick="slideUpResource('Eno')" value="Eno">
+            <input class="toggleButton toggleButton-Hillsborough" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
             <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
         </div>
-        <div>
-            <input class="index-button" style="align-items: center" type="button" onclick="hideCityFilters()" value="Toggle City Filters">
+        <div class="filter-btns-toggle">
+            <input class="index-button filter-toggle" style="align-items: center" type="button" onclick="hideCityFilters()" value="Hide Filters">
         </div>
     </div>
-    <div id="searchbar" >
+    {% comment %} <div id="searchbar" >
         <h4 class="h3index">Do you want to filter results by a search term?</h4>
             <form id="searchform" name="searchform" style="align-self:center">
                 <input name="luckyq" id="luckyq" type="text" aria-label="Search" placeholder="Enter a search term..." autofocus>
@@ -98,7 +98,7 @@ OC Connect Mobile: List of organizations and resources
         <form id="clearform" name="searchform" style="align-self:center">
             <button name="clear" id="clear-button" class="mdc-button" type="submit">Clear All</button>
         </form>
-    </div>
+    </div> {% endcomment %}
 </div>  
     <div class="list-of-resources">
         <script>

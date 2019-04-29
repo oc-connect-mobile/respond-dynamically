@@ -418,7 +418,3 @@ function populate(resources){
   
 populate(resources) 
 
-
-
-
-

@@ -172,6 +172,21 @@ $fontFamily: "Open Sans", sans-serif;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.637); 
 }
+.accessibility {
+  margin: 0 15px 15px 15px;
+  padding: 0 5px 5px 5px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 15px;
+}
+.accessibility h2 {
+  font-size: 18px;
+  border-bottom: 1px solid black;
+}
+.accessibility p {
+  font-size: 12px;
+}
+
 .welcome {
   font-family: "OpenDyslexic";
   font-size: 56px;

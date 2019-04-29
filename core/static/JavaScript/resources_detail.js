@@ -286,6 +286,8 @@ function populate(resources){
       cityServedTag.className = 'listed-desc'
     }
   }  
+  
+  
 
   if (resourceEligible !== null){
    nameTag.innerHTML = `<h3>${resourceName}  <a class="foo-button mdc-buttons" style="text-decoration:none" title="skip to eligibility requirements below" href="#Elig"><i class="fas fa-flag" style="font-size:1rem; color: #FF8765"></i></a></h3>`
@@ -355,14 +357,14 @@ function populate(resources){
       categoryList.appendChild(categoryTag)
     }
 	}
-    
+    newCity = JSON.stringify(cityList).replace(`[`,``).replace(`]`,``).replace(/[""]/g, "").replace(/[,]/g, `, `)
     
     waittimePart.innerHTML = `<h3 class="h3style">Wait Times</h3><p style="margin:.5rem">${resourceTime_Till_Service}<p>`
     espanolPart.innerHTML = `<h3 class="h3style">Español</h3><p style="margin:.5rem">${resourceLatino_Services}<p>`
     hoursPart.innerHTML = `<h3 class="h3style">Hours</h3><p style="margin:.5rem">${resourceHours}<p>`
     addressPart.innerHTML = `<h3 class="h3style">Address</h3><p style="margin:.5rem">${resourcePrimary_Street} <br> ${resourcePrimary_City}, ${resourcePrimary_State} ${resourcePrimary_Zip}<p>`
     categoryTag.innerHTML = ``
-    cityServedTag.innerHTML =  `<br><h3 class="h3style">Cities Served</h3><p style="margin:.5rem">${cityList}<p>`
+    cityServedTag.innerHTML =  `<br><h3 class="h3style">Cities Served</h3><p style="margin:.5rem">${newCity}<p>`
     if (resourceDescription !== null) { 
       descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem">${resourceDesc} <br><br> ${resourceDescription}<p>`}
     else {

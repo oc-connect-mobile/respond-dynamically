@@ -6,7 +6,6 @@ OC Connect Mobile: List of organizations and resources
 {% load static %}
 {% block content %}
 
-
 <div role="main">
 <div class="info-menu">
 <div class="welcome"><p>Welcome,</p></div>
@@ -14,106 +13,96 @@ OC Connect Mobile: List of organizations and resources
 
     <p class="welcome-message">Get connected to a consolidated community listing of 700+ services and resources offered by government and/or non-profit organizations in the NC Triangle.</p>
 
-    <div class="category-btns-box" aria-label="Here a various ways to search by need"> 
+        <div class="category-btns-box" aria-label="Here a various ways to search by need"> 
 
-        <div class="category-search-header">
-            <h4 class="category-header h3index">What type of need do you have? Click to see results</h4>
-        </div>
-        <div class="category-search-btns">
-        
-            <form id="emergency-search">       
-                <button title="emergencies" id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
-            </form>
-            <form id="food-search">       
-                <button title="food" id="food-button" class="foo-button mdc-button" type="submit" value="Food"><i class="material-icons i-food" aria-label="Filter by food category" aria-hidden="true">local_dining</i></button>
-            </form>
-            <form id="housing-search">       
-                <button title="housing" id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">home</i></button>
-            </form>
-            <form id="goods-search">       
-                <button id="goods-button" class="foo-button mdc-button" type="submit" value="Goods"><i class="material-icons i-goods" aria-label="Filter by goods" aria-hidden="true">shopping_cart</i></button>
-            </form>
-            <form id="transportation-search">       
-                <button title="transportation" id="transportation-button" class="foo-button mdc-button" type="submit" value="Transportation"><i class="material-icons i-transportation" aria-label="Filter by Transportation category" aria-hidden="true">commute</i></button>
-            </form>
-            <form id="health-search">       
-                <button id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">favorite</i></button>
-            </form>
-            <form id="finances-search">       
-                <button id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">monetization_on</i></button>
-            </form>
-            <form id="care-search">       
-                <button title="care" id="care-button" class="foo-button mdc-button" type="submit" value="Care"><i class="material-icons i-care" aria-label="Filter by care category" aria-hidden="true">accessibility_new</i></button>
-            </form>
-            <form id="education-search">       
-                <button title="education" id="education-button" class="foo-button mdc-button" type="submit" value="Education"><i class="material-icons i-education" aria-label="Filter by Education category" aria-hidden="true">school</i></button>
-            </form>
-            <form id="employment-search">       
-                <button title="employment" id="employment-button" class="foo-button mdc-button" type="submit" value="Employment"><i class="material-icons i-employment" aria-label="Filter by employment category" aria-hidden="true">work</i></button>
-            </form>
-            <form id="legal-search">       
-                <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">gavel</i></button>
-            </form>
+            <div class="category-search-header">
+                <h4 class="category-header h3index">What type of need do you have? Click to see results</h4>
+            </div>
+            <div class="category-search-btns">
             
+                <form id="emergency-search">       
+                    <button title="emergencies" id="emergency-button" class="foo-button mdc-button" type="submit" value="Emergency"><i class="material-icons i-emergency" aria-label="Filter by Emergency category" aria-hidden="true">error</i></button>
+                </form>
+                <form id="food-search">       
+                    <button title="food" id="food-button" class="foo-button mdc-button" type="submit" value="Food"><i class="material-icons i-food" aria-label="Filter by food category" aria-hidden="true">local_dining</i></button>
+                </form>
+                <form id="housing-search">       
+                    <button title="housing" id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">home</i></button>
+                </form>
+                <form id="goods-search">       
+                    <button id="goods-button" class="foo-button mdc-button" type="submit" value="Goods"><i class="material-icons i-goods" aria-label="Filter by goods" aria-hidden="true">shopping_cart</i></button>
+                </form>
+                <form id="transportation-search">       
+                    <button title="transportation" id="transportation-button" class="foo-button mdc-button" type="submit" value="Transportation"><i class="material-icons i-transportation" aria-label="Filter by Transportation category" aria-hidden="true">commute</i></button>
+                </form>
+                <form id="health-search">       
+                    <button id="health-button" class="foo-button mdc-button" type="submit" value="Health"><i class="material-icons i-health" aria-label="Filter by health category" aria-hidden="true">favorite</i></button>
+                </form>
+                <form id="finances-search">       
+                    <button id="finances-button" class="foo-button mdc-button" type="submit" value="Finances"><i class="material-icons i-finances" aria-label="Filter by finances category" aria-hidden="true">monetization_on</i></button>
+                </form>
+                <form id="care-search">       
+                    <button title="care" id="care-button" class="foo-button mdc-button" type="submit" value="Care"><i class="material-icons i-care" aria-label="Filter by care category" aria-hidden="true">accessibility_new</i></button>
+                </form>
+                <form id="education-search">       
+                    <button title="education" id="education-button" class="foo-button mdc-button" type="submit" value="Education"><i class="material-icons i-education" aria-label="Filter by Education category" aria-hidden="true">school</i></button>
+                </form>
+                <form id="employment-search">       
+                    <button title="employment" id="employment-button" class="foo-button mdc-button" type="submit" value="Employment"><i class="material-icons i-employment" aria-label="Filter by employment category" aria-hidden="true">work</i></button>
+                </form>
+                <form id="legal-search">       
+                    <button id="legal-button" class="foo-button mdc-button" type="submit" value="Legal"><i class="material-icons i-legal" aria-label="Filter by legal category" aria-hidden="true">gavel</i></button>
+                </form>
+                
+            </div>
+            <div class="search-btns-toggle"> 
+                <input class="index-button category-toggle" type="button" onclick="hideCatFilters()" value="Show/Hide Categories"> 
+            </div>
         </div>
-        <div class="search-btns-toggle"> 
-            <input class="index-button category-toggle" type="button" onclick="hideCatFilters()" value="Show/Hide Categories"> 
+        
+        <div class="city-filter-box hide">
+            <br>
+            <div class="filter-city-header">
+                <h4 class="filter-header h3index">Where are you looking? Filter by city</h4>
+            </div>
+            <div class="filter-btns">
+                <input class="toggleButton toggleButton-Durham" type="button" onclick="slideUpResource('Durham')" value="Durham">
+                <input class="toggleButton toggleButton-ChapelHill" type="button" onclick="slideUpResource('ChapelHill')" value="Chapel Hill">
+                <input class="toggleButton toggleButton-Mebane" type="button" onclick="slideUpResource('Mebane')" value="Mebane">
+                <input class="toggleButton toggleButton-Raleigh" type="button" onclick="slideUpResource('Raleigh')" value="Raleigh">
+                <input class="toggleButton toggleButton-Carrboro" type="button" onclick="slideUpResource('Carrboro')" value="Carrboro">
+                <input class="toggleButton toggleButton-Morrisville" type="button" onclick="slideUpResource('Morrisville')" value="Morrisville">
+                <input class="toggleButton toggleButton-Eno" type="button" onclick="slideUpResource('Eno')" value="Eno">
+                <input class="toggleButton toggleButton-Carr" type="button" onclick="slideUpResource('Carr')" value="Carr">
+                <input class="toggleButton toggleButton-Cheeks" type="button" onclick="slideUpResource('Cheeks')" value="Cheeks">
+                <input class="toggleButton toggleButton-Bingham" type="button" onclick="slideUpResource('Bingham')" value="Bingham">
+                <input class="toggleButton toggleButton-CedarGrove" type="button" onclick="slideUpResource('CedarGrove')" value="Cedar Grove">
+                <input class="toggleButton toggleButton-Hillsborough" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
+                <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
+            </div>
+            <div class="filter-btns-toggle">
+                <input class="index-button filter-toggle" style="align-items: center" type="button" onclick="hideCityFilters()" value="show/hide filters">
+            </div>
         </div>
+
+        <div class="number-of-resources">
+        </div>
+
+        <div class="bottom-filter">
+            <button title="filter" aria-label="filter" class="mdc-button mdc-button--raised showDialogBtn"><a href="#search-options"><i class="fas fa-2x fa-angle-double-up"></i></a>
+            </button>
+            <button style="float: left" title="info" aria-label="Site info" class="mdc-button mdc-button--raised showDialogBtn" onclick="window.location.href='/about/'"><i class="fa fa-2x fa-info"></i>
+            </button>
+        </div> 
     </div>
-    
-    <div class="city-filter-box hide">
-        <br>
-        <div class="filter-city-header">
-            <h4 class="filter-header h3index">Where are you looking? Filter by city</h4>
-        </div>
-        <div class="filter-btns">
-            <input class="toggleButton toggleButton-Durham" type="button" onclick="slideUpResource('Durham')" value="Durham">
-            <input class="toggleButton toggleButton-ChapelHill" type="button" onclick="slideUpResource('ChapelHill')" value="Chapel Hill">
-            <input class="toggleButton toggleButton-Mebane" type="button" onclick="slideUpResource('Mebane')" value="Mebane">
-            <input class="toggleButton toggleButton-Raleigh" type="button" onclick="slideUpResource('Raleigh')" value="Raleigh">
-            <input class="toggleButton toggleButton-Carrboro" type="button" onclick="slideUpResource('Carrboro')" value="Carrboro">
-            <input class="toggleButton toggleButton-Morrisville" type="button" onclick="slideUpResource('Morrisville')" value="Morrisville">
-            <input class="toggleButton toggleButton-Eno" type="button" onclick="slideUpResource('Eno')" value="Eno">
-            <input class="toggleButton toggleButton-Carr" type="button" onclick="slideUpResource('Carr')" value="Carr">
-            <input class="toggleButton toggleButton-Cheeks" type="button" onclick="slideUpResource('Cheeks')" value="Cheeks">
-            <input class="toggleButton toggleButton-Bingham" type="button" onclick="slideUpResource('Bingham')" value="Bingham">
-            <input class="toggleButton toggleButton-CedarGrove" type="button" onclick="slideUpResource('CedarGrove')" value="Cedar Grove">
-            <input class="toggleButton toggleButton-Hillsborough" type="button" onclick="slideUpResource('Hillsborough')" value="Hillsborough">
-            <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
-        </div>
-        <div class="filter-btns-toggle">
-            <input class="index-button filter-toggle" style="align-items: center" type="button" onclick="hideCityFilters()" value="show/hide filters">
-        </div>
-    </div>
-   
-</div>  
+
     <div class="list-of-resources">
         <script>
             let data = {{ data2 | safe }}
-            // let sosl = {{ data9 | safe }}
         </script>   
-    </div> 
+    </div>     
 
-
-	
-
-<div class="bottom-filter">
-    <button title="filter" aria-label="filter" class="mdc-button mdc-button--raised showDialogBtn"><a href="#search-options"><i class="fas fa-2x fa-angle-double-up"></i></a>
-    </button>
-    <button style="float: left" title="info" aria-label="Site info" class="mdc-button mdc-button--raised showDialogBtn" onclick="window.location.href='/about/'"><i class="fa fa-2x fa-info"></i>
-    </button>
-</div> 
-
-
-<div class="list-of-resources">
-    <script>
-        let data = {{ data2 | safe }}
-    </script>   
-</div>     
-
-
-<script src="{% static 'JavaScript/filter.js' %}"></script>
-<script src="{% static 'JavaScript/resources.js' %}"></script>
+    <script src="{% static 'JavaScript/resources.js' %}"></script>
 
 </div>
 

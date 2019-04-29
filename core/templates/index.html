@@ -17,7 +17,7 @@ OC Connect Mobile: List of organizations and resources
     <div class="category-btns-box" aria-label="Here a various ways to search by need"> 
 
         <div class="category-search-header">
-            <h4 class="category-header h3index">What type of need do you have? Click to see results.</h4>
+            <h4 class="category-header h3index">What type of need do you have? Click to see results</h4>
         </div>
         <div class="category-search-btns">
         
@@ -59,7 +59,7 @@ OC Connect Mobile: List of organizations and resources
             </form> {% endcomment %}
         </div>
         <div> 
-            <input class="index-button" type="button" onclick="hideCatFilters()" value="Toggle Categories"> 
+            <input class="index-button" type="button" onclick="hideCatFilters()" value="show/hide need"> 
         </div>
     </div>
     
@@ -84,7 +84,7 @@ OC Connect Mobile: List of organizations and resources
             <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
         </div>
         <div>
-            <input class="index-button" style="align-items: center" type="button" onclick="hideCityFilters()" value="Toggle City Filters">
+            <input class="index-button" style="display: flex;justify-content: centers" type="button" onclick="hideCityFilters()" value="show/hide city">
         </div>
     </div>
     <div id="searchbar" >
@@ -124,7 +124,6 @@ OC Connect Mobile: List of organizations and resources
 <div class="list-of-resources">
     <script>
         let data = {{ data2 | safe }}
-        // let sosl = {{ data9 | safe }}
     </script>   
 </div>     
 

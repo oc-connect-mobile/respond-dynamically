@@ -195,9 +195,6 @@ function populateList(resources, idx){
     const emailTag = document.createElement('button')
     const mapTag = document.createElement('button')
 
-    const resourcePrimary_City = resources.Primary_City__c
-    const resourcePrimary_State = resources.Primary_State__c
-    const resourcePrimary_Street = resources.Primary_Street__c
 
     const categoryList = document.createElement('div')
     const categoryTag = document.createElement('span')
@@ -210,6 +207,9 @@ function populateList(resources, idx){
     const secondaryTagList = document.createElement('div')
     // const googleTag = document.createElement('span')
 
+  
+
+
   const resourceId = resources.records[idx]['Id']
   const resourceName = resources.records[idx].Name
   const resourceWeb = resources.records[idx]['Website']
@@ -219,6 +219,13 @@ function populateList(resources, idx){
   const resourceDesc = resources.records[idx]['Description_Short__c']
   const resourceEligible = resources.records[idx]['Eligibility_Criteria__c']
   const resourceCity = resources.records[idx]['City_Served__c']
+  
+  const resourcePrimary_State = resources.records[idx]['Primary_State__c']
+  console.log(resourcePrimary_State)
+  const resourcePrimary_Street = resources.records[idx]['Primary_Street__c']
+  console.log(resourcePrimary_Street)
+  const resourcePrimary_City = resources.records[idx]['Primary_City__c']
+  console.log(resourcePrimary_City)
 
     resourceTag.className = 'listed-resource'
     numOfResources.className = 'resources-number'

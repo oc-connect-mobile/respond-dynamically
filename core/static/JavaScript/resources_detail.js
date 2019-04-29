@@ -318,7 +318,9 @@ function populate(resources){
       else {
         emailTag.classList.add('hide')
 	  }
+
 	mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
+	console.log(mapTag.innerHTML)   
 
   
 
@@ -403,30 +405,3 @@ populate(resources)
 
 
 
-////////////////////
-// const resourcePrimary_City = resources.Primary_City__c
-// const resourcePrimary_State = resources.Primary_State__c
-// const resourcePrimary_Street = resources.Primary_Street__c
-// const resourcePrimary_Zip = resources.Primary_Zip__c
-// const resourceServices = resources.Services_txt__c
-// const resourcepostalCode = resources.postalCode
-// const resourcestate = resources.state
-// const resourcestreet = resources.street
-// const resourceLastModifiedDate = resources.LastModifiedDate
-// const resourceLastActivityDate = resources.LastActivityDate
-// const resourceLastViewedDate = resources.LastViewedDate
-// const resourceDescription = resources.Description
-// const resourceLatino_Services = resources.Latino_Services__c
-// const resourceHours = resources.Hours__c
-// const resourceSaturday= resources.Saturday_Hours__c
-// const resourceFriday = resources.Friday_Hours__c
-// const resourceThursday = resources.Thursday_Hours__c
-// const resourceWednesday = resources.Wednesday_Hours__c
-// const resourceTuesday= resources.Tuesday_Hours__c
-// const resourceMonday = resources.Monday_Hours__c
-// const resourceSunday = resources.Sunday_Hours__c
-// const resourceMonday_Friday = resources.Monday_Friday_Hours__c
-// const resourceOther_Hours = resources.Other_Hours__c
-// const resourceHours_Format = resources.Hours_Format__c
-// const resourceParentId = resources.ParentId
-// const resourceTime_Till_Service = resources.Time_Till_Service__c

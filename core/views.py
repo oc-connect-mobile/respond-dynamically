@@ -22,7 +22,7 @@ def index(request):
     add +LIMIT+3 to end of query for maintenance
     """
 
-    a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+County_Served__c,+City_Served__c,+Website,+Eligibility_Criteria__c,+CEF_Sub_Category__c,+Secondary_Tags__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,Primary_City__c+FROM+Account"
+    a = "query?q=SELECT+ID,+Name,+CEF_Category__c,+County_Served__c,+City_Served__c,+Website,+Eligibility_Criteria__c,+CEF_Sub_Category__c,+Secondary_Tags__c,+Imported_Phone__c,+Company_Email__c,+Description_Short__c,+Primary_City__c,+Primary_Street__c,+Primary_State__c+FROM+Account"
     b = "+WHERE+"
     x = "Deactivated__c=FALSE"
     y= "+ORDER+BY+Website+NULLS+LAST"

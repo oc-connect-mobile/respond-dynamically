@@ -162,9 +162,6 @@ function populateList(resources, idx){
     const emailTag = document.createElement('button')
     const mapTag = document.createElement('button')
 
-    const resourcePrimary_City = resources.Primary_City__c
-    const resourcePrimary_State = resources.Primary_State__c
-    const resourcePrimary_Street = resources.Primary_Street__c
 
     const categoryList = document.createElement('div')
     const categoryTag = document.createElement('span')
@@ -175,6 +172,9 @@ function populateList(resources, idx){
     const cityServedList = document.createElement('div')
     const subCategoryList = document.createElement('div')
     const secondaryTagList = document.createElement('div')
+    const resourcePrimary_Street = resources.records[idx]['Primary_Street__c']
+    const resourcePrimary_City = resources.records[idx]['Primary_City__c']
+    const resourcePrimary_State = resources.records[idx]['Primary_State__c']
 
     const resourceId = resources.records[idx]['Id']
     const resourceName = resources.records[idx].Name
@@ -303,7 +303,13 @@ function populateList(resources, idx){
       else {
           emailTag.classList.add('hide')
       }
+
+    if (resourcePrimary_Street !== null && resourcePrimary_City !== null && resourcePrimary_State !== null) {
       mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
+      }
+      else {
+        mapTag.classList.add('hide')
+      }
 
     descTag.innerHTML = `<br><p>${resourceDesc}</p>`
 

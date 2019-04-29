@@ -28,7 +28,7 @@
     --text-color: var(--blue01);
 }
 body {
-    font-family: 'Helvetica' !important;
+    font-family: 'OpenDyslexic', 'Helvetica' !important;
     background-color:#efebe9 !important;
 }
 header {

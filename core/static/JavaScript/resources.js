@@ -259,6 +259,7 @@ function populateList(resources, idx){
             categoryList.appendChild(categoryTag)
         }
     }
+
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
 
     if (resourceEligible !== null){
@@ -277,19 +278,23 @@ function populateList(resources, idx){
     }
 
     webTag.innerHTML = resourceWeb
-        if (resourceWeb !== null){
-            webTag.innerHTML =`<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-2x fa-globe-americas"></i></a>`
-        }
-        else {
-            webTag.classList.add('hide')
-        }
+
+      if (resourceWeb !== null){
+        webTag.innerHTML =`<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-2x fa-globe-americas"></i></a>`
+      }
+      else {
+        webTag.classList.add('hide')
+      }
+    
+    
     phoneTag.innerHTML = resourcePhone
-        if (resourcePhone !== null){
-            phoneTag.innerHTML = `<a title="Call resource" href="tel:${resourcePhone}"><i class="fa fa-2x fa-phone"></i></a>`
-        }
-        else {
-            phoneTag.classList.add('hide')
-        }
+      if (resourcePhone !== null){
+        newPhone = resourcePhone.match(/[\d+]/g).join('')
+        phoneTag.innerHTML = `<a title="Call resource" href="tel:${newPhone}"><i class="fa fa-2x fa-phone"></i></a>`
+      }
+      else {
+        phoneTag.classList.add('hide')
+      }
 
     emailTag.innerHTML = resourceEmail
       if (resourceEmail !== null){

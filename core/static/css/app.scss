@@ -166,20 +166,24 @@ $fontFamily: "Open Sans", sans-serif;
 }
 
 .info-menu {
-  margin: 15px;
-  padding: 5px;
+  margin: 0 15px 15px 15px;
+  padding: 0 5px 5px 5px;
+
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.637); 
 }
 .welcome {
+  font-family: "American Typewriter";
+  font-size: 56px;
   color: #059EDA;
-  background-color: rgba(255, 255, 255, 0.637);
-  border: solid 1px rgb(230, 228, 228);
   border-radius: 10px;
-  text-shadow: 2px 2px 2px 2px rgb(131, 130, 130);
-  float: left;
-  margin-right: 10px;
   margin-bottom: 0;
+}
+.welcome p {
+  margin-bottom: 0;
+}
+.clearfix {
+  overflow: auto;
 }
 
 

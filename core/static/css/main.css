@@ -28,6 +28,7 @@
     --text-color: var(--blue01);
 }
 body {
+    font-family: 'Helvetica' !important;
     background-color:#efebe9 !important;
 }
 header {

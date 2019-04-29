@@ -1,5 +1,4 @@
 let resources = data
-// let sosl = sosl
 
 function query (selector) {
   return document.querySelector(selector)
@@ -296,6 +295,13 @@ function populateList(resources, idx){
         categoryList.appendChild(categoryTag)
     }
   }
+  
+  // const newPhone = ""
+  // console.log(resourcePhone)
+  // newPhone = resourcePhone.match(/[\d+]/g)
+  // newPhone = betterPhone(resourcePhone).join('')
+  
+
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
 
     if (resourceEligible !== null){
@@ -318,9 +324,13 @@ function populateList(resources, idx){
       else {
         webTag.classList.add('hide')
       }
+    
+    
     phoneTag.innerHTML = resourcePhone
       if (resourcePhone !== null){
-        phoneTag.innerHTML = `<a title="Call resource" href="tel:${resourcePhone}"><i class="fa fa-2x fa-phone"></i></a>`
+        console.log(typeof(resourcePhone))
+        newPhone = resourcePhone.match(/[\d+]/g).join('')
+        phoneTag.innerHTML = `<a title="Call resource" href="tel:${newPhone}"><i class="fa fa-2x fa-phone"></i></a>`
       }
       else {
         phoneTag.classList.add('hide')

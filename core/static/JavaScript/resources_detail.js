@@ -1,5 +1,12 @@
 let resources = data2
 
+function betterPhone(rawphone) {
+  var phoneRegEx = /[\d+]/g
+  // var phoneRegEx = /[-]{0,1}[\d]/g keeps dashes
+  // [-]{0,1}[\d]|[\(]|[\)] keeps parens
+  newPhone = rawphone.match(phoneRegEx)
+  return newPhone
+}
 
 function query (selector) {
   return document.querySelector(selector)
@@ -209,6 +216,7 @@ function populate(resources){
   const resourceName = resources.Name
   const resourceWeb = resources.Website
   const resourcePhone = resources.Imported_Phone__c
+  
   const resourceEmail = resources.Company_Email__c
   const resourceCategory = resources.CEF_Category__c
   const resourceDesc = resources.Description_Short__c
@@ -303,13 +311,19 @@ function populate(resources){
       else {
         webTag.classList.add('hide')
       }
-    phoneTag.innerHTML = resourcePhone
+      
+    newPhone = betterPhone(resourcePhone).join('')
+    phoneTag.innerHTML = newPhone
       if (resourcePhone !== null){
-        phoneTag.innerHTML = `<a title="Call resource" href="tel:${resourcePhone}"><i class="fa fa-2x fa-phone"></i></a>`
+        phoneTag.innerHTML = `<a title="Call resource" href="tel:${newPhone}"><i class="fa fa-2x fa-phone"></i></a>`
       }
       else {
         phoneTag.classList.add('hide')
       }
+
+      // console.log(resourcePhone)
+      // const newresourcePhone = betterPhone(resources.Imported_Phone__c)
+      // console.log(newresourcePhone)
 
     emailTag.innerHTML = resourceEmail
       if (resourceEmail !== null){

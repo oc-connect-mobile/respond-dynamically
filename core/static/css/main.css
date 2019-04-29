@@ -103,8 +103,6 @@ nav ul {
     padding: .5rem;
   }
   
-
-
 #navigation {
     width: 100%;
     position: fixed;
@@ -169,6 +167,10 @@ nav ul {
 
 .resouces-number{
     text-align: center;
+}
+.number-of-resources{
+    text-align: center;
+    font-size: 18px;
 }
 
 .listed-name h3{

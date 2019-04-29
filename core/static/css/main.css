@@ -495,11 +495,11 @@ nav ul {
     letter-spacing: 0.1em;
     padding: .2rem;
     border: 1px #058BC7;
-<<<<<<< HEAD
+
     /* align-items: center; */
 }
-=======
+
     display: flex;
     justify-content: center;
 }
->>>>>>> master
+

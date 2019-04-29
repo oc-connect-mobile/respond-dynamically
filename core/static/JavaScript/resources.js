@@ -374,37 +374,40 @@ function slideUpResource(input) {
     let button = query(`.toggleButton-${noSpaceInput}`)
     let buttons = queryAll('.toggleButton')
     for (let idx = 0; idx < resource.length; idx++){
+        console.log('start of new resource')
         if (resource[idx].classList.contains(noSpaceInput) && resource[idx].classList.contains('hide')){
-            isButtonToggled(button, buttons)
+            // isButtonToggled(button, buttons)
             resource[idx].classList.remove('hide')
         }
         else if (resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
-            isButtonToggled(button, buttons)
+            // isButtonToggled(button, buttons)
             resource[idx].classList.remove('hide')
         }
         else if (!resource[idx].classList.contains(noSpaceInput) && !resource[idx].classList.contains('hide')){
-            isButtonToggled(button, buttons)
+            // isButtonToggled(button, buttons)
             resource[idx].classList.add('hide')
         }
         else if (!resource[idx].classList.contains(noSpaceInput) && resource[idx].classList.contains('hide')){
-            isButtonToggled(button, buttons)
+            // isButtonToggled(button, buttons)
             resource[idx].classList.remove('hide')
         }
     }
+    isButtonToggled(button, buttons)
 }   
 
 function isButtonToggled(button, buttons){
     for (let idx = 0; idx < buttons.length; idx++){
-        if (buttons[idx].value !== button.value){
+        if (buttons[idx].value !== button.value && buttons[idx].classList.contains('toggle-selected')){
             buttons[idx].classList.remove ('toggle-selected')
         }
-        else if (!button.classList.contains('toggle-selected')){
-            button.classList.add('toggle-selected')
-        }
-        else {
-            button.classList.remove('toggle-selected')
-        }
     }
+    if (!button.classList.contains('toggle-selected')){
+        button.classList.add('toggle-selected')
+    }
+    else if (button.classList.contains('toggle-selected')){
+        button.classList.remove('toggle-selected')
+    }
+    
 }
 function isHideToggled(resource){
     if (resource.classList.contains('hide')){

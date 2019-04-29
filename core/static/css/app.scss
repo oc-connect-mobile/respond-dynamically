@@ -139,7 +139,12 @@ $fontFamily: "Open Sans", sans-serif;
 }
 
 .category-list {
-  float: right;
+  display:flex;
+  flex-wrap: wrap;
+  flex-flow: flex-end;
+  padding: 1rem;
+
+  
 }
 
 

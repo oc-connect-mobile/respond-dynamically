@@ -198,7 +198,7 @@ header {
 
 .listed-cat {
     padding: 0;
-    margin: 0;
+    margin: .3rem;
     float: right;
 }
 .listed-cat i {
@@ -207,9 +207,9 @@ header {
     float: right;
 }
 .listed-desc{
-    /* margin: .5rem; */
-    /* padding: .25rem .5rem .5rem .5rem;  */
-    /* border-top: 1px solid #a5a3a3; */
+    margin: .5rem; 
+    padding: .25rem .5rem .5rem .5rem; 
+    /*border-top: 1px solid #a5a3a3; */
 }
 
   
@@ -462,5 +462,6 @@ header {
     letter-spacing: 0.1em;
     padding: .2rem;
     border: 1px #058BC7;
-    align-items: center;
+    display: flex;
+    justify-content: center;
 }

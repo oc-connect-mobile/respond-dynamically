@@ -17,7 +17,7 @@ OC Connect Mobile: List of organizations and resources
     <div class="category-btns-box" aria-label="Here a various ways to search by need"> 
 
         <div class="category-search-header">
-            <h4 class="category-header h3index">What type of need do you have? Click to see results.</h4>
+            <h4 class="category-header h3index">What type of need do you have? Click to see results</h4>
         </div>
         <div class="category-search-btns">
         
@@ -28,7 +28,7 @@ OC Connect Mobile: List of organizations and resources
                 <button title="food" id="food-button" class="foo-button mdc-button" type="submit" value="Food"><i class="material-icons i-food" aria-label="Filter by food category" aria-hidden="true">local_dining</i></button>
             </form>
             <form id="housing-search">       
-                <button title="housing" id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">local_hotel</i></button>
+                <button title="housing" id="housing-button" class="foo-button mdc-button" type="submit" value="Housing"><i class="material-icons i-housing" aria-label="Filter by housing category" aria-hidden="true">home</i></button>
             </form>
             <form id="goods-search">       
                 <button id="goods-button" class="foo-button mdc-button" type="submit" value="Goods"><i class="material-icons i-goods" aria-label="Filter by goods" aria-hidden="true">shopping_cart</i></button>
@@ -59,7 +59,7 @@ OC Connect Mobile: List of organizations and resources
             </form> {% endcomment %}
         </div>
         <div> 
-            <input class="index-button" type="button" onclick="hideCatFilters()" value="Toggle Categories"> 
+            <input class="index-button" type="button" onclick="hideCatFilters()" value="show/hide need"> 
         </div>
     </div>
     
@@ -84,7 +84,7 @@ OC Connect Mobile: List of organizations and resources
             <input class="toggleButton toggleButton-LitteRiver" type="button" onclick="slideUpResource('LitteRiver')" value="Litte River">
         </div>
         <div>
-            <input class="index-button" style="align-items: center" type="button" onclick="hideCityFilters()" value="Toggle City Filters">
+            <input class="index-button" style="display: flex;justify-content: centers" type="button" onclick="hideCityFilters()" value="show/hide city">
         </div>
     </div> 
 </div>
@@ -198,7 +198,6 @@ OC Connect Mobile: List of organizations and resources
 <div class="list-of-resources">
     <script>
         let data = {{ data2 | safe }}
-        // let sosl = {{ data9 | safe }}
     </script>   
 </div>     
 

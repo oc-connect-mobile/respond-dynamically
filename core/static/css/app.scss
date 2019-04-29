@@ -77,6 +77,7 @@ $fontFamily: "Open Sans", sans-serif;
   width: 100%;
   bottom: 1px;
   right: 1px;
+  z-index: 1;
 }
 
 .bottom-back-btn .mdc-button {
@@ -173,11 +174,12 @@ $fontFamily: "Open Sans", sans-serif;
   background-color: rgba(255, 255, 255, 0.637); 
 }
 .accessibility {
-  margin: 0 15px 15px 15px;
+  margin: 50px 15px 15px 15px;
   padding: 0 5px 5px 5px;
   border-radius: 10px;
   background-color: white;
   padding: 15px;
+
 }
 .accessibility h2 {
   font-size: 18px;

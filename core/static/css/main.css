@@ -500,9 +500,26 @@ nav ul {
     letter-spacing: 0.1em;
     padding: .2rem;
     border: 1px #058BC7;
-
     /* align-items: center; */
 }
 
-  
+.category-legend{
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 300px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.category-legend-item {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0 5px; 
+    min-width: 100px;
+    width: 150px; 
+}
+.category-legend-item p{
+    margin: 0; 
+}
 

@@ -209,6 +209,10 @@ nav ul {
     padding-left: .5rem; 
     /* padding-right: .5rem;   */
 }
+.listed-map {
+    margin: 0;
+
+}
 .google-search {
     margin:0;
 }

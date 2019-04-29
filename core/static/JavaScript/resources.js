@@ -193,6 +193,11 @@ function populateList(resources, idx){
     const webTag = document.createElement('button')
     const phoneTag = document.createElement('button') 
     const emailTag = document.createElement('button')
+    const mapTag = document.createElement('button')
+
+    const resourcePrimary_City = resources.Primary_City__c
+    const resourcePrimary_State = resources.Primary_State__c
+    const resourcePrimary_Street = resources.Primary_Street__c
 
     const categoryList = document.createElement('div')
     const categoryTag = document.createElement('span')
@@ -225,6 +230,7 @@ function populateList(resources, idx){
     webTag.className = 'listed-site'
     phoneTag.className = 'listed-phone'
     emailTag.className = 'listed-email'
+    mapTag.className = 'listed-map'
 
     categoryList.className = 'category-list'
     eligibiliyTag.classList.add('listed_criteria', 'foo-button', 'mdc-button')
@@ -303,14 +309,14 @@ function populateList(resources, idx){
 
     webTag.innerHTML = resourceWeb
       if (resourceWeb !== null){
-        webTag.innerHTML =`<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-lg fa-globe"></i></a>`
+        webTag.innerHTML =`<a title="Visit resource's web page" class="" href="${resourceWeb}"><i class="fa fa-2x fa-globe-americas"></i></a>`
       }
       else {
         webTag.classList.add('hide')
       }
     phoneTag.innerHTML = resourcePhone
       if (resourcePhone !== null){
-        phoneTag.innerHTML = `<a title="Call resource" href="tel:${resourcePhone}"><i class="fa fa-lg fa-phone"></i></a>`
+        phoneTag.innerHTML = `<a title="Call resource" href="tel:${resourcePhone}"><i class="fa fa-2x fa-phone"></i></a>`
       }
       else {
         phoneTag.classList.add('hide')
@@ -318,11 +324,12 @@ function populateList(resources, idx){
 
     emailTag.innerHTML = resourceEmail
       if (resourceEmail !== null){
-        emailTag.innerHTML =`<a title= "Email resource" class="" href="mailto:${resourceEmail}"><i class="fa fa-lg fa-envelope"></i></a>`
+        emailTag.innerHTML =`<a title= "Email resource" class="" href="mailto:${resourceEmail}"><i class="fa fa-2x fa-envelope"></i></a>`
       }
       else {
         emailTag.classList.add('hide')
       }
+      mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
 
     descTag.innerText = resourceDesc
     if (resourceEligible !== null){
@@ -342,6 +349,7 @@ function populateList(resources, idx){
     infoTag.appendChild(webTag)
     infoTag.appendChild(phoneTag)
     infoTag.appendChild(emailTag)
+    infoTag.appendChild(mapTag)
     infoTag.appendChild(eligibiliyTag)
     // infoTag.appendChild(googleTag)
     resourceTag.appendChild(descTag)
@@ -349,6 +357,7 @@ function populateList(resources, idx){
     contactInfoDiv.appendChild(webTag)
     contactInfoDiv.appendChild(phoneTag)
     contactInfoDiv.appendChild(emailTag)
+    contactInfoDiv.appendChild(mapTag)
 
     resourceTag.appendChild(seeMoreTag) 
     console.log("end of populateList")
@@ -508,3 +517,5 @@ document.addEventListener('DOMContentLoaded', function () {
 //     }
 //   })
 })
+
+

@@ -219,13 +219,13 @@ function populateList(resources, idx){
   const resourceDesc = resources.records[idx]['Description_Short__c']
   const resourceEligible = resources.records[idx]['Eligibility_Criteria__c']
   const resourceCity = resources.records[idx]['City_Served__c']
-  
-  const resourcePrimary_State = resources.records[idx]['Primary_State__c']
-  console.log(resourcePrimary_State)
+ 
   const resourcePrimary_Street = resources.records[idx]['Primary_Street__c']
-  console.log(resourcePrimary_Street)
   const resourcePrimary_City = resources.records[idx]['Primary_City__c']
+  const resourcePrimary_State = resources.records[idx]['Primary_State__c']
+  console.log(resourcePrimary_Street)
   console.log(resourcePrimary_City)
+  console.log(resourcePrimary_State)
 
     resourceTag.className = 'listed-resource'
     numOfResources.className = 'resources-number'
@@ -340,8 +340,13 @@ function populateList(resources, idx){
       else {
         emailTag.classList.add('hide')
       }
-      mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
 
+    if (resourcePrimary_Street !== null && resourcePrimary_City !== null && resourcePrimary_State !== null) {
+      mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
+      }
+      else {
+        mapTag.classList.add('hide')
+      }
 
     descTag.innerHTML = `<br><p>${resourceDesc}</p>`
     // if (resourceEligible !== null){

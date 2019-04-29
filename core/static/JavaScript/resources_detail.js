@@ -319,9 +319,12 @@ function populate(resources){
         emailTag.classList.add('hide')
 	  }
 
-	mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
-	console.log(mapTag.innerHTML)   
-
+    if (resourcePrimary_Street !== null && resourcePrimary_City !== null && resourcePrimary_State !== null) {
+      mapTag.innerHTML = `<a title="Google directions" class="" href="https://www.google.com/maps/?daddr=${resourcePrimary_Street}+${resourcePrimary_City}+${resourcePrimary_State}"><i class="fas fa-2x fa-directions"></i></a>`
+    }
+    else {
+      mapTag.classList.add('hide')
+    }
   
 
 

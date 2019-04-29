@@ -71,7 +71,7 @@ def supersf(soqlkv):
 
     # HTTP status code
     #print("Milestone 3")
-    print(response.status, response.reason)
+    # print(response.status, response.reason)
 
     # HTTP response body
     vjson = response.read()
@@ -105,10 +105,10 @@ def supersf(soqlkv):
 
     # HTTP post data
     #print("Milestone 5")
-    print('Posting to here ' + environment)
+    # print('Posting to here ' + environment)
     #print('Posting this ' + requote_uri(qs))
     #print("Milestone 6")
-    print('Posting this ' + url)
+    # print('Posting this ' + url)
    
 
     # Request plus header application/x-www-form-urlencoded

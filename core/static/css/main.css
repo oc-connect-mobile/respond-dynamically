@@ -40,8 +40,6 @@ header {
     color: white;
     background-color: #00adef;
     text-shadow: 2px 2px black;
-    /* border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%; */
     background-image: url("../img/CEF_silhou_blue.jpg");
     background-size: contain;
     background-position: 80%;   
@@ -63,12 +61,11 @@ nav ul {
 .main-title2 {
     text-decoration: none;
     color: white;
-
 }
 
 .banner {
     width: 100%;
-    background-image: radial-gradient(circle at top right, #00adef, #038dc4);    /* margin: 0rem .5rem 1rem .5rem; */
+    background-image: radial-gradient(circle at top right, #00adef, #038dc4); 
     border-top: 1px solid black;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -89,16 +86,8 @@ nav ul {
     font-size: 14pt;
     color: black;
     background-color: rgba(255, 255, 255, 0.637);
-    /* line-height: 50%s; */
-    margin: auto;
-    
+    margin: auto; 
 }
-
-.info-span {
-    /* line-height: 100%; */
-   
-}
-
 
 .material-icons {
     padding: .5rem;
@@ -153,7 +142,6 @@ nav ul {
 .listed-resource{
     margin: 1rem 1rem 1rem 1rem;
     border-top: 1px solid black;
-    /* max-width: 375px; */
     border-top-left-radius: 22px;
     border-top-right-radius: 22px;
     border-bottom-left-radius: 15px;
@@ -205,12 +193,10 @@ nav ul {
 }
 .listed-phone{  
     margin: 0;
-    /* padding-left: 1rem;   */
 }
 .listed-email{
     margin: 0;
     padding-left: .5rem; 
-    /* padding-right: .5rem;   */
 }
 .listed-map {
     margin: 0;
@@ -233,19 +219,15 @@ nav ul {
 .listed-desc{
     margin: .5rem; 
     padding: .25rem .5rem .5rem .5rem; 
-    /*border-top: 1px solid #a5a3a3; */
 }
-
-  
+ 
 .cancelbtn { 
     padding: 14px 20px; 
     background-color: var(--blue08); 
 } 
-  
-  
+   
 .cancelbtn,.signupbtn {float:left;width:50%} 
-  
-  
+   
 .modal { 
     display: none;  
     position: fixed;  
@@ -262,7 +244,6 @@ nav ul {
   
 .modal-content { 
     background-color: #fefefe; 
-    /* margin: 5% auto 15% auto;   */
     border: 1px solid #888; 
     width: 100%;   
 } 
@@ -291,8 +272,6 @@ nav ul {
 } 
 
 .mdc-dialog {
-    /* display: none;   */
-    /* position: fixed;   */
     z-index: 1; left: 0; 
     top: 0; 
     width: 100%; 
@@ -307,7 +286,6 @@ nav ul {
     float:left;
     width:50%;
 }
-
 
 .category-search-btns{
     display: flex;
@@ -480,13 +458,11 @@ nav ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: rgba(255, 255, 255); */
 }
 .filter-btns-toggle{
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: rgba(255, 255, 255, 0.637); */
 }
 .index-button {
     
@@ -500,7 +476,6 @@ nav ul {
     letter-spacing: 0.1em;
     padding: .2rem;
     border: 1px #058BC7;
-    /* align-items: center; */
 }
 
 .category-legend{

@@ -13,6 +13,8 @@ from django.shortcuts import redirect
 
 from .super_detail_salesforce import superDetailsf
 
+
+
 def index(request):
     """
     View function for home page of site.
@@ -35,6 +37,7 @@ def index(request):
     context = {
         'data2': data2,
         'data1': data1,
+
         }   
 
     response = render(request, 'index.html', context=context)

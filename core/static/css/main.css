@@ -516,6 +516,9 @@ nav ul {
 .category-legend-item p{
     margin: 0; 
 }
+.accessibility>p{
+    margin: 0;
+}
 
 @media screen and (min-width:422px) {
     .filter-btns{
@@ -528,6 +531,10 @@ nav ul {
     max-height: 200px;
     margin-bottom: 2.5;
     }
+    .hide{
+    height: 0;
+    display: none;
+}
 }
 @media screen and (min-width:528px) {
     .filter-btns{
@@ -552,3 +559,8 @@ nav ul {
     font-size: .8rem;
     vertical-align: middle;
 }
+
+.hide{
+    height: 0;
+    display: none;
+    }

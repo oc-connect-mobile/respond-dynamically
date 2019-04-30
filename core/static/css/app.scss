@@ -18,6 +18,7 @@ $fontFamily: "Open Sans", sans-serif;
 @import "@material/checkbox/mdc-checkbox";
 @import "@material/chips/mdc-chips";
 
+
 .mdc-dialog {
   margin: auto;
   display: flexbox;
@@ -190,7 +191,7 @@ $fontFamily: "Open Sans", sans-serif;
 }
 
 .welcome {
-  font-family: "OpenDyslexic";
+  // font-family: "OpenDyslexic";
   font-size: 56px;
   color: #059EDA;
   border-radius: 10px;

@@ -340,7 +340,6 @@ function slideUpResource(input) {
     let button = query(`.toggleButton-${noSpaceInput}`)
     let buttons = queryAll('.toggleButton')
     for (let idx = 0; idx < resource.length; idx++){
-        console.log('start of new resource')
         if (resource[idx].classList.contains(noSpaceInput) && resource[idx].classList.contains('hide')){
             // isButtonToggled(button, buttons)
             resource[idx].classList.remove('hide')

@@ -531,6 +531,10 @@ nav ul {
     max-height: 200px;
     margin-bottom: 2.5;
     }
+    .hide{
+    height: 0;
+    display: none;
+}
 }
 @media screen and (min-width:528px) {
     .filter-btns{
@@ -542,5 +546,9 @@ nav ul {
     height: 100px;
     max-height: 200px;
     margin-bottom: 0;
+    }
+    .hide{
+    height: 0;
+    display: none;
     }
 }

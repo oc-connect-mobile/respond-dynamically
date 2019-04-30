@@ -14,27 +14,25 @@ function updateList (input) {
     resources = data
     let filters = query('.city-filter-box')
     filters.classList.remove('hide')
-    let counter = 0
+    let cityTest = getAllCities(resources)
+    let categoryTest = getAllCategories(resources)
     for (idx = 0; idx < resources.records.length; idx++) {
-        cityTest = resources.records[idx]['City_Served__c']
-        categoryTest = resources.records[idx]['CEF_Category__c']
+        // cityTest = resources.records[idx]['City_Served__c']
+        // categoryTest = resources.records[idx]['CEF_Category__c']
         if (cityTest === null && categoryTest === null){
         continue
         }
         if ((cityTest !== null && categoryTest !== null) && (cityTest.includes(input) || categoryTest.includes(input))) {
         populateList(resources, idx)
-        counter += 1
         } else if (cityTest !== null && cityTest.includes(input)) {
         populateList(resources, idx)
-        counter += 1
         } else if (categoryTest !== null && categoryTest.includes(input)) {
         populateList(resources, idx)
-        counter += 1
         }
     }
     const numOfResources = query('.number-of-resources')
-    numOfResources.innerHTML = `<p class="resources-number">We found ${counter} resources for you</p>`
-}
+    numOfResources.innerHTML = `<p class="resources-number">We found these ${input} resources for you.</p>`
+
 
 function getAllCategories (resources){
     let allCategories = []
@@ -286,9 +284,9 @@ function populateList(resources, idx){
         webTag.classList.add('hide')
       }
     
-    
     phoneTag.innerHTML = resourcePhone
-      if (resourcePhone !== null){
+
+      if (resourcePhone !== null && hasNumber(resourcePhone)){
         newPhone = resourcePhone.match(/[\d+]/g).join('')
         phoneTag.innerHTML = `<a title="Call resource" href="tel:${newPhone}"><i class="fa fa-2x fa-phone"></i></a>`
       }
@@ -332,6 +330,10 @@ function populateList(resources, idx){
     contactInfoDiv.appendChild(emailTag)
     contactInfoDiv.appendChild(mapTag)
     resourceTag.appendChild(seeMoreTag)    
+}
+
+function hasNumber(myString) {
+  return /\d/.test(myString);
 }
 
 function slideUpResource(input) {

@@ -516,6 +516,9 @@ nav ul {
 .category-legend-item p{
     margin: 0; 
 }
+.accessibility>p{
+    margin: 0;
+}
 
 @media screen and (min-width:422px) {
     .filter-btns{

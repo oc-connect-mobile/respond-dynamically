@@ -16,7 +16,6 @@ function updateList (input) {
     filters.classList.remove('hide')
     let cityTest = getAllCities(resources)
     let categoryTest = getAllCategories(resources)
-    let counter = 0
     for (idx = 0; idx < resources.records.length; idx++) {
         // cityTest = resources.records[idx]['City_Served__c']
         // categoryTest = resources.records[idx]['CEF_Category__c']
@@ -25,18 +24,15 @@ function updateList (input) {
         }
         if ((cityTest !== null && categoryTest !== null) && (cityTest.includes(input) || categoryTest.includes(input))) {
         populateList(resources, idx)
-        counter += 1
         } else if (cityTest !== null && cityTest.includes(input)) {
         populateList(resources, idx)
-        counter += 1
         } else if (categoryTest !== null && categoryTest.includes(input)) {
         populateList(resources, idx)
-        counter += 1
         }
     }
     const numOfResources = query('.number-of-resources')
     numOfResources.innerHTML = `<p class="resources-number">We found these ${input} resources for you.</p>`
-}
+
 
 function getAllCategories (resources){
     let allCategories = []

@@ -274,7 +274,7 @@ function populateList(resources, idx){
     }
     else {
         contactInfoDiv.classList.remove('hide')
-        contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
+        contactInfoDiv.innerHTML = `<strong>Contact Info</strong><br>`
     }
 
     webTag.innerHTML = resourceWeb

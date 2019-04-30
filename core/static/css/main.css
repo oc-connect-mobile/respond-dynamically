@@ -364,10 +364,12 @@ nav ul {
 }
 .i-emergency {
     color: #ef5350;
+    
 }
   
 .i-food {
     color:#26a69a;
+    
 }
 
 .i-housing {
@@ -452,7 +454,7 @@ nav ul {
 
 .h3index {
         text-align: center;
-        color: #058BC7;
+        color: #057AB4;
 }
 .search-btns-toggle{
     display: flex;

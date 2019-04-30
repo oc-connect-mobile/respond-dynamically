@@ -128,7 +128,7 @@ function populate(resources){
     phoneTag.className = 'listed-phone'
 	emailTag.className = 'listed-email'
     categoryList.className = 'infodiv'
-    eligibilityPart.className = 'infodiv'
+    eligibilityPart.className = 'listed-desc'
     eligibilityTag.className = 'listed-cat'
     cityServedTag.className = 'listed-desc'
     addressPart.className = 'listed-desc'
@@ -166,7 +166,7 @@ function populate(resources){
 		nameTag.innerHTML= `<h3>${resourceName}</h3>`
 	}
 
-  	contactInfoDiv.innerHTML = `<strong>Contact Info:</strong><br>`
+  	contactInfoDiv.innerHTML = `<strong>Contact Info</strong><br>`
     
     webTag.innerHTML = resourceWeb
 	if (resourceWeb !== null){
@@ -253,7 +253,7 @@ function populate(resources){
     else {
       	descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem">${resourceDesc}` 
 	}
-    eligibilityPart.innerHTML = `<h3 class="h3style" id="Elig">Eligibility Requirements</h3><p style="margin:.5rem">${resourceEligible}<p>`
+    eligibilityPart.innerHTML = `<h3 class="h3style" id="Elig">Eligibility Requirements</h3><p style="margin:1rem">${resourceEligible}<p>`
 
     hereIsGood.appendChild(nameTag)
 	

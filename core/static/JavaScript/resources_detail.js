@@ -78,7 +78,7 @@ function addIconToCategory (catList) {
 function populate(resources){
   	const hereIsGood = query('.here-is-good')
     const resourceTag = document.createElement('div')
-    const nameTag = document.createElement('h2')
+    const nameTag = document.createElement('h3')
 	const infoTag = document.createElement('div')
 	
 	const contactInfoDiv = document.createElement('div')

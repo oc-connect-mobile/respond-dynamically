@@ -182,6 +182,7 @@ nav ul {
     box-shadow: -2px 3px 7px 1px lightgrey;
     background-image: radial-gradient(circle at top right, #00adef, #038dc4);
     text-shadow: -2px 2px 2px rgba(112, 112, 112, 0.925);
+
 }
 .listed-site{
     margin: 0;

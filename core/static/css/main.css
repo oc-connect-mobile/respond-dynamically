@@ -338,6 +338,7 @@ nav ul {
     min-width: 300px;
     height: 100px;
     max-height: 200px;
+    margin-bottom: 3rem;
 }
 .filter-toggles{
     display:flex;
@@ -480,7 +481,7 @@ nav ul {
     
     background-color: rgba(255, 255, 255, 0.036);
     color: #058BC7;
-    max-width: 11rem;
+    max-width: 13rem;
     border: 1px #058BC7;
     text-align: center; 
     font-size: .7rem;
@@ -510,3 +511,15 @@ nav ul {
     margin: 0; 
 }
 
+@media screen and (min-width:600px) {
+    .filter-btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    min-width: 300px;
+    height: 100px;
+    max-height: 200px;
+    margin-bottom: 0;
+    }
+}

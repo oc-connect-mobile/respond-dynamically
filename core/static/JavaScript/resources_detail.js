@@ -160,7 +160,7 @@ function populate(resources){
   	}  
   
   	if (resourceEligible !== null){
-   		nameTag.innerHTML = `<h3>${resourceName}  <a class="foo-button mdc-buttons" style="text-decoration:none" title="skip to eligibility requirements below" href="#Elig"><i class="fas fa-flag" style="font-size:1rem; color: #FF8765"></i></a></h3>`
+   		nameTag.innerHTML = `<h3>${resourceName}  <a class="foo-button mdc-buttons" style="text-decoration:none" title="skip to eligibility requirements below" href="#Elig"><i class="fas fa-flag elig-flag"></i></a></h3>`
   	} 
 	else {
 		nameTag.innerHTML= `<h3>${resourceName}</h3>`

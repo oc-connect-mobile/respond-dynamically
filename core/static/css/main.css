@@ -88,7 +88,7 @@ nav ul {
     z-index: 10;
 }
 .banner h1 {
-    font-size: 24px;
+    font-size: 1.25rem;
     margin: 0;
 }
 
@@ -152,8 +152,8 @@ nav ul {
 .listed-resource{
     margin: 1rem 1rem 1rem 1rem;
     border-top: 1px solid black;
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-left: 1px solid black;
@@ -161,7 +161,7 @@ nav ul {
     border-bottom: 1px solid black;
     box-shadow: -2px 3px 7px 1px #a0a0a0;
     background-color: white;
-    transition: all 0.4s ease-in-out;
+    /* transition: all 0.4s ease-in-out; */
 }
 
 .resouces-number{
@@ -176,8 +176,8 @@ nav ul {
     font-size: 24px;    
     margin: 0 0 .5rem 0;
     padding: .5rem 1rem;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     color: white;
     background-clip: padding-box;
     box-shadow: -2px 3px 7px 1px lightgrey;
@@ -227,7 +227,7 @@ nav ul {
     float: right;
 }
 .listed-desc{
-    margin: .5rem; 
+    /* margin: .5rem;  */
     padding: .25rem .5rem .5rem .5rem; 
 }
  
@@ -351,7 +351,7 @@ nav ul {
     background-color: #B3E6F8;
     border: 1px solid black;
     border-radius: 5px;
-
+    box-shadow: -2px 2px 2px #b3b2b285;
 }
 .toggle-selected{
     background-color: #045A92;
@@ -365,13 +365,16 @@ nav ul {
     display: flex;
 }
 .category-header{
-    margin-right: 1rem;
+    margin: .5rem;
+    font-size: 1.5rem;
 }
+
 .filter-city-header{
     display: flex;
 }
 .filter-header{
-    margin-right: 1rem;
+    margin: .5rem;
+    font-size: 1.5rem;
 }
 .i-emergency {
     color: #ef5350;

@@ -520,6 +520,18 @@ nav ul {
     margin: 0;
 }
 
+.elig-flag {
+    /* border: 1px solid black; */
+    border-radius: 200%;
+    box-shadow: 1px 1px 2px 1px lightgrey; 
+    background-color: white;
+    color: #FF6C44;
+    padding: .3rem;
+    font-size: .8rem;
+    vertical-align: middle;
+}
+
+
 @media screen and (min-width:422px) {
     .filter-btns{
     display: flex;
@@ -547,8 +559,11 @@ nav ul {
     max-height: 200px;
     margin-bottom: 0;
     }
-    .hide{
+
+
+.hide{
     height: 0;
     display: none;
     }
-}
+
+}   

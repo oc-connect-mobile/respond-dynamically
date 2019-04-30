@@ -264,7 +264,7 @@ function populateList(resources, idx){
     seeMoreTag.innerHTML = `<a title= "See a detailed description of this resource" class="" href="/resource/${resourceId}"><i class="fa fa-2x fa-chevron-right"></i></a>`
 
     if (resourceEligible !== null){
-        nameTag.innerHTML = `<h3>${resourceName} <i title="see details for eligibility" class="fas fa-flag" style="font-size:1rem; color:#FF8765;" ></i></h3>`
+        nameTag.innerHTML = `<h3>${resourceName} <i title="see details for eligibility" class="fas fa-flag elig-flag" ></i></h3>`
     }   
     else {
         nameTag.innerHTML = `<h3>${resourceName}</h3>`

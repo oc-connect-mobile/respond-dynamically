@@ -78,7 +78,7 @@ function addIconToCategory (catList) {
 function populate(resources){
   	const hereIsGood = query('.here-is-good')
     const resourceTag = document.createElement('div')
-    const nameTag = document.createElement('h2')
+    const nameTag = document.createElement('h3')
 	const infoTag = document.createElement('div')
 	
 	const contactInfoDiv = document.createElement('div')
@@ -221,7 +221,7 @@ function populate(resources){
 				categoryTag.classList.add('listed-cat', (`${cat}`))
 				
 				let iconName = addIconToCategory(cat)
-				categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" style="padding:.3rem" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+				categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
 				categoryList.appendChild(categoryTag)
 			} 
 		}
@@ -234,7 +234,7 @@ function populate(resources){
 			categoryTag.classList.add('listed-cat', (`${cat}`))
 			
 			let iconName = addIconToCategory(cat)
-			categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" style="padding:.3rem" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
+			categoryTag.innerHTML = `<i class="material-icons i-${lowerCat}" title="${cat}" aria-label="${cat}" aria-hidden="true">${iconName}</i>`
 			
 			categoryList.appendChild(categoryTag)
 		}
@@ -251,7 +251,7 @@ function populate(resources){
       	descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem">${resourceDesc} <br><br> ${resourceDescription}<p>`
 	}
     else {
-      	descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem">${resourceDesc}` 
+      	descTag.innerHTML = `<h3 class="h3style">Description</h3><p style="margin:.5rem .5rem 2.5rem .5rem">${resourceDesc}` 
 	}
     eligibilityPart.innerHTML = `<h3 class="h3style" id="Elig">Eligibility Requirements</h3><p style="margin:1rem">${resourceEligible}<p>`
 

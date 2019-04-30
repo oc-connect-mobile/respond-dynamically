@@ -49,7 +49,7 @@ header {
     padding: 3px;
     color: white;
     background-color: #00adef;
-    text-shadow: 2px 2px black;
+    /* text-shadow: 2px 2px black; */
     background-image: url("../img/CEF_silhou_blue.jpg");
     background-size: contain;
     background-position: 80%;   
@@ -71,24 +71,24 @@ nav ul {
 .main-title2 {
     text-decoration: none;
     color: white;
+    text-shadow: -2px 2px 2px #8b8a8a;
 }
 
 .banner {
     width: 100%;
     background-image: radial-gradient(circle at top right, #00adef, #038dc4); 
-    border-top: 1px solid black;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    box-shadow: -2px 3px 7px 1px #a0a0a0;
+    border-left: 1px solid #a8a8a8;
+    border-right: 1px solid #a8a8a8;
+    border-bottom: 1px solid #a8a8a8;
+    box-shadow: -2px 2px 2px #27272783;
     padding-left: 20px;
     position: fixed;
     z-index: 10;
 }
 .banner h1 {
-    font-size: 24px;
+    font-size: 1.25rem;
     margin: 0;
 }
 
@@ -100,7 +100,7 @@ nav ul {
 }
 
 .material-icons {
-    padding: .5rem;
+    /* padding: .5rem; */
   }
   
 #navigation {
@@ -111,7 +111,6 @@ nav ul {
 
 .content-container {
     padding-top: 50px;
-    margin-left: 10px;
 }
 .detail-container{
     display: flex;
@@ -152,8 +151,8 @@ nav ul {
 .listed-resource{
     margin: 1rem 1rem 1rem 1rem;
     border-top: 1px solid black;
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-left: 1px solid black;
@@ -161,7 +160,7 @@ nav ul {
     border-bottom: 1px solid black;
     box-shadow: -2px 3px 7px 1px #a0a0a0;
     background-color: white;
-    transition: all 0.4s ease-in-out;
+    /* transition: all 0.4s ease-in-out; */
 }
 
 .resouces-number{
@@ -176,12 +175,14 @@ nav ul {
     font-size: 24px;    
     margin: 0 0 .5rem 0;
     padding: .5rem 1rem;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     color: white;
     background-clip: padding-box;
     box-shadow: -2px 3px 7px 1px lightgrey;
     background-image: radial-gradient(circle at top right, #00adef, #038dc4);
+    text-shadow: -2px 2px 2px rgba(112, 112, 112, 0.925);
+
 }
 .listed-site{
     margin: 0;
@@ -227,8 +228,8 @@ nav ul {
     float: right;
 }
 .listed-desc{
-    margin: .5rem; 
-    padding: .25rem .5rem .5rem .5rem; 
+    margin: 0; 
+    padding: .25rem .5rem 1rem .5rem; 
 }
  
 .cancelbtn { 
@@ -350,8 +351,8 @@ nav ul {
     margin: 2px 2px;
     background-color: #B3E6F8;
     border: 1px solid black;
-    border-radius: 5px;
-
+    border-radius: 25px;
+    box-shadow: -2px 2px 2px #b3b2b285;
 }
 .toggle-selected{
     background-color: #045A92;
@@ -365,13 +366,18 @@ nav ul {
     display: flex;
 }
 .category-header{
-    margin-right: 1rem;
+    margin: .5rem;
+    font-size: 1.5rem;
+    text-shadow: -2px 2px 2px #c9c8c885;
 }
+
 .filter-city-header{
     display: flex;
+    text-shadow: -2px 2px 2px #c9c8c885;
 }
 .filter-header{
-    margin-right: 1rem;
+    margin: .5rem;
+    font-size: 1.5rem;
 }
 .i-emergency {
     color: #ef5350;
@@ -384,11 +390,11 @@ nav ul {
 }
 
 .i-housing {
-    color:#7e57c2;
+    color:#ec407a;
 }
   
 .i-goods {
-    color: #d4e157;
+    color: #401aeb;
 }
 
 .i-transportation {
@@ -396,7 +402,7 @@ nav ul {
 }
   
 .i-health {
-    color: #f27fcd;
+    color: #e634ad;
 }
 
 .i-finances {
@@ -404,7 +410,7 @@ nav ul {
 }
   
 .i-care {
-    color: #9ccc65;
+    color: #5b6ed8;
 }
 
 .i-education {
@@ -427,8 +433,8 @@ nav ul {
     margin: 1rem 1rem 1rem 1rem;
     border-top: 1px solid black;
     /* max-width: 375px; */
-    border-top-left-radius: 22px;
-    border-top-right-radius: 22px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     border-left: 1px solid black;
@@ -452,7 +458,7 @@ nav ul {
   }
 
 .infodiv {
-    padding: 0 .5rem 2rem .5rem;
+    padding: 0 .5rem 1rem .5rem;
 }
 
 #clear-button {

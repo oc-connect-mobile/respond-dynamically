@@ -32,7 +32,7 @@ function updateList (input) {
     }
     const numOfResources = query('.number-of-resources')
     numOfResources.innerHTML = `<p class="resources-number">We found these ${input} resources for you.</p>`
-
+}
 
 function getAllCategories (resources){
     let allCategories = []
